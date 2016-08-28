@@ -1,0 +1,40 @@
+.sinopse {
+    background-color: #E4EAC5;
+    overflow: hidden;
+    margin: auto;
+    
+}
+
+.cover {
+    width: 50%;
+    float: left;
+}
+
+.cover img {
+    width: 70%;
+    display: block;
+    margin: 3em auto 0 auto;
+    
+}
+
+.description {
+    width: 50%;
+    float: left;
+}
+
+.description p {
+    text-align: justify;
+    font-family: 'Yantramanav', sans-serif;
+    font-size: 1.4em;
+    color: #041A1A;
+}
+
+.description h1 {
+    color: #b71c1c;
+    font-family: 'Space Mono', monospace;
+}
+
+.description .text {
+    padding: 3em 5em;
+}
+
