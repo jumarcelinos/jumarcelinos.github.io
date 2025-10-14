@@ -63,7 +63,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 24px;
+    padding: 64px;
     border-right: 1px solid #d8cec3;
     background: var(--panel);
 }
@@ -119,7 +119,7 @@ body {
 .social {
     list-style: none;
     padding: 0;
-    margin: auto 0 0;
+    margin: 8px 0 0;
     display: grid;
     gap: 6px;
 }
@@ -134,7 +134,22 @@ body {
     padding: clamp(18px, 3vw, 36px);
     display: grid;
     gap: clamp(24px, 3vw, 40px);
-    max-width: calc(var(--maxw) + var(--colw));
+    max-width: var(--maxw);
+}
+
+@media (min-width: 1100px) {
+    .content {
+        /* centers the column in the space to the right of the sidebar */
+        margin-left: calc(var(--colw) + (100vw - var(--colw) - var(--maxw))/2);
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .content {
+        margin-left: 0;
+        padding-top: 14px;
+    }
 }
 
 /* ====== Sections ====== */
