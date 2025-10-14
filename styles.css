@@ -250,11 +250,9 @@ h6 {
 
 /* ====== Sections ====== */
 .hero h1 {
-    font-size: clamp(40px, 8vw, 96px);
-    /* very large but still responsive */
-    line-height: 1.05;
-    margin: clamp(32px, 8vh, 120px) 0 12px;
-    /* generous top margin */
+    font-size: clamp(36px, 6.2vw, 72px);
+    line-height: 1.08;
+    margin: clamp(24px, 6vh, 80px) 0 12px;
     letter-spacing: -0.015em;
     text-transform: capitalize;
 }
