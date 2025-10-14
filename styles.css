@@ -15,7 +15,7 @@
     --gap: clamp(14px, 2vw, 22px);
     --radius: 14px;
     --maxw: 1180px;
-    --colw: 280px;
+    --colw: 340px;
     /* sidenav width (desktop) */
 }
 
@@ -78,9 +78,9 @@ body {
 }
 
 .profile img {
-    width: 72px;
+    width: 150px;
     /* visual size */
-    height: 72px;
+    height: 150px;
     border-radius: 50%;
     object-fit: cover;
     background: #fff;
