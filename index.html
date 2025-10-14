@@ -1,14 +1,176 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Portfolio</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Juliana Marcelino — Portfolio</title>
+    <meta name="description"
+        content="Juliana Marcelino — Visual/Brand & UI Designer in Denmark. Clean, modern interfaces and brand assets." />
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
-    <h1>Portfolio</h1>
+    <!-- Mobile header -->
+    <header class="topbar" aria-label="Mobile navigation">
+        <button class="hamburger" aria-expanded="false" aria-controls="nav" aria-label="Open navigation">
+            <span></span><span></span><span></span>
+        </button>
+        <a class="brand-mini" href="/">Juliana</a>
+    </header>
+
+    <!-- Left side nav -->
+    <nav id="nav" class="sidenav" aria-label="Primary">
+        <a class="brand" href="/">Juliana Marcelino</a>
+        <p class="role">Visual/Brand & UI Designer — Denmark</p>
+
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="mailto:hello@jms-design.com">Contact</a></li>
+            <li><a href="/Juliana-Marcelino-CV.pdf" target="_blank" rel="noopener">CV</a></li>
+        </ul>
+
+        <div class="availability" role="status">
+            <span class="dot" aria-hidden="true"></span> Available for projects
+        </div>
+
+        <ul class="social">
+            <li><a href="https://jms-design.com" target="_blank" rel="noopener">Website</a></li>
+            <li><a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener">LinkedIn</a>
+            </li>
+            <li><a href="https://github.com/jumarcelinos" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="content">
+        <!-- Hero -->
+        <section class="hero" aria-labelledby="intro">
+            <h1 id="intro">I’m Juliana, a Visual/Brand & UI designer in Denmark.</h1>
+            <p>I design clean interfaces and brand assets that make work easier.</p>
+            <div class="cta-row">
+                <a class="btn" href="#work">Explore Work</a>
+                <a class="link" href="#about">About me</a>
+            </div>
+        </section>
+
+        <!-- Hot picks / projects -->
+        <section id="work" class="section" aria-labelledby="work-title">
+            <div class="section-head">
+                <h2 id="work-title">Hot picks</h2>
+                <a class="link" href="#all-work">View all</a>
+            </div>
+
+            <ul class="grid">
+                <!-- Project card 1 -->
+                <li class="card">
+                    <a class="card-link" href="/projects/freshfit-meals.html" aria-labelledby="p1-title">
+                        <figure class="thumb">
+                            <img src="/images/freshfit-cover.jpg" alt="FreshFit Meals app screens" loading="lazy">
+                        </figure>
+                        <div class="card-body">
+                            <h3 id="p1-title">FreshFit Meals</h3>
+                            <p class="meta">UI • Product • App</p>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Project card 2 -->
+                <li class="card">
+                    <a class="card-link" href="/projects/ecofabrics.html" aria-labelledby="p2-title">
+                        <figure class="thumb">
+                            <img src="/images/ecofabrics-cover.jpg" alt="EcoFabrics B2B storefront mockup"
+                                loading="lazy">
+                        </figure>
+                        <div class="card-body">
+                            <h3 id="p2-title">EcoFabrics B2B</h3>
+                            <p class="meta">UX • E-commerce • Web</p>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Project card 3 -->
+                <li class="card">
+                    <a class="card-link" href="/projects/taskhero.html" aria-labelledby="p3-title">
+                        <figure class="thumb">
+                            <img src="/images/taskhero-cover.jpg" alt="TaskHero dashboard interface" loading="lazy">
+                        </figure>
+                        <div class="card-body">
+                            <h3 id="p3-title">TaskHero</h3>
+                            <p class="meta">SaaS • Dashboard • UX</p>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Project card 4 -->
+                <li class="card">
+                    <a class="card-link" href="/projects/nordic-track.html" aria-labelledby="p4-title">
+                        <figure class="thumb">
+                            <img src="/images/nordictrack-cover.jpg" alt="Nordic Track brand assets" loading="lazy">
+                        </figure>
+                        <div class="card-body">
+                            <h3 id="p4-title">Nordic Track</h3>
+                            <p class="meta">Brand • Strategy • Docs</p>
+                        </div>
+                    </a>
+                </li>
+
+                <!-- Project card 5 -->
+                <li class="card">
+                    <a class="card-link" href="/projects/ccit.html" aria-labelledby="p5-title">
+                        <figure class="thumb">
+                            <img src="/images/ccit-cover.jpg" alt="CCIT website and stationery" loading="lazy">
+                        </figure>
+                        <div class="card-body">
+                            <h3 id="p5-title">CCIT</h3>
+                            <p class="meta">Web • Templates • Print</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- About preview -->
+        <section id="about" class="section" aria-labelledby="about-title">
+            <h2 id="about-title">About</h2>
+            <p>I started in corporate communications, then shifted to branding and UI/Product design.
+                I like simple systems, tidy type, and interfaces that get out of the way.
+            </p>
+            <a class="btn ghost" href="/about.html">Read more</a>
+        </section>
+
+        <!-- All work anchor (optional future section) -->
+        <section id="all-work" class="section muted" aria-label="All work placeholder">
+            <p>More projects coming soon.</p>
+        </section>
+
+        <footer class="footer">
+            <p>© <span id="year"></span> Juliana Marcelino. Built on GitHub Pages.</p>
+        </footer>
+    </main>
+
+    <script>
+        // Mobile nav toggle
+        const btn = document.querySelector('.hamburger');
+        const nav = document.getElementById('nav');
+        btn?.addEventListener('click', () => {
+            const open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(open));
+            document.body.classList.toggle('nav-open', open);
+        });
+        // Close drawer on link click (mobile)
+        nav?.addEventListener('click', (e) => {
+            const a = e.target.closest('a');
+            if (!a) return;
+            nav.classList.remove('open');
+            document.body.classList.remove('nav-open');
+            btn.setAttribute('aria-expanded', 'false');
+        });
+        // Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 
 </html>
