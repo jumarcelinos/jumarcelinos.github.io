@@ -68,6 +68,27 @@ body {
     background: var(--panel);
 }
 
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* change to center if you prefer */
+    margin: 0 0 12px;
+    /* space below the image */
+}
+
+.profile img {
+    width: 72px;
+    /* visual size */
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid #d0c5b9;
+    /* matches your light theme */
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+}
+
 .sidenav .brand {
     color: var(--text);
     text-decoration: none;
@@ -77,13 +98,13 @@ body {
 
 .sidenav .role {
     color: var(--muted);
-    margin: 0 0 6px;
+    margin: 0 0 20px;
 }
 
 .nav-links {
     list-style: none;
     padding: 0;
-    margin: 10px 0;
+    margin: 14px 0 6px;
     display: grid;
     gap: 6px;
 }
