@@ -266,20 +266,21 @@ h6 {
     position: relative;
 }
 
+/* Stylized hand-drawn oval + swoosh */
 .scribble {
     position: absolute;
-    left: -28px;
-    /* nudge horizontally */
-    top: -44px;
+    left: -34px;
+    /* horizontal nudge */
+    top: -62px;
     /* sits above the H2 */
-    width: 120px;
-    height: 120px;
-    color: var(--brand);
-    /* uses currentColor in the SVG */
-    opacity: 0.6;
-    transform: rotate(-6deg);
+    width: 180px;
+    /* overall size */
+    height: 100px;
+    color: var(--text);
+    /* or var(--brand) if you want it colored */
+    opacity: .75;
+    transform: rotate(-4deg);
     pointer-events: none;
-    /* decoration only */
 }
 
 .scribble svg {
@@ -288,14 +289,24 @@ h6 {
     display: block;
 }
 
-/* Tweak size/position responsively */
+/* Lighter + behind text (optional) */
+.scribble--under {
+    z-index: 0;
+    opacity: .4;
+}
+
+.section-head>* {
+    position: relative;
+    z-index: 1;
+}
+
 @media (max-width: 900px) {
     .scribble {
-        left: -16px;
-        top: -36px;
-        width: 90px;
-        height: 90px;
-        opacity: 0.55;
+        left: -18px;
+        top: -52px;
+        width: 150px;
+        height: 88px;
+        opacity: .65;
     }
 }
 
