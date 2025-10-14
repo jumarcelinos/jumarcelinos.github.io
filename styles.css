@@ -102,10 +102,11 @@ body {
 }
 
 .nav-sep {
-    height: 1px;
     border: 0;
-    background: linear-gradient(to right, transparent, #d8cec3, transparent);
+    border-top: 1px solid #d8cec3;
+    /* matches your light borders */
     margin: 12px 0 14px;
+    /* space around the line */
 }
 
 .nav-links {
