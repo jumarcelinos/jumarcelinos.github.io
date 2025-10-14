@@ -2,7 +2,7 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #597C6B; 
+    background-color: #597C6B;
     overflow: hidden;
 }
 
@@ -18,8 +18,8 @@
     font-family: sans-serif;
     text-decoration: none;
     float: right;
-    border-left: solid 1.5px #076461; 
-    
+    border-left: solid 1.5px #076461;
+
 }
 
 .menu i {
