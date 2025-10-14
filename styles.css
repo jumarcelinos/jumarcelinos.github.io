@@ -118,7 +118,7 @@ h6 {
     font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-weight: 700;
     /* Courier Prime supports 400 & 700 */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     /* bump a touch to balance the mono look */
     letter-spacing: 0.01em;
     /* tiny tracking for readability */
@@ -190,7 +190,7 @@ h6 {
     place-items: center;
     width: 40px;
     height: 40px;
-    border-radius: 10px;
+    border-radius: 9999px;
     text-decoration: none;
     color: var(--muted);
     border: 1px solid #d0c5b9;
@@ -206,7 +206,23 @@ h6 {
     width: 20px;
     height: 20px;
     display: block;
-    fill: currentColor;
+    fill: none;
+    /* outline icons */
+    stroke: currentColor;
+    /* pick up color/hover */
+    stroke-width: 1.75;
+}
+
+@media (max-width: 900px) {
+    .social-inline a {
+        width: 48px;
+        height: 48px;
+    }
+
+    .social-inline svg {
+        width: 22px;
+        height: 22px;
+    }
 }
 
 .content {
@@ -238,6 +254,7 @@ h6 {
     line-height: 1.1;
     margin: 0 0 8px;
     letter-spacing: -0.02em;
+    text-transform: capitalize;
 }
 
 .hero p {
