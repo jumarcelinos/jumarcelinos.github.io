@@ -98,13 +98,20 @@ body {
 
 .sidenav .role {
     color: var(--muted);
-    margin: 0 0 20px;
+    margin: 0 0 10px;
+}
+
+.nav-sep {
+    height: 1px;
+    border: 0;
+    background: linear-gradient(to right, transparent, #d8cec3, transparent);
+    margin: 12px 0 14px;
 }
 
 .nav-links {
     list-style: none;
     padding: 0;
-    margin: 14px 0 6px;
+    margin: 50px 0 6px;
     display: grid;
     gap: 6px;
 }
