@@ -1,8 +1,8 @@
 /* ====== Base ====== */
 :root {
-    --bg: #0f0f10;
-    --panel: #151518;
-    --text: #e9e9ee;
+    --bg: #f2efec;
+    --panel: #ede5dd;
+    --text: #1d1d1b;
     --muted: #b9bac3;
     --brand: #b0f;
     /* tweak to your palette */
