@@ -114,10 +114,13 @@ h6 {
 .sidenav .brand {
     color: var(--text);
     text-decoration: none;
-    text-transform: uppercase;
+    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-weight: 700;
-    font-size: 1.1rem;
-    font-family: Courier Prime;
+    /* Courier Prime supports 400 & 700 */
+    font-size: 1.2rem;
+    /* bump a touch to balance the mono look */
+    letter-spacing: 0.01em;
+    /* tiny tracking for readability */
 }
 
 .sidenav .role {
