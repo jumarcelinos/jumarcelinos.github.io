@@ -114,8 +114,10 @@ h6 {
 .sidenav .brand {
     color: var(--text);
     text-decoration: none;
+    text-transform: uppercase;
     font-weight: 700;
     font-size: 1.1rem;
+    font-family: Courier Prime;
 }
 
 .sidenav .role {
