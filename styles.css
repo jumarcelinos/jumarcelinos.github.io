@@ -63,7 +63,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 64px;
+    padding: 54px;
     border-right: 1px solid #d8cec3;
     background: var(--panel);
 }
@@ -120,13 +120,36 @@ body {
     list-style: none;
     padding: 0;
     margin: 8px 0 0;
-    display: grid;
-    gap: 6px;
 }
 
-.social a {
-    color: var(--muted);
+.social-inline {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.social-inline a {
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
     text-decoration: none;
+    color: var(--muted);
+    border: 1px solid #d0c5b9;
+    background: transparent;
+}
+
+.social-inline a:hover {
+    color: var(--brand);
+    border-color: color-mix(in srgb, var(--brand) 40%, #d0c5b9);
+}
+
+.social-inline svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    fill: currentColor;
 }
 
 .content {
@@ -356,7 +379,6 @@ body {
 /* ====== Brand-colored hovers ====== */
 a:hover,
 .nav-links a:hover,
-.social a:hover,
 .link:hover {
     color: var(--brand);
     text-decoration-color: var(--brand);
