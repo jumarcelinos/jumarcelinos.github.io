@@ -258,7 +258,6 @@ h6 {
     /* ← fits 80% of the .content width */
     text-wrap: balance;
     /* nicer multi-line wrapping (supported in modern browsers) */
-    text-transform: capitalize;
 }
 
 @media (max-width: 640px) {
@@ -575,12 +574,6 @@ h6 {
 }
 
 /* ====== Brand-colored hovers ====== */
-a:hover,
-.nav-links a:hover,
-.link:hover {
-    color: var(--brand);
-    text-decoration-color: var(--brand);
-}
 
 a:not(.btn):hover,
 .nav-links a:hover,
