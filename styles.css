@@ -266,45 +266,6 @@ h6 {
     position: relative;
 }
 
-/* Stylized hand-drawn oval + swoosh */
-.scribble {
-    position: absolute;
-    left: -34px;
-    /* horizontal nudge */
-    top: -62px;
-    /* sits above the H2 */
-    width: 180px;
-    /* overall size */
-    height: 100px;
-    color: var(--text);
-    /* or var(--brand) if you want it colored */
-    opacity: .75;
-    transform: rotate(-4deg);
-    pointer-events: none;
-}
-
-.scribble svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-/* Lighter + behind text (optional) */
-.scribble--under {
-    z-index: 0;
-    opacity: .4;
-}
-
-@media (max-width: 900px) {
-    .scribble {
-        left: -18px;
-        top: -52px;
-        width: 150px;
-        height: 88px;
-        opacity: .65;
-    }
-}
-
 .section-head>* {
     position: relative;
     z-index: 1;
