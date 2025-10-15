@@ -522,8 +522,8 @@ h6 {
     border-color: #fff;
 }
 
-.card.theme-eco .p,
-.card.theme-ccit .p {
+.card.theme-eco .desc,
+.card.theme-ccit .desc {
     color: #fff;
 }
 
