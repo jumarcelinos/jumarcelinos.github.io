@@ -14,6 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/oxr6ogi.css">
     <link rel="preload" href="styles.css" as="style" />
     <link rel="stylesheet" href="styles.css" />
 </head>
@@ -102,7 +103,8 @@
                 <a class="btn" href="#work">
                     Explore Work
                     <svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path d="M7 17 L17 7 M12 7 H17 V12" fill="none" stroke="currentColor" stroke-width="2"
+                        <!-- shorter diagonal (8→16), wider head (corner from 6→18) -->
+                        <path d="M8 16 L16 8 M11 8 H18 V15" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </a>
@@ -110,7 +112,8 @@
                 <a class="btn ghost" href="#about">
                     About Me
                     <svg class="icon-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <path d="M7 17 L17 7 M12 7 H17 V12" fill="none" stroke="currentColor" stroke-width="2"
+                        <!-- shorter diagonal (8→16), wider head (corner from 6→18) -->
+                        <path d="M8 16 L16 8 M11 8 H18 V15" fill="none" stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </a>
@@ -133,6 +136,8 @@
                         </figure>
                         <div class="card-body">
                             <h3 id="p1-title">FreshFit Meals</h3>
+                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
+                            </p>
                             <ul class="tags">
                                 <li>UI</li>
                                 <li>Product</li>
@@ -151,6 +156,8 @@
                         </figure>
                         <div class="card-body">
                             <h3 id="p2-title">EcoFabrics B2B</h3>
+                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
+                            </p>
                             <ul class="tags">
                                 <li>UX</li>
                                 <li>E-commerce</li>
@@ -168,6 +175,8 @@
                         </figure>
                         <div class="card-body">
                             <h3 id="p3-title">TaskHero</h3>
+                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
+                            </p>
                             <ul class="tags">
                                 <li>SaaS</li>
                                 <li>Dashboard</li>
@@ -185,6 +194,8 @@
                         </figure>
                         <div class="card-body">
                             <h3 id="p4-title">Nordic Track</h3>
+                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
+                            </p>
                             <ul class="tags">
                                 <li>Brand</li>
                                 <li>Strategy</li>
@@ -202,6 +213,8 @@
                         </figure>
                         <div class="card-body">
                             <h3 id="p5-title">CCIT</h3>
+                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
+                            </p>
                             <ul class="tags">
                                 <li>Web</li>
                                 <li>Templates</li>
@@ -213,13 +226,34 @@
             </ul>
         </section>
 
-        <!-- About preview -->
-        <section id="about" class="section" aria-labelledby="about-title">
-            <h2 id="about-title">About</h2>
-            <p>I started in corporate communications, then shifted to branding and UI/Product design.
-                I like simple systems, tidy type, and interfaces that get out of the way.
-            </p>
-            <a class="btn ghost" href="/about.html">Read more</a>
+        <!-- Testimonials preview -->
+        <section id="testimonials" class="section" aria-labelledby="testimonials-title">
+            <h2 id="testimonials-title">What clients say</h2>
+
+            <div class="testimonial-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
+                <button class="t-prev" aria-label="Previous testimonial">‹</button>
+                <ul class="t-track">
+                    <li class="t-slide is-active">
+                        <blockquote>
+                            <p>Juliana turned our messy brief into a clean, scalable design system.</p>
+                            <footer>— Ana P., Product Lead</footer>
+                        </blockquote>
+                    </li>
+                    <li class="t-slide">
+                        <blockquote>
+                            <p>Fast, thoughtful, and on-brand—our sales team finally has docs they love.</p>
+                            <footer>— Mark R., Sales Director</footer>
+                        </blockquote>
+                    </li>
+                    <li class="t-slide">
+                        <blockquote>
+                            <p>Usability jumped immediately. The dashboard is now clear at a glance.</p>
+                            <footer>— Sofia K., COO</footer>
+                        </blockquote>
+                    </li>
+                </ul>
+                <button class="t-next" aria-label="Next testimonial">›</button>
+            </div>
         </section>
 
         <!-- All work anchor (optional future section) -->
@@ -251,6 +285,27 @@
         });
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        (function () {
+            const slides = Array.from(document.querySelectorAll('.t-slide'));
+            const prev = document.querySelector('.t-prev');
+            const next = document.querySelector('.t-next');
+            if (!slides.length || !prev || !next) return;
+
+            let i = 0;
+            const show = (n) => {
+                slides[i].classList.remove('is-active');
+                i = (n + slides.length) % slides.length;
+                slides[i].classList.add('is-active');
+            };
+
+            prev.addEventListener('click', () => show(i - 1));
+            next.addEventListener('click', () => show(i + 1));
+
+            // Optional auto-advance (every 6s). Comment out if you don’t want it.
+            // setInterval(() => show(i + 1), 6000);
+        })();
     </script>
 </body>
 
