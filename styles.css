@@ -461,6 +461,11 @@ h6 {
     letter-spacing: -0.01em;
 }
 
+.card.theme-eco h3,
+.card.theme-ccit h3 {
+    color: #fff;
+}
+
 .tags {
     list-style: none;
     padding: 0;
@@ -481,6 +486,33 @@ h6 {
     background: transparent;
     line-height: 1;
     white-space: nowrap;
+}
+
+.card.theme-freshfit .tags li,
+.card.theme-task .tags li,
+.card.theme-nordic .tags li {
+    color: #1d1d1b;
+    border-color: #1d1d1b;
+}
+
+.card.theme-eco .tags li,
+.card.theme-ccit .tags li {
+    color: #fff;
+    border-color: #fff;
+}
+
+/* Keep tag colors fixed on hover for these themes (don’t turn brand) */
+.card.theme-freshfit .card-link:hover .tags li,
+.card.theme-task .card-link:hover .tags li,
+.card.theme-nordic .card-link:hover .tags li {
+    color: #1d1d1b;
+    border-color: #1d1d1b;
+}
+
+.card.theme-eco .card-link:hover .tags li,
+.card.theme-ccit .card-link:hover .tags li {
+    color: #fff;
+    border-color: #fff;
 }
 
 
