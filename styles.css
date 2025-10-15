@@ -325,20 +325,20 @@ h6 {
     border-color: color-mix(in srgb, var(--brand) 45%, #d0c5b9);
 }
 
-.icon-arrow {
-    width: 0.95em;
-    height: 0.95em;
-    margin-left: 4px;
-    /* was 6–8px */
+.btn-icon.ext {
+    width: 1em;
+    height: 1em;
+    margin-left: 6px;
+    display: inline-block;
+    background-color: currentColor;
+    /* ink color */
+    -webkit-mask: url("images/icons/arrow.svg") no-repeat center / contain;
+    mask: url("images/icons/arrow.svg") no-repeat center / contain;
     transform: translateY(-1px);
     transition: transform .15s ease;
 }
 
-.btn:hover .icon-arrow {
-    transform: translate(1.5px, -2.5px);
-}
-
-.btn.ghost:hover .icon-arrow {
+.btn:hover .btn-icon.ext {
     transform: translate(1px, -2px);
 }
 
