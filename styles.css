@@ -325,21 +325,23 @@ h6 {
     border-color: color-mix(in srgb, var(--brand) 45%, #d0c5b9);
 }
 
-.btn-icon.ext {
+.btn-icon {
     width: 1em;
     height: 1em;
     margin-left: 6px;
-    display: inline-block;
-    background-color: currentColor;
-    /* ink color */
-    -webkit-mask: url("images/icons/arrow.svg") no-repeat center / contain;
-    mask: url("images/icons/arrow.svg") no-repeat center / contain;
+    /* tighten/loosen as you like */
     transform: translateY(-1px);
+    display: inline-block;
     transition: transform .15s ease;
 }
 
-.btn:hover .btn-icon.ext {
+
+.btn:hover .btn-icon {
     transform: translate(1px, -2px);
+}
+
+.btn.ghost:hover .btn-icon {
+    transform: translate(.5px, -1.5px);
 }
 
 #work-title {
