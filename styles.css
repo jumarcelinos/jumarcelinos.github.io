@@ -326,10 +326,10 @@ h6 {
 }
 
 .icon-arrow {
-    width: 1em;
-    height: 1em;
-    margin-left: 6px;
-    /* was 8px */
+    width: 0.95em;
+    height: 0.95em;
+    margin-left: 4px;
+    /* was 6–8px */
     transform: translateY(-1px);
     transition: transform .15s ease;
 }
@@ -343,6 +343,11 @@ h6 {
 }
 
 #work-title {
+    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+    font-weight: 400;
+}
+
+#testimonials-title {
     font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
     font-weight: 400;
 }
@@ -557,6 +562,7 @@ h6 {
     border: 1px solid #d8cec3;
     border-radius: var(--radius);
     padding: 16px;
+    justify-items: center;
 }
 
 .t-prev,
@@ -584,6 +590,8 @@ h6 {
     margin: 0;
     position: relative;
     overflow: hidden;
+    justify-self: center;
+    width: 100%;
 }
 
 .t-slide {
@@ -595,7 +603,11 @@ h6 {
 }
 
 blockquote {
-    margin: 0;
+    margin: 0 auto;
+    /* center the block */
+    max-width: 58ch;
+    /* comfy measure */
+    text-align: center;
 }
 
 blockquote p {
