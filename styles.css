@@ -250,7 +250,8 @@ h6 {
 
 /* ====== Sections ====== */
 .hero h1 {
-    font-size: clamp(36px, 6.2vw, 72px);
+    font-size: clamp(32px, 5.2vw, 64px);
+    /* slightly smaller than before */
     line-height: 1.08;
     margin: clamp(24px, 6vh, 80px) 0 12px;
     letter-spacing: -0.015em;
@@ -301,6 +302,18 @@ h6 {
     background: transparent;
     color: var(--text);
     border: 1px solid #d0c5b9;
+}
+
+.btn .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transform: translateY(-1px);
+    transition: transform .15s ease;
+}
+
+/* Subtle nudge on hover */
+.btn:hover .arrow {
+    transform: translate(2px, -3px);
 }
 
 .link {
