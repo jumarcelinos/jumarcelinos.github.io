@@ -320,21 +320,25 @@ h6 {
     border-color: color-mix(in srgb, var(--brand) 45%, #d0c5b9);
 }
 
-.btn .arrow {
-    display: inline-block;
+.icon-arrow {
+    width: 1.1em;
+    /* scales with font size */
+    height: 1.1em;
     margin-left: 8px;
     transform: translateY(-1px);
     transition: transform .15s ease;
+    display: inline-block;
 }
 
-.btn:hover .arrow {
+.btn:hover .icon-arrow {
     transform: translate(2px, -3px);
 }
 
-/* (Optional) make the ghost’s arrow move a bit less */
-.btn.ghost:hover .arrow {
+.btn.ghost:hover .icon-arrow {
     transform: translate(1px, -2px);
 }
+
+/* a touch subtler */
 
 .link {
     color: var(--text);
