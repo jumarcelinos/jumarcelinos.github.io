@@ -13,7 +13,7 @@
     --ring: #9aa6ff;
     /* focus outline for accessibility */
     --gap: clamp(14px, 2vw, 22px);
-    --radius: 14px;
+    --radius: 10px;
     --maxw: 1180px;
     --colw: 340px;
     /* sidenav width (desktop) */
@@ -425,19 +425,64 @@ h6 {
 
 .card-body {
     padding: 12px 14px 16px;
+    background: var(--card-body, var(--panel));
 }
 
+.card.theme-freshfit {
+    --card-body: #cdd438;
+}
+
+/* soft pink */
+.card.theme-eco {
+    --card-body: #a3533c;
+}
+
+/* soft green */
+.card.theme-task {
+    --card-body: #a587e4;
+}
+
+/* soft blue */
+.card.theme-nordic {
+    --card-body: #4dc073;
+}
+
+/* soft violet */
+.card.theme-ccit {
+    --card-body: #571847;
+}
+
+/* soft sand */
+
 .card h3 {
-    margin: 0 0 4px;
-    font-size: 1.05rem;
+    margin: 0 0 6px;
+    font-size: 1.2rem;
+    /* bigger */
     letter-spacing: -0.01em;
 }
 
-.meta {
-    margin: 0;
-    color: var(--muted);
-    font-size: .92rem;
+.tags {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }
+
+.tags li {
+    font-size: .82rem;
+    padding: 4px 10px;
+    border: 1px solid #d0c5b9;
+    /* outlined look */
+    border-radius: 999px;
+    /* pill shape */
+    color: var(--muted);
+    background: transparent;
+    line-height: 1;
+    white-space: nowrap;
+}
+
 
 /* ====== Footer ====== */
 .footer {
