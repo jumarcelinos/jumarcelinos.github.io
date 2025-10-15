@@ -344,7 +344,7 @@ h6 {
 
 #work-title {
     font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-    font-weight: 700;
+    font-weight: 400;
 }
 
 /* a touch subtler */
@@ -520,6 +520,11 @@ h6 {
 .card.theme-ccit .tags li {
     color: #fff;
     border-color: #fff;
+}
+
+.card.theme-eco .p,
+.card.theme-ccit .p {
+    color: #fff;
 }
 
 /* Keep tag colors fixed on hover for these themes (don’t turn brand) */
