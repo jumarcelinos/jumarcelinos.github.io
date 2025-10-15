@@ -251,11 +251,20 @@ h6 {
 /* ====== Sections ====== */
 .hero h1 {
     font-size: clamp(32px, 5.2vw, 64px);
-    /* slightly smaller than before */
     line-height: 1.08;
     margin: clamp(24px, 6vh, 80px) 0 12px;
     letter-spacing: -0.015em;
+    max-width: 80%;
+    /* ← fits 80% of the .content width */
+    text-wrap: balance;
+    /* nicer multi-line wrapping (supported in modern browsers) */
     text-transform: capitalize;
+}
+
+@media (max-width: 640px) {
+    .hero h1 {
+        max-width: 100%;
+    }
 }
 
 .hero p {
@@ -277,6 +286,7 @@ h6 {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    margin-top: 50px;
 }
 
 .btn {
@@ -296,12 +306,18 @@ h6 {
 
 .btn:hover {
     filter: brightness(1.05);
+    color: #fff;
 }
 
 .btn.ghost {
     background: transparent;
     color: var(--text);
     border: 1px solid #d0c5b9;
+}
+
+.btn.ghost:hover {
+    color: var(--brand);
+    border-color: color-mix(in srgb, var(--brand) 45%, #d0c5b9);
 }
 
 .btn .arrow {
@@ -311,9 +327,13 @@ h6 {
     transition: transform .15s ease;
 }
 
-/* Subtle nudge on hover */
 .btn:hover .arrow {
     transform: translate(2px, -3px);
+}
+
+/* (Optional) make the ghost’s arrow move a bit less */
+.btn.ghost:hover .arrow {
+    transform: translate(1px, -2px);
 }
 
 .link {
@@ -475,6 +495,13 @@ h6 {
 
 /* ====== Brand-colored hovers ====== */
 a:hover,
+.nav-links a:hover,
+.link:hover {
+    color: var(--brand);
+    text-decoration-color: var(--brand);
+}
+
+a:not(.btn):hover,
 .nav-links a:hover,
 .link:hover {
     color: var(--brand);
