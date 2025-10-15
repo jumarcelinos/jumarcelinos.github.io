@@ -295,11 +295,6 @@ h6 {
     opacity: .4;
 }
 
-.section-head>* {
-    position: relative;
-    z-index: 1;
-}
-
 @media (max-width: 900px) {
     .scribble {
         left: -18px;
@@ -309,6 +304,12 @@ h6 {
         opacity: .65;
     }
 }
+
+.section-head>* {
+    position: relative;
+    z-index: 1;
+}
+
 
 .cta-row {
     display: flex;
