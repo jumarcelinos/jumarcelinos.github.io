@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Juliana Marcelino — Portfolio</title>
     <meta name="description"
-        content="Juliana Marcelino — Visual/Brand & UI Designer in Denmark. Clean, modern interfaces and brand assets." />
-    <!-- Fonts: Domine (headings) + Open Sans (body) + Courier Prime -->
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+        content="Juliana Marcelino — Visual/Brand & UI Designer. Clean interfaces and brand assets that make work easier." />
+
+    <!-- Fonts: Courier Prime for headings you specify -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/oxr6ogi.css">
-    <link rel="preload" href="styles.css" as="style" />
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- If you add Univers via Adobe Fonts, paste their kit <link> here -->
+
     <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -30,31 +29,29 @@
 
     <!-- Left side nav -->
     <nav id="nav" class="sidenav" aria-label="Primary">
+        <!-- Profile -->
         <div class="profile">
-            <img src="images\juliana.webp" alt="Juliana Marcelino" width="150" height="150" decoding="async"
+            <img src="images/juliana.webp" alt="Juliana Marcelino" width="120" height="120" decoding="async"
                 fetchpriority="high" />
         </div>
-        <a class="brand" href="/">Juliana Marcelino</a>
-        <p class="role">Visual Designer — Denmark</p>
 
-        <div class="availability" role="status">
-            <span class="dot" aria-hidden="true"></span> Available for projects
-        </div>
+        <a class="brand" href="/">Juliana Marcelino</a>
+        <p class="role">Visual/Brand & UI Designer — Denmark</p>
 
         <hr class="nav-sep" />
 
         <ul class="nav-links">
             <li><a href="#work">Work</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="mailto:hello@jms-design.com">Contact</a></li>
             <li><a href="/Juliana-Marcelino-CV.pdf" target="_blank" rel="noopener">CV</a></li>
         </ul>
 
+        <!-- Social icons -->
         <ul class="social social-inline" aria-label="Social links">
             <li>
                 <a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener"
                     aria-label="LinkedIn" title="LinkedIn">
-                    <!-- LinkedIn SVG -->
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -62,12 +59,12 @@
                             <path d="M7.5 10.5V17M7.5 7.5h.01M12 17v-4.3c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7V17" />
                         </g>
                     </svg>
+                    <span class="sr-only">LinkedIn</span>
                 </a>
             </li>
             <li>
-                <a href="https://www.instagram.com/jms.design.dk" target="_blank" rel="noopener" aria-label="Instagram"
+                <a href="https://www.instagram.com/yourhandle" target="_blank" rel="noopener" aria-label="Instagram"
                     title="Instagram">
-                    <!-- Instagram SVG -->
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -76,11 +73,11 @@
                             <circle cx="17.5" cy="6.5" r="1" />
                         </g>
                     </svg>
+                    <span class="sr-only">Instagram</span>
                 </a>
             </li>
             <li>
                 <a href="mailto:hello@jms-design.com" aria-label="Email" title="Email">
-                    <!-- Email SVG -->
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -88,27 +85,36 @@
                             <path d="M4 7l8 6 8-6" />
                         </g>
                     </svg>
+                    <span class="sr-only">Email</span>
                 </a>
             </li>
         </ul>
+
+        <div class="availability" role="status">
+            <span class="dot" aria-hidden="true"></span> Available for projects
+        </div>
     </nav>
+
+    <!-- Scrim for mobile drawer -->
+    <div class="scrim" aria-hidden="true"></div>
 
     <!-- Main content -->
     <main class="content">
         <!-- Hero -->
         <section class="hero" aria-labelledby="intro">
-            <h1 id="intro">Hi, I’m Juliana! I help teams balance branding & functional design</h1>
+            <h1 id="intro">I’m Juliana, a Visual/Brand & UI designer in Denmark.</h1>
             <p>I design clean interfaces and brand assets that make work easier.</p>
+
             <div class="cta-row">
                 <a class="btn" href="#work">
-                    Explore Work
+                    Explore
                     <svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
                     </svg>
                 </a>
 
                 <a class="btn ghost" href="#about">
-                    About Me
+                    About me
                     <svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
                     </svg>
@@ -116,10 +122,10 @@
             </div>
         </section>
 
-        <!-- Hot picks / projects -->
+        <!-- Latest Work -->
         <section id="work" class="section" aria-labelledby="work-title">
             <div class="section-head">
-                <h2 id="work-title">Latest Projects</h2>
+                <h2 id="work-title">Latest Work</h2>
                 <a class="btn ghost" href="#all-work">
                     View all
                     <svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
@@ -133,7 +139,7 @@
                 <li class="card theme-freshfit">
                     <a class="card-link" href="/projects/freshfit-meals.html" aria-labelledby="p1-title">
                         <figure class="thumb">
-                            <img src="images/freshfit-cover.webp" alt="FreshFit Meals app screens" loading="lazy">
+                            <img src="images/freshfit-cover.jpg" alt="FreshFit Meals app screens" loading="lazy">
                         </figure>
                         <div class="card-body">
                             <h3 id="p1-title">FreshFit Meals</h3>
@@ -152,12 +158,12 @@
                 <li class="card theme-eco">
                     <a class="card-link" href="/projects/ecofabrics.html" aria-labelledby="p2-title">
                         <figure class="thumb">
-                            <img src="images/ecofabrics-cover.png" alt="EcoFabrics B2B storefront mockup"
+                            <img src="images/ecofabrics-cover.jpg" alt="EcoFabrics B2B storefront mockup"
                                 loading="lazy">
                         </figure>
                         <div class="card-body">
                             <h3 id="p2-title">EcoFabrics B2B</h3>
-                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
+                            <p class="desc">Sustainable B2B storefront with bulk pricing, specs, and sample requests.
                             </p>
                             <ul class="tags">
                                 <li>UX</li>
@@ -172,12 +178,11 @@
                 <li class="card theme-task">
                     <a class="card-link" href="/projects/taskhero.html" aria-labelledby="p3-title">
                         <figure class="thumb">
-                            <img src="images/taskhero-cover.png" alt="TaskHero dashboard interface" loading="lazy">
+                            <img src="images/taskhero-cover.jpg" alt="TaskHero dashboard interface" loading="lazy">
                         </figure>
                         <div class="card-body">
                             <h3 id="p3-title">TaskHero</h3>
-                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
-                            </p>
+                            <p class="desc">SaaS dashboard that surfaces priorities and reduces cognitive load.</p>
                             <ul class="tags">
                                 <li>SaaS</li>
                                 <li>Dashboard</li>
@@ -191,12 +196,11 @@
                 <li class="card theme-nordic">
                     <a class="card-link" href="/projects/nordic-track.html" aria-labelledby="p4-title">
                         <figure class="thumb">
-                            <img src="/images/nordictrack-cover.jpg" alt="Nordic Track brand assets" loading="lazy">
+                            <img src="images/nordictrack-cover.jpg" alt="Nordic Track brand assets" loading="lazy">
                         </figure>
                         <div class="card-body">
                             <h3 id="p4-title">Nordic Track</h3>
-                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
-                            </p>
+                            <p class="desc">Brand + strategy + docs system for a consultancy serving entrepreneurs.</p>
                             <ul class="tags">
                                 <li>Brand</li>
                                 <li>Strategy</li>
@@ -210,12 +214,11 @@
                 <li class="card theme-ccit">
                     <a class="card-link" href="/projects/ccit.html" aria-labelledby="p5-title">
                         <figure class="thumb">
-                            <img src="/images/ccit-cover.jpg" alt="CCIT website and stationery" loading="lazy">
+                            <img src="images/ccit-cover.jpg" alt="CCIT website and stationery" loading="lazy">
                         </figure>
                         <div class="card-body">
                             <h3 id="p5-title">CCIT</h3>
-                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
-                            </p>
+                            <p class="desc">Unified assets + templates to launch a consistent brand in a new market.</p>
                             <ul class="tags">
                                 <li>Web</li>
                                 <li>Templates</li>
@@ -227,12 +230,13 @@
             </ul>
         </section>
 
-        <!-- Testimonials preview -->
+        <!-- Testimonials -->
         <section id="testimonials" class="section" aria-labelledby="testimonials-title">
             <h2 id="testimonials-title">What Clients Say</h2>
 
             <div class="testimonial-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
                 <button class="t-prev" aria-label="Previous testimonial">‹</button>
+
                 <ul class="t-track">
                     <li class="t-slide is-active">
                         <blockquote>
@@ -253,6 +257,7 @@
                         </blockquote>
                     </li>
                 </ul>
+
                 <button class="t-next" aria-label="Next testimonial">›</button>
             </div>
         </section>
@@ -276,6 +281,7 @@
             btn.setAttribute('aria-expanded', String(open));
             document.body.classList.toggle('nav-open', open);
         });
+
         // Close drawer on link click (mobile)
         nav?.addEventListener('click', (e) => {
             const a = e.target.closest('a');
@@ -284,10 +290,18 @@
             document.body.classList.remove('nav-open');
             btn.setAttribute('aria-expanded', 'false');
         });
+
+        // Close drawer when scrim is clicked
+        document.querySelector('.scrim')?.addEventListener('click', () => {
+            nav?.classList.remove('open');
+            document.body.classList.remove('nav-open');
+            btn?.setAttribute('aria-expanded', 'false');
+        });
+
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-    <script>
+
+        // Testimonials carousel (simple)
         (function () {
             const slides = Array.from(document.querySelectorAll('.t-slide'));
             const prev = document.querySelector('.t-prev');
@@ -300,11 +314,9 @@
                 i = (n + slides.length) % slides.length;
                 slides[i].classList.add('is-active');
             };
-
             prev.addEventListener('click', () => show(i - 1));
             next.addEventListener('click', () => show(i + 1));
-
-            // Optional auto-advance (every 6s). Comment out if you don’t want it.
+            // Auto-advance (optional)
             // setInterval(() => show(i + 1), 6000);
         })();
     </script>

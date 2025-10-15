@@ -13,10 +13,11 @@
     --ring: #9aa6ff;
     /* focus outline for accessibility */
     --gap: clamp(14px, 2vw, 22px);
-    --radius: 10px;
+    --radius: 15px;
+    /* softer corners */
     --maxw: 1180px;
     --colw: 340px;
-    /* sidenav width (desktop) */
+    /* wider sidebar */
 }
 
 * {
@@ -32,35 +33,12 @@ body {
     margin: 0;
     color: var(--text);
     background: var(--bg);
+    /* Univers first (via Adobe Fonts if you add it), then fallbacks */
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-/* Headings use Domine */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Domine", Georgia, Cambria, "Times New Roman", Times, serif;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-}
-
-/* Fine-tune hero heading a touch for Domine */
-.hero h1 {
-    font-weight: 700;
-    letter-spacing: -0.015em;
-}
-
-.hero p {
-    font-size: 18px;
-    line-height: 1.55;
-    margin: 0 0 16px;
 }
 
 /* ====== Layout ====== */
@@ -91,62 +69,31 @@ h6 {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 54px;
+    padding: 24px;
     border-right: 1px solid #d8cec3;
     background: var(--panel);
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    /* change to center if you prefer */
-    margin: 0 0 12px;
-    /* space below the image */
-}
-
-.profile img {
-    width: 150px;
-    /* visual size */
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #fff;
-    border: 1px solid #d0c5b9;
-    /* matches your light theme */
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+    z-index: 100;
+    /* sits above everything when open */
 }
 
 .sidenav .brand {
     color: var(--text);
     text-decoration: none;
-    text-transform: uppercase;
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
     font-weight: 700;
-    /* Courier Prime supports 400 & 700 */
-    font-size: 1.3rem;
-    /* bump a touch to balance the mono look */
+    font-size: 1.1rem;
     letter-spacing: 0.01em;
-    /* tiny tracking for readability */
 }
 
 .sidenav .role {
     color: var(--muted);
-    margin: 0 0 10px;
-}
-
-.nav-sep {
-    border: 0;
-    border-top: 1px solid #d8cec3;
-    /* matches your light borders */
-    margin: 12px 0 14px;
-    /* space around the line */
+    margin: 0 0 20px;
 }
 
 .nav-links {
     list-style: none;
     padding: 0;
-    margin: 50px 0 6px;
+    margin: 14px 0 6px;
     display: grid;
     gap: 6px;
 }
@@ -161,6 +108,24 @@ h6 {
     outline: 2px solid var(--ring);
     border-radius: 6px;
     outline-offset: 3px;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0 16px;
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid #d0c5b9;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
 }
 
 .availability {
@@ -179,6 +144,7 @@ h6 {
     box-shadow: 0 0 10px #28a745;
 }
 
+/* Social icons row */
 .social {
     list-style: none;
     padding: 0;
@@ -213,22 +179,25 @@ h6 {
     height: 20px;
     display: block;
     fill: none;
-    /* outline icons */
     stroke: currentColor;
-    /* pick up color/hover */
-    stroke-width: 1.75;
+    stroke-width: 1.5;
 }
 
-@media (max-width: 900px) {
-    .social-inline a {
-        width: 48px;
-        height: 48px;
-    }
+/* Scrim (menu backdrop) */
+.scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .28);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease;
+    z-index: 60;
+    /* below sidenav (100), above content */
+}
 
-    .social-inline svg {
-        width: 22px;
-        height: 22px;
-    }
+body.nav-open .scrim {
+    opacity: 1;
+    visibility: visible;
 }
 
 .content {
@@ -239,18 +208,11 @@ h6 {
     max-width: var(--maxw);
 }
 
+/* Center the content lane on very wide screens */
 @media (min-width: 1100px) {
     .content {
-        /* centers the column in the space to the right of the sidebar */
         margin-left: calc(var(--colw) + (100vw - var(--colw) - var(--maxw))/2);
         margin-right: auto;
-    }
-}
-
-@media (max-width: 900px) {
-    .content {
-        margin-left: 0;
-        padding-top: 14px;
     }
 }
 
@@ -261,37 +223,19 @@ h6 {
     margin: clamp(24px, 6vh, 80px) 0 12px;
     letter-spacing: -0.015em;
     max-width: 80%;
-    /* ← fits 80% of the .content width */
     text-wrap: balance;
-    /* nicer multi-line wrapping (supported in modern browsers) */
-}
-
-@media (max-width: 640px) {
-    .hero h1 {
-        max-width: 100%;
-    }
 }
 
 .hero p {
-    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.55;
     margin: 0 0 16px;
 }
-
-.section-head {
-    position: relative;
-}
-
-.section-head>* {
-    position: relative;
-    z-index: 1;
-}
-
 
 .cta-row {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    margin-top: 50px;
 }
 
 .btn {
@@ -303,7 +247,6 @@ h6 {
     border-radius: 999px;
     background: var(--brand);
     color: #fff;
-    /* brand is dark → white text for contrast */
     font-weight: 700;
     text-decoration: none;
     border: 1px solid transparent;
@@ -325,16 +268,15 @@ h6 {
     border-color: color-mix(in srgb, var(--brand) 45%, #d0c5b9);
 }
 
+/* Button icon (inline SVG) */
 .btn-icon {
     width: 1em;
     height: 1em;
     margin-left: 6px;
-    /* tighten/loosen as you like */
     transform: translateY(-1px);
     display: inline-block;
     transition: transform .15s ease;
 }
-
 
 .btn:hover .btn-icon {
     transform: translate(1px, -2px);
@@ -344,37 +286,19 @@ h6 {
     transform: translate(.5px, -1.5px);
 }
 
-#work-title {
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-    font-weight: 400;
-}
-
-#testimonials-title {
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-    font-weight: 400;
-}
-
-/* a touch subtler */
-
-.link {
-    color: var(--text);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-}
-
-/* ====== Sections (misc) ====== */
+/* Work/Latest Work heading + separator */
 .section {
     display: grid;
     gap: 16px;
 }
 
 .section-head {
+    position: relative;
+    padding-bottom: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    position: relative;
-    padding-bottom: 10px;
 }
 
 .section-head::after {
@@ -385,14 +309,13 @@ h6 {
     bottom: 0;
     height: 1px;
     background: #d8cec3;
-    /* matches your light borders */
 }
 
-.section.muted {
-    color: var(--muted);
-    border: 1px dashed #d8cec3;
-    padding: 16px;
-    border-radius: var(--radius);
+/* Titles in monospace where requested */
+#work-title,
+#testimonials-title {
+    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+    font-weight: 700;
 }
 
 /* ====== Grid / Cards ====== */
@@ -443,6 +366,7 @@ h6 {
     margin: 0;
     background: #fff;
     overflow: hidden;
+    border-bottom: 1px solid #d8cec3;
 }
 
 .thumb img {
@@ -457,47 +381,25 @@ h6 {
     background: var(--card-body, var(--panel));
 }
 
-.card.theme-freshfit {
-    --card-body: #cdd438;
-}
-
-/* soft pink */
-.card.theme-eco {
-    --card-body: #a3533c;
-}
-
-/* soft green */
-.card.theme-task {
-    --card-body: #a587e4;
-}
-
-/* soft blue */
-.card.theme-nordic {
-    --card-body: #4dc073;
-}
-
-/* soft violet */
-.card.theme-ccit {
-    --card-body: #571847;
-}
-
-/* soft sand */
-
 .card h3 {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     font-size: 1.5rem;
     letter-spacing: -0.01em;
 }
 
-.card.theme-eco h3,
-.card.theme-ccit h3 {
-    color: #fff;
+/* Project one-liner under title */
+.card .desc {
+    margin: 0 0 50px;
+    color: var(--muted);
+    font-size: 0.98rem;
+    line-height: 1.5;
 }
 
+/* Tags */
 .tags {
     list-style: none;
     padding: 0;
-    margin: 50px 0 0;
+    margin: 6px 0 0;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -507,15 +409,14 @@ h6 {
     font-size: .82rem;
     padding: 4px 10px;
     border: 1px solid #d0c5b9;
-    /* outlined look */
     border-radius: 999px;
-    /* pill shape */
     color: var(--muted);
     background: transparent;
     line-height: 1;
     white-space: nowrap;
 }
 
+/* Per-project tag color locks */
 .card.theme-freshfit .tags li,
 .card.theme-task .tags li,
 .card.theme-nordic .tags li {
@@ -529,12 +430,7 @@ h6 {
     border-color: #fff;
 }
 
-.card.theme-eco .desc,
-.card.theme-ccit .desc {
-    color: #fff;
-}
-
-/* Keep tag colors fixed on hover for these themes (don’t turn brand) */
+/* Keep tag colors fixed on hover */
 .card.theme-freshfit .card-link:hover .tags li,
 .card.theme-task .card-link:hover .tags li,
 .card.theme-nordic .card-link:hover .tags li {
@@ -548,79 +444,10 @@ h6 {
     border-color: #fff;
 }
 
-#testimonials .section-head {
-    padding-bottom: 0;
-}
-
-/* if you reuse .section-head */
-
-/* Carousel layout */
-.testimonial-carousel {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 12px;
-    background: var(--panel);
-    border: 1px solid #d8cec3;
-    border-radius: var(--radius);
-    padding: 16px;
-    justify-items: center;
-}
-
-.t-prev,
-.t-next {
-    appearance: none;
-    border: 1px solid #d0c5b9;
-    background: transparent;
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    cursor: pointer;
-    font: inherit;
-    color: var(--text);
-}
-
-.t-prev:hover,
-.t-next:hover {
-    border-color: color-mix(in srgb, var(--brand) 40%, #d0c5b9);
-    color: var(--brand);
-}
-
-.t-track {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    position: relative;
-    overflow: hidden;
-    justify-self: center;
-    width: 100%;
-}
-
-.t-slide {
-    display: none;
-}
-
-.t-slide.is-active {
-    display: block;
-}
-
-blockquote {
-    margin: 0 auto;
-    /* center the block */
-    max-width: 58ch;
-    /* comfy measure */
-    text-align: center;
-}
-
-blockquote p {
-    font-size: 1.05rem;
-    line-height: 1.5;
-}
-
-blockquote footer {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: .95rem;
+/* Make H3 white on dark cards if you use dark bodies */
+.card.theme-eco h3,
+.card.theme-ccit h3 {
+    color: #fff;
 }
 
 /* ====== Footer ====== */
@@ -629,7 +456,7 @@ blockquote footer {
     padding: 12px 0 40px;
 }
 
-/* ====== Mobile drawer ====== */
+/* ====== Mobile drawer & responsive tweaks ====== */
 .hamburger {
     appearance: none;
     border: 0;
@@ -656,7 +483,8 @@ blockquote footer {
     .sidenav {
         transform: translateX(-100%);
         transition: transform .24s ease;
-        width: min(88vw, 320px);
+        width: min(92vw, 360px);
+        /* slightly wider drawer */
     }
 
     .sidenav.open {
@@ -673,6 +501,21 @@ blockquote footer {
     }
 }
 
+/* Stack Latest Work + View all on small screens; shrink button */
+@media (max-width: 640px) {
+    .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .section-head .btn {
+        font-size: .9rem;
+        padding: 8px 12px;
+        gap: 6px;
+    }
+}
+
 /* ====== Motion & focus ====== */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -681,8 +524,7 @@ blockquote footer {
     }
 }
 
-/* ====== Brand-colored hovers ====== */
-
+/* ====== Brand-colored hovers for text links (NOT buttons) ====== */
 a:not(.btn):hover,
 .nav-links a:hover,
 .link:hover {
@@ -690,7 +532,5 @@ a:not(.btn):hover,
     text-decoration-color: var(--brand);
 }
 
-/* Project title hover uses brand */
-.card-link:hover h3 {
-    color: var(--brand);
-}
+/* Remove any stale stacking that could overlap the drawer */
+/* (intentionally NOT elevating section-head children) */
