@@ -576,6 +576,13 @@ body.nav-open .scrim {
     cursor: pointer;
     font: inherit;
     color: var(--text);
+    display: flex;
+    /* center the SVG in the button */
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    /* kill inline baseline wiggle */
+    padding: 0;
 }
 
 .t-btn:hover {
@@ -584,10 +591,17 @@ body.nav-open .scrim {
 }
 
 .t-btn svg {
-    width: 1em;
-    height: 1em;
-    display: inline-block;
-    transform: translateY(-1px);
+    width: 18px;
+    /* fixed icon size looks balanced in a 32px btn */
+    height: 18px;
+    display: block;
+    transform: none;
+    /* remove earlier translateY */
+}
+
+/* rotate only the "previous" icon */
+.t-prev svg {
+    transform: rotate(180deg);
 }
 
 /* 3-column testimonial grid (no section background) */
