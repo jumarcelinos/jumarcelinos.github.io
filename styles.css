@@ -305,6 +305,18 @@ body.nav-open .scrim {
     background: #d8cec3;
 }
 
+.section-head h2 {
+    margin: 0;
+    /* kills default h2 margin that was offsetting */
+    line-height: 1;
+    /* steadier vertical alignment */
+}
+
+#work-title,
+#testimonials-title {
+    font-size: 16px;
+}
+
 /* MOBILE: stack title + button to avoid awkward row */
 @media (max-width: 640px) {
     .section-head {
@@ -519,6 +531,11 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
+.card.theme-eco .card-body,
+.card.theme-ccit .card-body {
+    color: #fff;
+}
+
 /* Keep tag colors fixed on hover */
 .card.theme-freshfit .card-link:hover .tags li,
 .card.theme-task .card-link:hover .tags li,
@@ -535,73 +552,107 @@ body.nav-open .scrim {
 
 /* Testimonials */
 #testimonials .section-head {
-    padding-bottom: 0;
+    padding-bottom: 10px;
 }
 
-.testimonial-carousel {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 12px;
-    background: var(--panel);
-    border: 1px solid #d8cec3;
-    border-radius: var(--radius);
-    padding: 16px;
-    justify-items: center;
+/* Small arrow buttons placed in the header (above the line) */
+.t-controls {
+    display: flex;
+    gap: 8px;
 }
 
-.t-prev,
-.t-next {
+.t-btn {
     appearance: none;
     border: 1px solid #d0c5b9;
     background: transparent;
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
     border-radius: 999px;
     cursor: pointer;
     font: inherit;
     color: var(--text);
 }
 
-.t-prev:hover,
-.t-next:hover {
+.t-btn:hover {
     border-color: color-mix(in srgb, var(--brand) 40%, #d0c5b9);
     color: var(--brand);
 }
 
-.t-track {
+/* 3-column testimonial grid (no section background) */
+.t-grid {
     list-style: none;
     padding: 0;
     margin: 0;
-    position: relative;
-    overflow: hidden;
-    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--gap);
+}
+
+@media (max-width: 900px) {
+    .t-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Each testimonial, right-aligned */
+.t-card {
+    text-align: right;
+}
+
+/* Rectangular image on top */
+.t-card figure {
+    margin: 0 0 10px;
+}
+
+.t-card img {
     width: 100%;
-}
-
-.t-slide {
-    display: none;
-}
-
-.t-slide.is-active {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    border: 1px solid #d8cec3;
     display: block;
 }
 
-blockquote {
-    margin: 0 auto;
-    max-width: 58ch;
-    text-align: center;
+/* Name / role under image in Domine */
+.t-name {
+    font-family: "Domine", Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700;
+    margin: 0;
 }
 
-blockquote p {
-    font-size: 1.05rem;
-    line-height: 1.5;
-}
-
-blockquote footer {
-    margin-top: 8px;
+.t-role {
+    font-family: "Domine", Georgia, Cambria, "Times New Roman", Times, serif;
+    margin: 2px 0 10px;
     color: var(--muted);
-    font-size: .95rem;
+    font-weight: 400;
+}
+
+/* Testimonial text */
+.t-text {
+    margin: 0 0 12px;
+}
+
+/* Tags (industry, project type), right-aligned pills */
+.t-tags {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    /* right-align */
+}
+
+.t-tags li {
+    font-size: .82rem;
+    padding: 4px 10px;
+    border: 1px solid #d0c5b9;
+    border-radius: 999px;
+    color: var(--muted);
+    background: transparent;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 /* ====== Footer ====== */

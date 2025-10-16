@@ -233,32 +233,57 @@
 
         <!-- Testimonials -->
         <section id="testimonials" class="section" aria-labelledby="testimonials-title">
-            <h2 id="testimonials-title">What Clients Say</h2>
+            <div class="section-head">
+                <h2 id="testimonials-title">What Clients Say</h2>
 
-            <div class="testimonial-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
-                <button class="t-prev" aria-label="Previous testimonial">‹</button>
-                <ul class="t-track">
-                    <li class="t-slide is-active">
-                        <blockquote>
-                            <p>Juliana turned our messy brief into a clean, scalable design system.</p>
-                            <footer>— Ana P., Product Lead</footer>
-                        </blockquote>
-                    </li>
-                    <li class="t-slide">
-                        <blockquote>
-                            <p>Fast, thoughtful, and on-brand—our sales team finally has docs they love.</p>
-                            <footer>— Mark R., Sales Director</footer>
-                        </blockquote>
-                    </li>
-                    <li class="t-slide">
-                        <blockquote>
-                            <p>Usability jumped immediately. The dashboard is now clear at a glance.</p>
-                            <footer>— Sofia K., COO</footer>
-                        </blockquote>
-                    </li>
-                </ul>
-                <button class="t-next" aria-label="Next testimonial">›</button>
+                <!-- Arrows moved into the header, above the underline -->
+                <div class="t-controls" aria-hidden="true">
+                    <button class="t-btn t-prev" aria-label="Previous">‹</button>
+                    <button class="t-btn t-next" aria-label="Next">›</button>
+                </div>
             </div>
+
+            <!-- 3-column testimonials (no background) -->
+            <ul class="t-grid">
+                <li class="t-card">
+                    <figure>
+                        <img src="images/testimonial-ana.jpg" alt="Ana P., Product Lead">
+                    </figure>
+                    <p class="t-name">Ana P.</p>
+                    <p class="t-role">Product Lead</p>
+                    <p class="t-text">Juliana turned our messy brief into a clean, scalable design system.</p>
+                    <ul class="t-tags">
+                        <li>Tech</li>
+                        <li>Design System</li>
+                    </ul>
+                </li>
+
+                <li class="t-card">
+                    <figure>
+                        <img src="images/testimonial-mark.jpg" alt="Mark R., Sales Director">
+                    </figure>
+                    <p class="t-name">Mark R.</p>
+                    <p class="t-role">Sales Director</p>
+                    <p class="t-text">Fast, thoughtful, and on-brand—our sales team finally has docs they love.</p>
+                    <ul class="t-tags">
+                        <li>B2B</li>
+                        <li>Enablement</li>
+                    </ul>
+                </li>
+
+                <li class="t-card">
+                    <figure>
+                        <img src="images/testimonial-sofia.jpg" alt="Sofia K., COO">
+                    </figure>
+                    <p class="t-name">Sofia K.</p>
+                    <p class="t-role">COO</p>
+                    <p class="t-text">Usability jumped immediately. The dashboard is now clear at a glance.</p>
+                    <ul class="t-tags">
+                        <li>SaaS</li>
+                        <li>Dashboard UX</li>
+                    </ul>
+                </li>
+            </ul>
         </section>
 
         <!-- All work anchor (optional future section) -->
@@ -301,28 +326,7 @@
         document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 
-    <!-- Testimonials carousel -->
-    <script>
-        (function () {
-            const slides = Array.from(document.querySelectorAll('.t-slide'));
-            const prev = document.querySelector('.t-prev');
-            const next = document.querySelector('.t-next');
-            if (!slides.length || !prev || !next) return;
 
-            let i = 0;
-            const show = (n) => {
-                slides[i].classList.remove('is-active');
-                i = (n + slides.length) % slides.length;
-                slides[i].classList.add('is-active');
-            };
-
-            prev.addEventListener('click', () => show(i - 1));
-            next.addEventListener('click', () => show(i + 1));
-
-            // Optional auto-advance:
-            // setInterval(() => show(i + 1), 6000);
-        })();
-    </script>
 </body>
 
 </html>
