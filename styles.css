@@ -32,7 +32,7 @@ body {
     margin: 0;
     color: var(--text);
     background: var(--bg);
-    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: 16px;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -141,7 +141,7 @@ h6 {
 .nav-links {
     list-style: none;
     padding: 0;
-    margin: 50px 0 6px;
+    margin: 50px 0 16px;
     display: grid;
     gap: 6px;
 }
@@ -162,7 +162,7 @@ h6 {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #146c2e;
+    color: var(--text);
     font-weight: 600;
 }
 
@@ -177,7 +177,7 @@ h6 {
 .social {
     list-style: none;
     padding: 0;
-    margin: 8px 0 0;
+    margin: 20px 0 0;
 }
 
 .social-inline {
@@ -194,13 +194,13 @@ h6 {
     border-radius: 9999px;
     text-decoration: none;
     color: var(--muted);
-    border: 1px solid #d0c5b9;
+    border: 2px solid #1d1d1b;
     background: transparent;
 }
 
 .social-inline a:hover {
     color: var(--brand);
-    border-color: color-mix(in srgb, var(--brand) 40%, #d0c5b9);
+    border-color: color-mix(in srgb, var(--brand) 40%, #1d1d1b);
 }
 
 .social-inline svg {
@@ -208,8 +208,8 @@ h6 {
     height: 20px;
     display: block;
     fill: none;
-    stroke: currentColor;
-    stroke-width: 1.75;
+    stroke: var(--text);
+    stroke-width: 2;
 }
 
 @media (max-width: 900px) {
@@ -364,19 +364,20 @@ body.nav-open .scrim {
 .btn.ghost {
     background: transparent;
     color: var(--text);
-    border: 1px solid #d0c5b9;
+    border: 2px solid #1d1d1b;
 }
 
 .btn.ghost:hover {
     color: var(--brand);
-    border-color: color-mix(in srgb, var(--brand) 45%, #d0c5b9);
+    border-color: #1d1d1b;
+    filter: brightness(0.98);
 }
 
 /* Button icon (inline SVG) */
 .btn-icon {
     width: 1em;
     height: 1em;
-    margin-left: 6px;
+    margin-left: 3px;
     transform: translateY(-1px);
     display: inline-block;
     transition: transform .15s ease;
@@ -551,6 +552,10 @@ body.nav-open .scrim {
 }
 
 /* Testimonials */
+#testimonials {
+    margin-top: clamp(32px, 6vh, 96px);
+}
+
 #testimonials .section-head {
     padding-bottom: 10px;
 }
@@ -563,7 +568,7 @@ body.nav-open .scrim {
 
 .t-btn {
     appearance: none;
-    border: 1px solid #d0c5b9;
+    border: 2px solid #1d1d1b;
     background: transparent;
     width: 32px;
     height: 32px;
@@ -574,8 +579,15 @@ body.nav-open .scrim {
 }
 
 .t-btn:hover {
-    border-color: color-mix(in srgb, var(--brand) 40%, #d0c5b9);
+    border-color: color-mix(in srgb, var(--brand) 40%, #1d1d1b);
     color: var(--brand);
+}
+
+.t-btn svg {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    transform: translateY(-1px);
 }
 
 /* 3-column testimonial grid (no section background) */
@@ -594,9 +606,9 @@ body.nav-open .scrim {
     }
 }
 
-/* Each testimonial, right-aligned */
+/* Each testimonial, left-aligned */
 .t-card {
-    text-align: right;
+    text-align: left;
 }
 
 /* Rectangular image on top */
@@ -640,7 +652,7 @@ body.nav-open .scrim {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /* right-align */
 }
 

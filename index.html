@@ -238,8 +238,19 @@
 
                 <!-- Arrows moved into the header, above the underline -->
                 <div class="t-controls" aria-hidden="true">
-                    <button class="t-btn t-prev" aria-label="Previous">‹</button>
-                    <button class="t-btn t-next" aria-label="Next">›</button>
+                    <button class="t-btn t-prev" aria-label="Previous">
+                        <!-- same icon SVG, rotated for "previous" -->
+                        <svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false"
+                            style="transform: rotate(180deg) translateY(1px);">
+                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button class="t-btn t-next" aria-label="Next">
+                        <!-- same icon SVG as buttons -->
+                        <svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
+                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
+                        </svg>
+                    </button>
                 </div>
             </div>
 
