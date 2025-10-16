@@ -109,8 +109,9 @@ h6 {
 
 .profile img {
     width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    height: auto;
+    border-radius: 0;
+    aspect-ratio: 4 / 5;
     object-fit: cover;
     background: #fff;
     border: 1px solid #d0c5b9;
@@ -430,8 +431,8 @@ body.nav-open .scrim {
 .card {
     background: var(--panel);
     border: 1px solid #d8cec3;
-    border-radius: var(--radius);
-    overflow: hidden;
+    border-radius: 0;
+    overflow: visible;
     transition: transform .15s ease, border-color .15s ease;
 }
 
@@ -623,6 +624,7 @@ body.nav-open .scrim {
 /* Each testimonial, left-aligned */
 .t-card {
     text-align: left;
+    border-radius: 0;
 }
 
 /* Rectangular image on top */
