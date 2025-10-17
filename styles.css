@@ -34,6 +34,8 @@
     /* right */
     --content-mb: clamp(32px, 6vh, 96px);
     /* bottom */
+    --content-inner: 0.80;
+    /* main content uses 80% of its allotted width */
 }
 
 /* =========================================================
@@ -79,7 +81,7 @@ h6 {
     font-size: clamp(36px, 5.6vw, 72px);
     line-height: 1.08;
     margin: clamp(24px, 6vh, 80px) 0 12px;
-    max-width: 80%;
+    max-width: 90%;
     text-wrap: balance;
 }
 
@@ -807,15 +809,24 @@ body.nav-open .scrim {
     }
 
     .content {
-        margin-left: calc(var(--railw) + var(--colw));
         /* sit after rail + sidebar */
+        margin-left: calc(var(--railw) + var(--colw));
+
+        /* vertical + right breathing room (your earlier tokens) */
         margin-top: var(--content-mt);
         margin-right: var(--content-mr);
         margin-bottom: var(--content-mb);
-        width: calc(var(--contentw) - var(--content-mr));
-        /* prevent horizontal overflow */
+
+        /* key line: only take 80% of the available 85% lane */
+        width: calc(var(--contentw) * var(--content-inner));
         max-width: none;
+
+        /* keep your internal padding */
         padding-right: clamp(18px, 3vw, 36px);
+
+        /* layout */
+        display: grid;
+        gap: clamp(24px, 3vw, 40px);
     }
 }
 
