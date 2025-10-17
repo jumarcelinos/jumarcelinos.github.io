@@ -960,3 +960,38 @@ a:not(.btn):hover,
 
     /* ensure links are visible in drawer */
 }
+
+/* === Side-rail tweaks (desktop) === */
+@media (min-width: 1100px) {
+
+    /* Push links to the top (with breathing room) and socials to the bottom */
+    .side-rail {
+        justify-content: space-between;
+        /* top + bottom */
+        padding: 24px 0 24px;
+        /* breathing space top/bottom */
+    }
+
+    /* Bigger vertical nav links */
+    .rail-nav a {
+        font-size: 14px;
+        /* was 12px */
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+
+    /* Underline on hover (clear and readable) */
+    .rail-nav a:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 2px;
+    }
+
+    /* Keep socials parked at the bottom and centered on the same axis */
+    .rail-social {
+        margin-top: 0;
+        /* let space-between do the push */
+        justify-items: center;
+    }
+}
