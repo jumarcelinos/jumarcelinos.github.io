@@ -2,7 +2,6 @@
    BASE / TOKENS
    ========================================================= */
 :root {
-    /* Colors */
     --bg: #f2efec;
     /* page background */
     --panel: #ede5dd;
@@ -15,23 +14,18 @@
     /* primary accent */
     --ring: #9aa6ff;
     /* focus outline */
-
-    /* Sizing & layout */
     --gap: clamp(14px, 2vw, 22px);
     --radius: 10px;
-
-    /* Content max for narrower viewports (mobile/tablet use) */
     --maxw: 1180px;
 
-    /* Desktop proportions (≥1100px) */
-    --railw: 10vw;
-    /* side-rail = 10% */
-    --colw: 30vw;
-    /* sidebar   = 30% */
-    --contentw: 60vw;
-    /* main      = 60% */
-    --content-max: 1280px;
-    /* cap main width on very wide screens */
+    /* Desktop sizes: rail fixed, remaining split 30/70 */
+    --railw: 64px;
+    /* side-rail */
+    --colw: calc((100vw - var(--railw)) * 0.30);
+    /* sidebar = 30% of remaining */
+    --contentw: calc((100vw - var(--railw)) * 0.70);
+    /* main    = 70% of remaining */
+    --content-max: none;
 }
 
 * {
@@ -72,7 +66,6 @@ h6 {
     font-weight: 700;
     letter-spacing: -0.015em;
     font-size: clamp(36px, 5.6vw, 72px);
-    /* was 40/6.2vw/80 */
     line-height: 1.08;
     margin: clamp(24px, 6vh, 80px) 0 12px;
     max-width: 80%;
@@ -128,7 +121,7 @@ h6 {
     font-weight: 600;
 }
 
-/* --- Desktop left rail (hidden by default; shown ≥1100px) --- */
+/* --- Desktop left rail --- */
 .side-rail {
     position: fixed;
     left: 0;
@@ -234,48 +227,6 @@ h6 {
     stroke-width: 2;
 }
 
-@media (min-width: 1100px) {
-    .side-rail {
-        display: flex;
-        width: var(--railw);
-    }
-
-    .sidenav {
-        left: var(--railw);
-        right: auto;
-        inset: 0 auto 0 var(--railw);
-        width: var(--colw);
-    }
-
-    .sidenav .nav-links,
-    .sidenav .nav-sep {
-        display: none;
-    }
-
-    /* rail owns desktop nav */
-
-    .content {
-        /* push content after rail + sidebar, and give it 60% width (capped) */
-        margin-left: calc(var(--railw) + var(--colw));
-        margin-right: 0;
-        width: min(var(--contentw), var(--content-max));
-        max-width: none;
-        /* override old center logic */
-        padding-right: clamp(18px, 3vw, 36px);
-    }
-
-    /* hide in-sidebar socials on desktop (rail has them) */
-    .sidenav .social {
-        display: none;
-    }
-}
-
-@media (max-width:1099px) {
-    .side-rail {
-        display: none;
-    }
-}
-
 /* --- Sidebar --- */
 .sidenav {
     position: fixed;
@@ -287,6 +238,7 @@ h6 {
     padding: 54px;
     border-right: 1px solid #d8cec3;
     background: var(--panel);
+    /* keep as-is per your current CSS */
     z-index: 100;
     /* above content */
 }
@@ -501,7 +453,6 @@ body.nav-open .scrim {
     /* tiny optical nudge */
 }
 
-/* Mobile: stack title + button */
 @media (max-width: 640px) {
     .section-head {
         flex-direction: column;
@@ -828,16 +779,19 @@ body.nav-open .scrim {
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-/* Desktop (≥1100px): show rail, move sidebar, hide sidebar nav + social; center content lane */
+/* Desktop (≥1100px): rail fixed 64px; remaining split 30/70; content left-aligned */
 @media (min-width: 1100px) {
     .side-rail {
         display: flex;
+        width: var(--railw);
     }
 
     .sidenav {
         left: var(--railw);
         right: auto;
         inset: 0 auto 0 var(--railw);
+        width: var(--colw);
+        /* 30% of remaining */
     }
 
     .sidenav .nav-links {
@@ -848,15 +802,21 @@ body.nav-open .scrim {
         display: none;
     }
 
-    .content {
-        /* centers the column in the space to the right of the sidebar */
-        margin-left: calc(var(--colw) + (100vw - var(--colw) - var(--maxw))/2 + var(--railw));
-        margin-right: auto;
-    }
-
-    /* hide in-sidebar socials on desktop (rail has them) */
     .sidenav .social {
         display: none;
+    }
+
+    /* socials live in rail */
+
+    .content {
+        margin-left: calc(var(--railw) + var(--colw));
+        /* push past rail + sidebar */
+        margin-right: 0;
+        width: var(--contentw);
+        /* 70% of remaining */
+        max-width: none;
+        /* left-aligned */
+        padding-right: clamp(18px, 3vw, 36px);
     }
 }
 
