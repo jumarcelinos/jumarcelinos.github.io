@@ -169,6 +169,7 @@ h6 {
     /* underline-only hover */
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
+    color: #fff;
 }
 
 .rail-nav a:focus-visible {
