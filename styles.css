@@ -392,6 +392,13 @@ body.nav-open .scrim {
     max-width: var(--maxw);
 }
 
+.content a:not(.btn):hover,
+.nav-links a:hover,
+.link:hover {
+    color: var(--brand);
+    text-decoration-color: var(--brand);
+}
+
 /* =========================================================
    SECTIONS / COMPONENTS
    ========================================================= */
