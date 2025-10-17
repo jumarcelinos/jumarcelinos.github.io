@@ -75,14 +75,19 @@ h6 {
     bottom: 0;
     width: var(--railw);
     background: #fff;
-    border-right: 1px solid #e4dbd2;
     display: none;
     /* hidden by default; shown on desktop below */
+    flex-direction: column;
+    /* stack top→bottom */
     align-items: center;
-    justify-content: space-between;
+    /* center everything on the same vertical axis */
+    justify-content: flex-start;
+    gap: 20px;
+    /* space between nav and socials */
     padding: 16px 0;
-    z-index: 120;
-    /* above page, below mobile drawer if opened */
+    background: #fff;
+    border-right: 1px solid #e4dbd2;
+    z-index: 60;
 }
 
 /* Vertical nav (top-to-bottom reading) */
@@ -92,7 +97,7 @@ h6 {
     margin: 0;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    /* makes text read top-to-bottom */
+    /* makes text readable top→bottom */
     display: flex;
     gap: 18px;
     align-items: center;
@@ -145,13 +150,22 @@ h6 {
 /* Show rail on desktop; push sidebar/content over by rail width */
 @media (min-width: 1100px) {
     .side-rail {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--railw);
         display: flex;
+        /* show on desktop */
     }
 
     .sidenav {
         left: var(--railw);
         right: auto;
         inset: 0 auto 0 var(--railw);
+        /* keep existing sizing but offset by rail */
+        z-index: 100;
+        /* stays above content; below modals if any */
     }
 
     .content {
@@ -171,6 +185,26 @@ h6 {
     .sidenav .social {
         display: none;
     }
+}
+
+/* Hide sidebar nav links on desktop; keep them for mobile/tablet */
+@media (min-width: 1100px) {
+    .sidenav .nav-links {
+        display: none;
+    }
+}
+
+@media (min-width: 1100px) {
+    .sidenav .nav-sep {
+        display: none;
+    }
+
+    /* remove the divider */
+    .sidenav .role {
+        margin: 0 0 16px;
+    }
+
+    /* close up the gap a bit */
 }
 
 /* ====== Layout ====== */
