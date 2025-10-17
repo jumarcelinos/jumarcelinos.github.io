@@ -14,20 +14,31 @@
     /* primary accent */
     --ring: #9aa6ff;
     /* focus outline */
+
     --gap: clamp(14px, 2vw, 22px);
     --radius: 10px;
     --maxw: 1180px;
 
-    /* Desktop sizes: rail fixed, remaining split 30/70 */
+    /* Desktop sizes: rail fixed 64px; remaining split 15/85 */
     --railw: 64px;
     /* side-rail */
-    --colw: calc((100vw - var(--railw)) * 0.30);
-    /* sidebar = 30% of remaining */
-    --contentw: calc((100vw - var(--railw)) * 0.70);
-    /* main    = 70% of remaining */
-    --content-max: none;
+    --colw: calc((100vw - var(--railw)) * 0.15);
+    /* sidebar = 15% of remaining */
+    --contentw: calc((100vw - var(--railw)) * 0.85);
+    /* main    = 85% of remaining */
+
+    /* Main content external margins (desktop) */
+    --content-mt: clamp(24px, 4vw, 64px);
+    /* top */
+    --content-mr: clamp(18px, 3vw, 48px);
+    /* right */
+    --content-mb: clamp(32px, 6vh, 96px);
+    /* bottom */
 }
 
+/* =========================================================
+   RESET / BASE
+   ========================================================= */
 * {
     box-sizing: border-box;
 }
@@ -85,14 +96,13 @@ h6 {
     color: var(--muted);
 }
 
-/* Section headings (Latest Projects / What Clients Say) */
+/* Section headings */
 .section-head h2 {
     margin: 0;
     line-height: 1;
     font-size: 16px;
 }
 
-/* Monospace face for specific H2s */
 #work-title,
 #testimonials-title {
     font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
@@ -129,9 +139,7 @@ h6 {
     bottom: 0;
     width: var(--railw);
     background: #571847;
-    /* brand background */
     border-right: 1px solid #4b143c;
-    /* subtle darker edge */
     display: none;
     flex-direction: column;
     align-items: center;
@@ -141,7 +149,7 @@ h6 {
     z-index: 60;
 }
 
-/* Vertical nav (top-to-bottom reading) */
+/* Rail nav */
 .rail-nav {
     list-style: none;
     padding: 0;
@@ -156,7 +164,6 @@ h6 {
 .rail-nav a {
     display: block;
     color: #fff;
-    /* fixed white on the dark rail */
     text-decoration: none;
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-size: 16px;
@@ -165,7 +172,6 @@ h6 {
     line-height: 1;
 }
 
-/* Side-rail links: keep white text; underline-only on hover */
 .side-rail .rail-nav a:hover {
     color: #fff;
     text-decoration: underline;
@@ -176,11 +182,10 @@ h6 {
 
 .rail-nav a:focus-visible {
     outline: 2px solid #fff;
-    /* clear focus on dark bg */
     outline-offset: 2px;
 }
 
-/* Rail socials (bottom) */
+/* Rail socials */
 .rail-social {
     list-style: none;
     padding: 0;
@@ -196,21 +201,16 @@ h6 {
     width: 36px;
     height: 36px;
     border: 2px solid #fff;
-    /* white outline by default */
     border-radius: 9999px;
     color: #fff;
-    /* icon stroke picks this up */
     text-decoration: none;
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
-/* Invert on hover: white bg, dark outline + icon */
 .rail-social a:hover {
     background: #fff;
     color: #1d1d1b;
-    /* icon stroke goes dark */
     border-color: #1d1d1b;
-    /* outline goes dark */
 }
 
 .rail-social a:focus-visible {
@@ -227,6 +227,18 @@ h6 {
     stroke-width: 2;
 }
 
+@media (min-width:1100px) {
+    .side-rail {
+        display: flex;
+    }
+}
+
+@media (max-width:1099px) {
+    .side-rail {
+        display: none;
+    }
+}
+
 /* --- Sidebar --- */
 .sidenav {
     position: fixed;
@@ -238,9 +250,8 @@ h6 {
     padding: 54px;
     border-right: 1px solid #d8cec3;
     background: var(--panel);
-    /* keep as-is per your current CSS */
+    /* keep or set to #fff if you prefer */
     z-index: 100;
-    /* above content */
 }
 
 .profile {
@@ -318,7 +329,7 @@ h6 {
     box-shadow: 0 0 10px #28a745;
 }
 
-/* Sidebar socials (mobile/tablet only; hidden on desktop) */
+/* Sidebar socials (mobile/tablet only) */
 .social {
     list-style: none;
     padding: 0;
@@ -357,7 +368,7 @@ h6 {
     stroke-width: 2;
 }
 
-/* Scrim/backdrop (mobile drawer UX) */
+/* Scrim/backdrop */
 .scrim {
     position: fixed;
     inset: 0;
@@ -373,7 +384,7 @@ body.nav-open .scrim {
     visibility: visible;
 }
 
-/* Content lane */
+/* Content lane (base) */
 .content {
     margin-left: var(--colw);
     padding: clamp(18px, 3vw, 36px);
@@ -401,7 +412,6 @@ body.nav-open .scrim {
 .section-head {
     display: flex;
     align-items: baseline;
-    /* baseline-align title + link */
     justify-content: space-between;
     gap: 10px;
     position: relative;
@@ -444,16 +454,14 @@ body.nav-open .scrim {
     text-decoration-thickness: 2px;
 }
 
-/* Download icon inside the text link */
 .section-head .text-link .icon {
     width: 1em;
     height: 1em;
     display: inline-block;
     transform: translateY(1px);
-    /* tiny optical nudge */
 }
 
-@media (max-width: 640px) {
+@media (max-width:640px) {
     .section-head {
         flex-direction: column;
         align-items: flex-start;
@@ -504,7 +512,6 @@ body.nav-open .scrim {
     filter: brightness(0.98);
 }
 
-/* Button icon (inline SVG) */
 .btn-icon {
     width: 1em;
     height: 1em;
@@ -537,7 +544,6 @@ body.nav-open .scrim {
     background: var(--panel);
     border: 1px solid #d8cec3;
     border-radius: 0;
-    /* square corners */
     overflow: visible;
     transition: transform .15s ease, border-color .15s ease;
 }
@@ -604,7 +610,7 @@ body.nav-open .scrim {
     color: #fff;
 }
 
-/* Tag list */
+/* Tags */
 .tags {
     list-style: none;
     padding: 0;
@@ -625,7 +631,6 @@ body.nav-open .scrim {
     white-space: nowrap;
 }
 
-/* Tag color locks */
 .card.theme-freshfit .tags li,
 .card.theme-task .tags li,
 .card.theme-nordic .tags li {
@@ -639,7 +644,6 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
-/* Keep tag colors fixed on hover */
 .card.theme-freshfit .card-link:hover .tags li,
 .card.theme-task .card-link:hover .tags li,
 .card.theme-nordic .card-link:hover .tags li {
@@ -653,7 +657,7 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
-/* Dark card body text → white for contrast */
+/* Dark card body text → white */
 .card.theme-eco .card-body,
 .card.theme-ccit .card-body {
     color: #fff;
@@ -664,7 +668,6 @@ body.nav-open .scrim {
     margin-top: clamp(32px, 6vh, 96px);
 }
 
-/* Header controls above the underline */
 .t-controls {
     display: flex;
     gap: 8px;
@@ -703,7 +706,6 @@ body.nav-open .scrim {
     transform: rotate(180deg);
 }
 
-/* Three-column testimonials (no section background) */
 .t-grid {
     list-style: none;
     padding: 0;
@@ -727,7 +729,6 @@ body.nav-open .scrim {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 0;
-    /* square photos */
     border: 1px solid #d8cec3;
     display: block;
 }
@@ -779,8 +780,8 @@ body.nav-open .scrim {
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-/* Desktop (≥1100px): rail fixed 64px; remaining split 30/70; content left-aligned */
-@media (min-width: 1100px) {
+/* Desktop (≥1100px): rail 64px; remaining 15/85; content left-aligned with margins */
+@media (min-width:1100px) {
     .side-rail {
         display: flex;
         width: var(--railw);
@@ -791,7 +792,6 @@ body.nav-open .scrim {
         right: auto;
         inset: 0 auto 0 var(--railw);
         width: var(--colw);
-        /* 30% of remaining */
     }
 
     .sidenav .nav-links {
@@ -806,28 +806,27 @@ body.nav-open .scrim {
         display: none;
     }
 
-    /* socials live in rail */
-
     .content {
         margin-left: calc(var(--railw) + var(--colw));
-        /* push past rail + sidebar */
-        margin-right: 0;
-        width: var(--contentw);
-        /* 70% of remaining */
+        /* sit after rail + sidebar */
+        margin-top: var(--content-mt);
+        margin-right: var(--content-mr);
+        margin-bottom: var(--content-mb);
+        width: calc(var(--contentw) - var(--content-mr));
+        /* prevent horizontal overflow */
         max-width: none;
-        /* left-aligned */
         padding-right: clamp(18px, 3vw, 36px);
     }
 }
 
 /* Tablet / Mobile */
-@media (max-width: 1099px) {
+@media (max-width:1099px) {
     .side-rail {
         display: none;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width:900px) {
     .topbar {
         display: flex;
     }
@@ -852,13 +851,13 @@ body.nav-open .scrim {
     }
 }
 
-@media (max-width: 1100px) {
+@media (max-width:1100px) {
     .grid {
         --cols: 2;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width:640px) {
     .grid {
         --cols: 1;
     }
