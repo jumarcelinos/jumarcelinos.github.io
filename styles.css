@@ -995,3 +995,18 @@ a:not(.btn):hover,
         justify-items: center;
     }
 }
+
+/* Side-rail spacing tweaks (desktop) */
+@media (min-width: 1100px) {
+
+    /* More space between links */
+    .rail-nav {
+        gap: clamp(18px, 1.4vw, 28px);
+        /* was ~18px — breathe more */
+    }
+
+    /* Extra top margin before the first link (above the whole stack) */
+    .rail-nav li:first-child {
+        margin-block-start: clamp(16px, 2vh, 36px);
+    }
+}
