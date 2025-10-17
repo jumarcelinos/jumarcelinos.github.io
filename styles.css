@@ -36,6 +36,8 @@
     /* bottom */
     --content-inner: 0.80;
     /* main content uses 80% of its allotted width */
+    --content-ml-extra: clamp(16px, 3vw, 56px);
+    /* extra left gutter for .content (desktop) */
 }
 
 /* =========================================================
@@ -232,6 +234,41 @@ h6 {
 @media (min-width:1100px) {
     .side-rail {
         display: flex;
+        width: var(--railw);
+    }
+
+    .sidenav {
+        left: var(--railw);
+        right: auto;
+        inset: 0 auto 0 var(--railw);
+        width: var(--colw);
+        /* match main content’s top offset for visual alignment */
+        padding-top: var(--content-mt);
+    }
+
+    .sidenav .nav-links {
+        display: none;
+    }
+
+    .sidenav .nav-sep {
+        display: none;
+    }
+
+    .sidenav .social {
+        display: none;
+    }
+
+    /* Main content: left-aligned, uses 80% of its lane with extra left gutter */
+    .content {
+        margin-left: calc(var(--railw) + var(--colw) + var(--content-ml-extra));
+        margin-top: var(--content-mt);
+        margin-right: var(--content-mr);
+        margin-bottom: var(--content-mb);
+        width: calc(var(--contentw) * var(--content-inner));
+        max-width: none;
+        padding-right: clamp(18px, 3vw, 36px);
+        display: grid;
+        gap: clamp(24px, 3vw, 40px);
     }
 }
 
