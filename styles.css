@@ -34,10 +34,12 @@
     /* right */
     --content-mb: clamp(32px, 6vh, 96px);
     /* bottom */
+
+    /* Main content inner width (as a fraction of its lane) */
     --content-inner: 0.80;
-    /* main content uses 80% of its allotted width */
+
+    /* Extra left gutter for main content (desktop) */
     --content-ml-extra: clamp(16px, 3vw, 56px);
-    /* extra left gutter for .content (desktop) */
 }
 
 /* =========================================================
@@ -135,7 +137,7 @@ h6 {
     font-weight: 600;
 }
 
-/* --- Desktop left rail --- */
+/* --- Desktop left rail (base, hidden <1100px) --- */
 .side-rail {
     position: fixed;
     left: 0;
@@ -231,54 +233,7 @@ h6 {
     stroke-width: 2;
 }
 
-@media (min-width:1100px) {
-    .side-rail {
-        display: flex;
-        width: var(--railw);
-    }
-
-    .sidenav {
-        left: var(--railw);
-        right: auto;
-        inset: 0 auto 0 var(--railw);
-        width: var(--colw);
-        /* match main content’s top offset for visual alignment */
-        padding-top: var(--content-mt);
-    }
-
-    .sidenav .nav-links {
-        display: none;
-    }
-
-    .sidenav .nav-sep {
-        display: none;
-    }
-
-    .sidenav .social {
-        display: none;
-    }
-
-    /* Main content: left-aligned, uses 80% of its lane with extra left gutter */
-    .content {
-        margin-left: calc(var(--railw) + var(--colw) + var(--content-ml-extra));
-        margin-top: var(--content-mt);
-        margin-right: var(--content-mr);
-        margin-bottom: var(--content-mb);
-        width: calc(var(--contentw) * var(--content-inner));
-        max-width: none;
-        padding-right: clamp(18px, 3vw, 36px);
-        display: grid;
-        gap: clamp(24px, 3vw, 40px);
-    }
-}
-
-@media (max-width:1099px) {
-    .side-rail {
-        display: none;
-    }
-}
-
-/* --- Sidebar --- */
+/* --- Sidebar (base) --- */
 .sidenav {
     position: fixed;
     inset: 0 auto 0 0;
@@ -289,7 +244,7 @@ h6 {
     padding: 54px;
     border-right: 1px solid #d8cec3;
     background: var(--panel);
-    /* keep or set to #fff if you prefer */
+    /* set to #fff if you prefer */
     z-index: 100;
 }
 
@@ -583,6 +538,7 @@ body.nav-open .scrim {
     background: var(--panel);
     border: 1px solid #d8cec3;
     border-radius: 0;
+    /* square corners */
     overflow: visible;
     transition: transform .15s ease, border-color .15s ease;
 }
@@ -819,7 +775,7 @@ body.nav-open .scrim {
 /* =========================================================
    RESPONSIVE
    ========================================================= */
-/* Desktop (≥1100px): rail 64px; remaining 15/85; content left-aligned with margins */
+/* Desktop (≥1100px): rail 64px; remaining 15/85; content left-aligned with extra gutter; align sidebar top */
 @media (min-width:1100px) {
     .side-rail {
         display: flex;
@@ -831,6 +787,8 @@ body.nav-open .scrim {
         right: auto;
         inset: 0 auto 0 var(--railw);
         width: var(--colw);
+        padding-top: var(--content-mt);
+        /* align with content top */
     }
 
     .sidenav .nav-links {
@@ -846,22 +804,21 @@ body.nav-open .scrim {
     }
 
     .content {
-        /* sit after rail + sidebar */
-        margin-left: calc(var(--railw) + var(--colw));
+        /* sit after rail + sidebar + extra left gutter */
+        margin-left: calc(var(--railw) + var(--colw) + var(--content-ml-extra));
 
-        /* vertical + right breathing room (your earlier tokens) */
+        /* vertical + right breathing room */
         margin-top: var(--content-mt);
         margin-right: var(--content-mr);
         margin-bottom: var(--content-mb);
 
-        /* key line: only take 80% of the available 85% lane */
+        /* take only 80% of the 85% lane */
         width: calc(var(--contentw) * var(--content-inner));
         max-width: none;
 
-        /* keep your internal padding */
+        /* keep internal padding */
         padding-right: clamp(18px, 3vw, 36px);
 
-        /* layout */
         display: grid;
         gap: clamp(24px, 3vw, 40px);
     }
