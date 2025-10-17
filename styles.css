@@ -17,6 +17,8 @@
     --maxw: 1180px;
     --colw: 340px;
     /* sidenav width (desktop) */
+    --railw: 64px;
+    /* width of the white rail (desktop) */
 }
 
 * {
@@ -63,6 +65,112 @@ h6 {
     line-height: 1.55;
     margin: 0 0 16px;
     color: var(--muted);
+}
+
+/* Desktop left rail */
+.side-rail {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--railw);
+    background: #fff;
+    border-right: 1px solid #e4dbd2;
+    display: none;
+    /* hidden by default; shown on desktop below */
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    z-index: 120;
+    /* above page, below mobile drawer if opened */
+}
+
+/* Vertical nav (top-to-bottom reading) */
+.rail-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    /* makes text read top-to-bottom */
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.rail-nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.rail-nav a:hover {
+    color: var(--brand);
+}
+
+/* Rail social (bottom, vertical stack) */
+.rail-social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    justify-items: center;
+}
+
+.rail-social a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 2px solid #1d1d1b;
+    /* 2px outline */
+    border-radius: 9999px;
+    color: #1d1d1b;
+    text-decoration: none;
+}
+
+.rail-social svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    /* 2px stroke */
+}
+
+/* Show rail on desktop; push sidebar/content over by rail width */
+@media (min-width: 1100px) {
+    .side-rail {
+        display: flex;
+    }
+
+    .sidenav {
+        left: var(--railw);
+        right: auto;
+        inset: 0 auto 0 var(--railw);
+    }
+
+    .content {
+        margin-left: calc(var(--railw) + var(--colw));
+    }
+}
+
+/* On tablets/phones the rail disappears; your existing mobile drawer stays */
+@media (max-width: 1099px) {
+    .side-rail {
+        display: none;
+    }
+}
+
+/* Hide the in-sidebar social row on desktop (since rail holds them) */
+@media (min-width: 1100px) {
+    .sidenav .social {
+        display: none;
+    }
 }
 
 /* ====== Layout ====== */
@@ -195,7 +303,7 @@ h6 {
     border-radius: 9999px;
     text-decoration: none;
     color: var(--muted);
-    border: 2px solid #1d1d1b;
+    border: 3px solid #1d1d1b;
     background: transparent;
 }
 
