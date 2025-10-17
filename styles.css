@@ -80,6 +80,7 @@ h6 {
 }
 
 .hero h1 {
+    font-family: "GT Alpina", "gt-alpina", "Domine", Georgia, Cambria, "Times New Roman", Times, serif;
     font-weight: 700;
     letter-spacing: -0.015em;
     font-size: clamp(36px, 5.6vw, 72px);
@@ -111,8 +112,9 @@ h6 {
 
 #work-title,
 #testimonials-title {
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-    font-weight: 400;
+    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    font-weight: 600;
+    /* slight bump so it reads like a label */
 }
 
 /* =========================================================
@@ -283,7 +285,8 @@ h6 {
 
 .nav-sep {
     border: 0;
-    border-top: 1px solid #d8cec3;
+    border-top: 1px solid #1d1d1b;
+    /* was #d8cec3 */
     margin: 12px 0 14px;
 }
 
@@ -425,7 +428,8 @@ body.nav-open .scrim {
     right: 0;
     bottom: 0;
     height: 1px;
-    background: #d8cec3;
+    background: #1d1d1b;
+    /* was #d8cec3 */
 }
 
 .section-head .text-link {
@@ -435,7 +439,10 @@ body.nav-open .scrim {
     padding: 0;
     color: var(--text);
     font: inherit;
+    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    font-weight: 600;
     line-height: 1;
+    /* align with h2 baseline */
     text-decoration: underline;
     text-underline-offset: 3px;
     display: inline-flex;
@@ -521,6 +528,10 @@ body.nav-open .scrim {
 
 .btn.ghost:hover .btn-icon {
     transform: translate(.5px, -1.5px);
+}
+
+#work {
+    margin-top: clamp(56px, 10vh, 140px);
 }
 
 /* Cards grid */
