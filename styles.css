@@ -1,4 +1,6 @@
-/* ====== Base ====== */
+/* =========================================================
+   BASE / TOKENS
+   ========================================================= */
 :root {
     --bg: #f2efec;
     /* page background */
@@ -9,16 +11,16 @@
     --muted: #474746;
     /* secondary text */
     --brand: #571847;
-    /* primary accent (buttons, highlights) */
+    /* primary accent */
     --ring: #9aa6ff;
-    /* focus outline for accessibility */
+    /* focus outline */
     --gap: clamp(14px, 2vw, 22px);
     --radius: 10px;
     --maxw: 1180px;
     --colw: 340px;
-    /* sidenav width (desktop) */
+    /* sidebar width (desktop) */
     --railw: 64px;
-    /* width of the white rail (desktop) */
+    /* left rail width (desktop) */
 }
 
 * {
@@ -41,7 +43,9 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings use Domine */
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
 h1,
 h2,
 h3,
@@ -53,21 +57,57 @@ h6 {
     letter-spacing: -0.01em;
 }
 
-/* Fine-tune hero heading a touch for Domine */
 .hero h1 {
     font-weight: 700;
     letter-spacing: -0.015em;
 }
 
-/* Hero paragraph (merged to avoid duplicates) */
 .hero p {
+    /* merged */
     font-size: 18px;
     line-height: 1.55;
     margin: 0 0 16px;
     color: var(--muted);
 }
 
-/* Desktop left rail */
+/* Section headings (Latest Projects / What Clients Say) */
+.section-head h2 {
+    margin: 0;
+    line-height: 1;
+    font-size: 16px;
+    /* as requested for both */
+}
+
+/* Monospace face for specific H2s */
+#work-title,
+#testimonials-title {
+    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+    font-weight: 400;
+}
+
+/* =========================================================
+   LAYOUT: TOPBAR / RAIL / SIDEBAR / CONTENT / SCRIM
+   ========================================================= */
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    display: none;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #e4dbd2;
+    background: rgba(255, 255, 255, .75);
+    backdrop-filter: blur(6px);
+}
+
+.brand-mini {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* --- Desktop left rail (hidden by default; shown ≥1100px) --- */
 .side-rail {
     position: fixed;
     left: 0;
@@ -75,19 +115,18 @@ h6 {
     bottom: 0;
     width: var(--railw);
     background: #fff;
-    display: none;
-    /* hidden by default; shown on desktop below */
-    flex-direction: column;
-    /* stack top→bottom */
-    align-items: center;
-    /* center everything on the same vertical axis */
-    justify-content: flex-start;
-    gap: 20px;
-    /* space between nav and socials */
-    padding: 16px 0;
-    background: #fff;
     border-right: 1px solid #e4dbd2;
+    display: none;
+    /* base: off */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* links top, socials bottom */
+    padding: 56px 0 24px;
+    /* ≥50px breathing space on top */
+    gap: 20px;
     z-index: 60;
+    /* below sidebar (100) */
 }
 
 /* Vertical nav (top-to-bottom reading) */
@@ -97,25 +136,32 @@ h6 {
     margin: 0;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    /* makes text readable top→bottom */
+    /* makes text top→bottom readable */
     display: flex;
-    gap: 18px;
     align-items: center;
+    gap: clamp(18px, 1.4vw, 28px);
+    /* space between links */
 }
 
 .rail-nav a {
+    display: block;
     color: var(--text);
     text-decoration: none;
-    font-size: 12px;
+    font-size: 16px;
+    /* bigger links */
     letter-spacing: .08em;
     text-transform: uppercase;
+    line-height: 1;
+    /* remove baseline wobble */
 }
 
 .rail-nav a:hover {
-    color: var(--brand);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
 }
 
-/* Rail social (bottom, vertical stack) */
+/* Rail socials (bottom) */
 .rail-social {
     list-style: none;
     padding: 0;
@@ -131,7 +177,6 @@ h6 {
     width: 36px;
     height: 36px;
     border: 2px solid #1d1d1b;
-    /* 2px outline */
     border-radius: 9999px;
     color: #1d1d1b;
     text-decoration: none;
@@ -144,90 +189,9 @@ h6 {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
-    /* 2px stroke */
 }
 
-/* Show rail on desktop; push sidebar/content over by rail width */
-@media (min-width: 1100px) {
-    .side-rail {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: var(--railw);
-        display: flex;
-        /* show on desktop */
-    }
-
-    .sidenav {
-        left: var(--railw);
-        right: auto;
-        inset: 0 auto 0 var(--railw);
-        /* keep existing sizing but offset by rail */
-        z-index: 100;
-        /* stays above content; below modals if any */
-    }
-
-    .content {
-        margin-left: calc(var(--railw) + var(--colw));
-    }
-}
-
-/* On tablets/phones the rail disappears; your existing mobile drawer stays */
-@media (max-width: 1099px) {
-    .side-rail {
-        display: none;
-    }
-}
-
-/* Hide the in-sidebar social row on desktop (since rail holds them) */
-@media (min-width: 1100px) {
-    .sidenav .social {
-        display: none;
-    }
-}
-
-/* Hide sidebar nav links on desktop; keep them for mobile/tablet */
-@media (min-width: 1100px) {
-    .sidenav .nav-links {
-        display: none;
-    }
-}
-
-@media (min-width: 1100px) {
-    .sidenav .nav-sep {
-        display: none;
-    }
-
-    /* remove the divider */
-    .sidenav .role {
-        margin: 0 0 16px;
-    }
-
-    /* close up the gap a bit */
-}
-
-/* ====== Layout ====== */
-.topbar {
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    display: none;
-    /* hidden on desktop */
-    align-items: center;
-    gap: 12px;
-    padding: 10px 14px;
-    border-bottom: 1px solid #e4dbd2;
-    background: rgba(255, 255, 255, .75);
-    backdrop-filter: blur(6px);
-}
-
-.brand-mini {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 600;
-}
-
+/* --- Sidebar --- */
 .sidenav {
     position: fixed;
     inset: 0 auto 0 0;
@@ -239,7 +203,7 @@ h6 {
     border-right: 1px solid #d8cec3;
     background: var(--panel);
     z-index: 100;
-    /* sits above page content on mobile */
+    /* above content */
 }
 
 .profile {
@@ -252,9 +216,9 @@ h6 {
 .profile img {
     width: 150px;
     height: auto;
-    border-radius: 0;
     aspect-ratio: 4 / 5;
     object-fit: cover;
+    border-radius: 0;
     background: #fff;
     border: 1px solid #d0c5b9;
     box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
@@ -267,7 +231,7 @@ h6 {
     font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-weight: 700;
     font-size: 1.3rem;
-    letter-spacing: 0.01em;
+    letter-spacing: .01em;
 }
 
 .sidenav .role {
@@ -317,6 +281,7 @@ h6 {
     box-shadow: 0 0 10px #28a745;
 }
 
+/* Sidebar socials (mobile/tablet only; hidden on desktop) */
 .social {
     list-style: none;
     padding: 0;
@@ -355,19 +320,7 @@ h6 {
     stroke-width: 2;
 }
 
-@media (max-width: 900px) {
-    .social-inline a {
-        width: 48px;
-        height: 48px;
-    }
-
-    .social-inline svg {
-        width: 22px;
-        height: 22px;
-    }
-}
-
-/* Optional: scrim/backdrop behind the drawer (best UX) */
+/* Scrim/backdrop (mobile drawer UX) */
 .scrim {
     position: fixed;
     inset: 0;
@@ -376,7 +329,6 @@ h6 {
     visibility: hidden;
     transition: opacity .2s ease;
     z-index: 60;
-    /* below sidenav (100), above content */
 }
 
 body.nav-open .scrim {
@@ -384,6 +336,7 @@ body.nav-open .scrim {
     visibility: visible;
 }
 
+/* Content lane */
 .content {
     margin-left: var(--colw);
     padding: clamp(18px, 3vw, 36px);
@@ -392,43 +345,14 @@ body.nav-open .scrim {
     max-width: var(--maxw);
 }
 
-@media (min-width: 1100px) {
-    .content {
-        /* centers the column in the space to the right of the sidebar */
-        margin-left: calc(var(--colw) + (100vw - var(--colw) - var(--maxw))/2);
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 900px) {
-    .content {
-        margin-left: 0;
-        padding-top: 14px;
-    }
-}
-
-/* ====== Sections ====== */
-.hero h1 {
-    font-size: clamp(32px, 5.2vw, 64px);
-    line-height: 1.08;
-    margin: clamp(24px, 6vh, 80px) 0 12px;
-    letter-spacing: -0.015em;
-    max-width: 80%;
-    text-wrap: balance;
-}
-
-@media (max-width: 640px) {
-    .hero h1 {
-        max-width: 100%;
-    }
-}
-
+/* =========================================================
+   SECTIONS / COMPONENTS
+   ========================================================= */
 .section {
     display: grid;
     gap: 16px;
 }
 
-/* Keep a single, consolidated section-head (remove earlier minimal block) */
 .section-head {
     display: flex;
     align-items: center;
@@ -448,19 +372,7 @@ body.nav-open .scrim {
     background: #d8cec3;
 }
 
-.section-head h2 {
-    margin: 0;
-    /* kills default h2 margin that was offsetting */
-    line-height: 1;
-    /* steadier vertical alignment */
-}
-
-#work-title,
-#testimonials-title {
-    font-size: 16px;
-}
-
-/* MOBILE: stack title + button to avoid awkward row */
+/* Mobile: stack title + button */
 @media (max-width: 640px) {
     .section-head {
         flex-direction: column;
@@ -475,9 +387,6 @@ body.nav-open .scrim {
     }
 }
 
-/* Removed: this was causing content to sit above the open menu */
-/* .section-head > * { position: relative; z-index: 1; } */
-
 .cta-row {
     display: flex;
     gap: 12px;
@@ -485,6 +394,7 @@ body.nav-open .scrim {
     margin-top: 50px;
 }
 
+/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -534,11 +444,12 @@ body.nav-open .scrim {
     transform: translate(.5px, -1.5px);
 }
 
-#work-title,
-#testimonials-title {
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
-    font-weight: 400;
-    /* as you set */
+/* Text links hover color */
+a:not(.btn):hover,
+.nav-links a:hover,
+.link:hover {
+    color: var(--brand);
+    text-decoration-color: var(--brand);
 }
 
 .link {
@@ -547,7 +458,7 @@ body.nav-open .scrim {
     text-underline-offset: 3px;
 }
 
-/* ====== Grid / Cards ====== */
+/* Cards grid */
 .grid {
     --cols: 3;
     list-style: none;
@@ -558,22 +469,11 @@ body.nav-open .scrim {
     grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
 }
 
-@media (max-width: 1100px) {
-    .grid {
-        --cols: 2;
-    }
-}
-
-@media (max-width: 640px) {
-    .grid {
-        --cols: 1;
-    }
-}
-
 .card {
     background: var(--panel);
     border: 1px solid #d8cec3;
     border-radius: 0;
+    /* square corners */
     overflow: visible;
     transition: transform .15s ease, border-color .15s ease;
 }
@@ -613,7 +513,6 @@ body.nav-open .scrim {
     --card-body: #cdd438;
 }
 
-/* your custom colors */
 .card.theme-eco {
     --card-body: #a3533c;
 }
@@ -641,6 +540,7 @@ body.nav-open .scrim {
     color: #fff;
 }
 
+/* Tag list */
 .tags {
     list-style: none;
     padding: 0;
@@ -675,11 +575,6 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
-.card.theme-eco .card-body,
-.card.theme-ccit .card-body {
-    color: #fff;
-}
-
 /* Keep tag colors fixed on hover */
 .card.theme-freshfit .card-link:hover .tags li,
 .card.theme-task .card-link:hover .tags li,
@@ -694,16 +589,18 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
+/* Dark card body text → white for contrast */
+.card.theme-eco .card-body,
+.card.theme-ccit .card-body {
+    color: #fff;
+}
+
 /* Testimonials */
 #testimonials {
     margin-top: clamp(32px, 6vh, 96px);
 }
 
-#testimonials .section-head {
-    padding-bottom: 10px;
-}
-
-/* Small arrow buttons placed in the header (above the line) */
+/* Header controls above the underline */
 .t-controls {
     display: flex;
     gap: 8px;
@@ -720,11 +617,9 @@ body.nav-open .scrim {
     font: inherit;
     color: var(--text);
     display: flex;
-    /* center the SVG in the button */
     align-items: center;
     justify-content: center;
     line-height: 0;
-    /* kill inline baseline wiggle */
     padding: 0;
 }
 
@@ -735,19 +630,16 @@ body.nav-open .scrim {
 
 .t-btn svg {
     width: 18px;
-    /* fixed icon size looks balanced in a 32px btn */
     height: 18px;
     display: block;
     transform: none;
-    /* remove earlier translateY */
 }
 
-/* rotate only the "previous" icon */
 .t-prev svg {
     transform: rotate(180deg);
 }
 
-/* 3-column testimonial grid (no section background) */
+/* Three-column testimonials (no section background) */
 .t-grid {
     list-style: none;
     padding: 0;
@@ -757,19 +649,11 @@ body.nav-open .scrim {
     gap: var(--gap);
 }
 
-@media (max-width: 900px) {
-    .t-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Each testimonial, left-aligned */
 .t-card {
     text-align: left;
     border-radius: 0;
 }
 
-/* Rectangular image on top */
 .t-card figure {
     margin: 0 0 10px;
 }
@@ -778,12 +662,12 @@ body.nav-open .scrim {
     width: 100%;
     aspect-ratio: 4 / 3;
     object-fit: cover;
-    border-radius: var(--radius);
+    border-radius: 0;
+    /* square photos */
     border: 1px solid #d8cec3;
     display: block;
 }
 
-/* Name / role under image in Domine */
 .t-name {
     font-family: "Domine", Georgia, Cambria, "Times New Roman", Times, serif;
     font-weight: 700;
@@ -797,12 +681,10 @@ body.nav-open .scrim {
     font-weight: 400;
 }
 
-/* Testimonial text */
 .t-text {
     margin: 0 0 12px;
 }
 
-/* Tags (industry, project type), right-aligned pills */
 .t-tags {
     list-style: none;
     padding: 0;
@@ -811,7 +693,6 @@ body.nav-open .scrim {
     gap: 8px;
     flex-wrap: wrap;
     justify-content: flex-start;
-    /* right-align */
 }
 
 .t-tags li {
@@ -825,29 +706,52 @@ body.nav-open .scrim {
     white-space: nowrap;
 }
 
-/* ====== Footer ====== */
+/* Footer */
 .footer {
     color: var(--muted);
     padding: 12px 0 40px;
 }
 
-/* ====== Mobile drawer ====== */
-.hamburger {
-    appearance: none;
-    border: 0;
-    background: transparent;
-    padding: 8px;
-    margin: -4px;
-    display: grid;
-    gap: 4px;
-    cursor: pointer;
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+/* Desktop (≥1100px): show rail, move sidebar, hide sidebar nav + social; center content lane */
+@media (min-width: 1100px) {
+    .side-rail {
+        display: flex;
+    }
+
+    .sidenav {
+        left: var(--railw);
+        right: auto;
+        inset: 0 auto 0 var(--railw);
+    }
+
+    .sidenav .nav-links {
+        display: none;
+    }
+
+    .sidenav .nav-sep {
+        display: none;
+    }
+
+    .content {
+        /* centers the column in the space to the right of the sidebar */
+        margin-left: calc(var(--colw) + (100vw - var(--colw) - var(--maxw))/2 + var(--railw));
+        margin-right: auto;
+    }
+
+    /* hide in-sidebar socials on desktop (rail has them) */
+    .sidenav .social {
+        display: none;
+    }
 }
 
-.hamburger span {
-    width: 22px;
-    height: 2px;
-    background: var(--text);
-    display: block;
+/* Tablet / Mobile */
+@media (max-width: 1099px) {
+    .side-rail {
+        display: none;
+    }
 }
 
 @media (max-width: 900px) {
@@ -875,138 +779,28 @@ body.nav-open .scrim {
     }
 }
 
-/* ====== Motion & focus ====== */
+@media (max-width: 1100px) {
+    .grid {
+        --cols: 2;
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        --cols: 1;
+    }
+
+    .hero h1 {
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   MOTION / FOCUS
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation: none !important;
         transition: none !important;
-    }
-}
-
-/* ====== Brand-colored hovers ====== */
-a:not(.btn):hover,
-.nav-links a:hover,
-.link:hover {
-    color: var(--brand);
-    text-decoration-color: var(--brand);
-}
-
-/* Project title hover uses brand */
-.card-link:hover h3 {
-    color: var(--brand);
-}
-
-/* Define rail width (if not already) */
-:root {
-    --railw: 64px;
-}
-
-/* Base: keep rail hidden unless desktop says otherwise */
-.side-rail {
-    display: none;
-}
-
-/* Desktop ≥1100px: show rail, move sidebar right, hide sidebar nav links */
-@media (min-width: 1100px) {
-    .side-rail {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        width: var(--railw);
-        background: #fff;
-        border-right: 1px solid #e4dbd2;
-        display: flex;
-        /* ← show the rail */
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 20px;
-        padding: 16px 0;
-        z-index: 60;
-        /* below the sidebar (which is 100) */
-    }
-
-    /* Sidebar sits to the RIGHT of the rail */
-    .sidenav {
-        left: var(--railw);
-        right: auto;
-        inset: 0 auto 0 var(--railw);
-        z-index: 100;
-    }
-
-    /* Hide the nav list inside the sidebar on desktop */
-    .sidenav .nav-links {
-        display: none;
-    }
-
-    .sidenav .nav-sep {
-        display: none;
-    }
-
-    /* optional tidy */
-}
-
-/* Mobile/Tablet <1100px: hide rail, show sidebar nav links */
-@media (max-width: 1099px) {
-    .side-rail {
-        display: none;
-    }
-
-    /* ensure it's off on small screens */
-    .sidenav .nav-links {
-        display: grid;
-    }
-
-    /* ensure links are visible in drawer */
-}
-
-/* === Side-rail tweaks (desktop) === */
-@media (min-width: 1100px) {
-
-    /* Push links to the top (with breathing room) and socials to the bottom */
-    .side-rail {
-        justify-content: space-between;
-        /* top + bottom */
-        padding: 24px 0 24px;
-        /* breathing space top/bottom */
-    }
-
-    /* Bigger vertical nav links */
-    .rail-nav a {
-        font-size: 16px;
-        /* was 12px */
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        text-decoration: none;
-    }
-
-    /* Underline on hover (clear and readable) */
-    .rail-nav a:hover {
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        text-decoration-thickness: 2px;
-    }
-
-    /* Keep socials parked at the bottom and centered on the same axis */
-    .rail-social {
-        margin-top: 0;
-        /* let space-between do the push */
-        justify-items: center;
-    }
-}
-
-/* Side-rail spacing tweaks (desktop) */
-@media (min-width: 1100px) {
-
-    /* More space between links */
-    .rail-nav {
-        gap: clamp(18px, 1.4vw, 28px);
-        /* was ~18px — breathe more */
-    }
-
-    /* Extra top margin before the first link (above the whole stack) */
-    .rail-nav li:first-child {
-        margin-block-start: clamp(16px, 2vh, 36px);
     }
 }
