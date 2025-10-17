@@ -974,7 +974,7 @@ a:not(.btn):hover,
 
     /* Bigger vertical nav links */
     .rail-nav a {
-        font-size: 14px;
+        font-size: 16px;
         /* was 12px */
         letter-spacing: .08em;
         text-transform: uppercase;
