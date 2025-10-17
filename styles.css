@@ -154,30 +154,26 @@ h6 {
 .rail-nav a {
     display: block;
     color: #fff;
+    /* fixed white on the dark rail */
     text-decoration: none;
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-size: 16px;
     letter-spacing: .08em;
     text-transform: uppercase;
     line-height: 1;
-    padding-block: 4px;
-    /* makes the hover highlight visible */
-    padding-inline: 6px;
-    border-radius: 6px;
+    /* no hover background, no extra padding */
 }
 
-/* Hover: subtle translucent pill + solid white underline */
 .rail-nav a:hover {
-    background: rgba(255, 255, 255, 0.16);
     text-decoration: underline;
-    text-decoration-color: #fff;
+    /* underline-only hover */
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
 }
 
-/* Keyboard focus: clear white focus ring on the dark rail */
 .rail-nav a:focus-visible {
     outline: 2px solid #fff;
+    /* clear focus on dark bg */
     outline-offset: 2px;
 }
 
@@ -197,28 +193,30 @@ h6 {
     width: 36px;
     height: 36px;
     border: 2px solid #fff;
+    /* white outline by default */
     border-radius: 9999px;
     color: #fff;
-    /* currentColor → icon stroke */
+    /* icon stroke picks this up */
     text-decoration: none;
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
+/* Invert on hover: white bg, dark outline + icon */
 .rail-social a:hover {
     background: #fff;
-    /* filled white */
-    color: #571847;
-    /* brand icon stroke for contrast */
-    border-color: #fff;
+    color: #1d1d1b;
+    /* icon stroke goes dark */
+    border-color: #1d1d1b;
+    /* outline goes dark */
 }
 
-/* Keyboard focus for icons */
 .rail-social a:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 2px;
 }
 
-rail-social svg {
+/* FIXED selector: add the dot */
+.rail-social svg {
     width: 18px;
     height: 18px;
     display: block;
