@@ -895,3 +895,68 @@ a:not(.btn):hover,
 .card-link:hover h3 {
     color: var(--brand);
 }
+
+/* Define rail width (if not already) */
+:root {
+    --railw: 64px;
+}
+
+/* Base: keep rail hidden unless desktop says otherwise */
+.side-rail {
+    display: none;
+}
+
+/* Desktop ≥1100px: show rail, move sidebar right, hide sidebar nav links */
+@media (min-width: 1100px) {
+    .side-rail {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: var(--railw);
+        background: #fff;
+        border-right: 1px solid #e4dbd2;
+        display: flex;
+        /* ← show the rail */
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+        padding: 16px 0;
+        z-index: 60;
+        /* below the sidebar (which is 100) */
+    }
+
+    /* Sidebar sits to the RIGHT of the rail */
+    .sidenav {
+        left: var(--railw);
+        right: auto;
+        inset: 0 auto 0 var(--railw);
+        z-index: 100;
+    }
+
+    /* Hide the nav list inside the sidebar on desktop */
+    .sidenav .nav-links {
+        display: none;
+    }
+
+    .sidenav .nav-sep {
+        display: none;
+    }
+
+    /* optional tidy */
+}
+
+/* Mobile/Tablet <1100px: hide rail, show sidebar nav links */
+@media (max-width: 1099px) {
+    .side-rail {
+        display: none;
+    }
+
+    /* ensure it's off on small screens */
+    .sidenav .nav-links {
+        display: grid;
+    }
+
+    /* ensure links are visible in drawer */
+}
