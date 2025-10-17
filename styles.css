@@ -60,14 +60,13 @@ h6 {
 .hero h1 {
     font-weight: 700;
     letter-spacing: -0.015em;
-    font-size: clamp(40px, 6.2vw, 80px);
-    /* bigger */
+    font-size: clamp(36px, 5.6vw, 72px);
+    /* was 40/6.2vw/80 */
     line-height: 1.08;
     margin: clamp(24px, 6vh, 80px) 0 12px;
     max-width: 80%;
     text-wrap: balance;
 }
-
 
 @media (max-width: 640px) {
     .hero h1 {
@@ -127,19 +126,17 @@ h6 {
     top: 0;
     bottom: 0;
     width: var(--railw);
-    background: #fff;
-    border-right: 1px solid #e4dbd2;
+    background: #571847;
+    /* brand background */
+    border-right: 1px solid #4b143c;
+    /* subtle darker edge */
     display: none;
-    /* base: off */
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* links top, socials bottom */
     padding: 56px 0 24px;
-    /* ≥50px breathing space on top */
     gap: 20px;
     z-index: 60;
-    /* below sidebar (100) */
 }
 
 /* Vertical nav (top-to-bottom reading) */
@@ -149,16 +146,15 @@ h6 {
     margin: 0;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-    /* makes text top→bottom readable */
     display: flex;
     align-items: center;
     gap: clamp(18px, 1.4vw, 28px);
-    /* space between links */
 }
 
 .rail-nav a {
     display: block;
-    color: var(--text);
+    color: #fff;
+    /* white links */
     text-decoration: none;
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-size: 16px;
@@ -188,9 +184,11 @@ h6 {
     place-items: center;
     width: 36px;
     height: 36px;
-    border: 2px solid #1d1d1b;
+    border: 2px solid #fff;
+    /* white outline */
     border-radius: 9999px;
-    color: #1d1d1b;
+    color: #fff;
+    /* currentColor → white strokes */
     text-decoration: none;
 }
 
@@ -201,6 +199,18 @@ h6 {
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
+}
+
+@media (min-width:1100px) {
+    .side-rail {
+        display: flex;
+    }
+}
+
+@media (max-width:1099px) {
+    .side-rail {
+        display: none;
+    }
 }
 
 /* --- Sidebar --- */
@@ -367,11 +377,18 @@ body.nav-open .scrim {
 
 .section-head {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    /* center on text baseline */
     justify-content: space-between;
     gap: 10px;
     position: relative;
     padding-bottom: 10px;
+}
+
+.section-head h2 {
+    margin: 0;
+    line-height: 1;
+    font-size: 16px;
 }
 
 .section-head::after {
@@ -391,12 +408,15 @@ body.nav-open .scrim {
     padding: 0;
     color: var(--text);
     font: inherit;
+    line-height: 1;
+    /* match h2 */
     text-decoration: underline;
     text-underline-offset: 3px;
     display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    /* tighter gap to icon */
+    align-items: baseline;
+    /* keep icon with text baseline */
+    gap: 4px;
+    /* tighter text↔icon spacing */
 }
 
 .section-head .text-link:hover {
@@ -410,6 +430,7 @@ body.nav-open .scrim {
     height: 1em;
     display: inline-block;
     transform: translateY(1px);
+    /* tiny optical nudge */
 }
 
 /* Mobile: stack title + button */
@@ -420,9 +441,7 @@ body.nav-open .scrim {
         gap: 8px;
     }
 
-    .section-head .btn {
-        font-size: .9rem;
-        padding: 8px 12px;
+    .section-head .text-link {
         gap: 6px;
     }
 }
