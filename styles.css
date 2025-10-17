@@ -75,7 +75,6 @@ h6 {
 }
 
 .hero p {
-    /* merged */
     font-size: 18px;
     line-height: 1.55;
     margin: 0 0 16px;
@@ -87,7 +86,6 @@ h6 {
     margin: 0;
     line-height: 1;
     font-size: 16px;
-    /* as requested for both */
 }
 
 /* Monospace face for specific H2s */
@@ -161,15 +159,15 @@ h6 {
     letter-spacing: .08em;
     text-transform: uppercase;
     line-height: 1;
-    /* no hover background, no extra padding */
 }
 
-.rail-nav a:hover {
+/* Side-rail links: keep white text; underline-only on hover */
+.side-rail .rail-nav a:hover {
+    color: #fff;
     text-decoration: underline;
-    /* underline-only hover */
+    text-decoration-color: #fff;
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
-    color: #fff;
 }
 
 .rail-nav a:focus-visible {
@@ -216,7 +214,6 @@ h6 {
     outline-offset: 2px;
 }
 
-/* FIXED selector: add the dot */
 .rail-social svg {
     width: 18px;
     height: 18px;
@@ -392,8 +389,9 @@ body.nav-open .scrim {
     max-width: var(--maxw);
 }
 
+/* Brand-colored hovers — ONLY in main content and sidebar list */
 .content a:not(.btn):hover,
-.nav-links a:hover,
+.sidenav .nav-links a:hover,
 .link:hover {
     color: var(--brand);
     text-decoration-color: var(--brand);
@@ -410,7 +408,7 @@ body.nav-open .scrim {
 .section-head {
     display: flex;
     align-items: baseline;
-    /* center on text baseline */
+    /* baseline-align title + link */
     justify-content: space-between;
     gap: 10px;
     position: relative;
@@ -441,14 +439,11 @@ body.nav-open .scrim {
     color: var(--text);
     font: inherit;
     line-height: 1;
-    /* match h2 */
     text-decoration: underline;
     text-underline-offset: 3px;
     display: inline-flex;
     align-items: baseline;
-    /* keep icon with text baseline */
     gap: 4px;
-    /* tighter text↔icon spacing */
 }
 
 .section-head .text-link:hover {
@@ -533,20 +528,6 @@ body.nav-open .scrim {
 
 .btn.ghost:hover .btn-icon {
     transform: translate(.5px, -1.5px);
-}
-
-/* Text links hover color */
-a:not(.btn):hover,
-.nav-links a:hover,
-.link:hover {
-    color: var(--brand);
-    text-decoration-color: var(--brand);
-}
-
-.link {
-    color: var(--text);
-    text-decoration: underline;
-    text-underline-offset: 3px;
 }
 
 /* Cards grid */
