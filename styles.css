@@ -245,9 +245,57 @@ h6 {
     gap: 16px;
     padding: 54px;
     border-right: 1px solid #d8cec3;
-    background: var(--panel);
-    /* set to #fff if you prefer */
+    background: #571847;
+    /* brand background */
+    color: #fff;
+    /* default text in the drawer */
+    border-left: 2px solid #fff;
+    /* white divider next to the side-rail */
     z-index: 100;
+}
+
+.sidenav .brand,
+.sidenav .nav-links a,
+.sidenav .availability {
+    color: #fff;
+}
+
+.sidenav .nav-sep {
+    border-top: 1px solid rgba(255, 255, 255, .25);
+}
+
+.sidenav .nav-links a:hover {
+    color: #fff;
+    /* stay white */
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+}
+
+.sidenav .nav-links a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+/* Mobile socials (the ones that live inside the sidenav) */
+.sidenav .social-inline a {
+    border-color: #fff;
+    color: #fff;
+    /* makes the icon stroke white */
+    background: transparent;
+}
+
+.sidenav .social-inline a:hover {
+    background: #fff;
+    /* invert on hover */
+    color: #1d1d1b;
+    /* dark icon stroke */
+    border-color: #fff;
+}
+
+.sidenav .social-inline svg {
+    stroke: currentColor;
+    /* follows the color above */
 }
 
 .profile {
