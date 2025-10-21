@@ -146,8 +146,10 @@ h6 {
     top: 0;
     bottom: 0;
     width: var(--railw);
-    background: #571847;
-    border-right: 1px solid #4b143c;
+    background: #FBDFB8;
+    /* new light background */
+    border-right: 1px solid #1d1d1b;
+    /* subtle dark edge */
     display: none;
     flex-direction: column;
     align-items: center;
@@ -170,8 +172,8 @@ h6 {
 }
 
 .rail-nav a {
-    display: block;
-    color: #fff;
+    color: #1d1d1b;
+    /* dark text on light rail */
     text-decoration: none;
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-size: 16px;
@@ -180,18 +182,19 @@ h6 {
     line-height: 1;
 }
 
-.side-rail .rail-nav a:hover {
-    color: #fff;
+.rail-nav a:hover {
+    color: #1d1d1b;
+    /* keep color; add underline */
     text-decoration: underline;
-    text-decoration-color: #fff;
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
 }
 
 .rail-nav a:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid #1d1d1b;
     outline-offset: 2px;
 }
+
 
 /* Rail socials */
 .rail-social {
@@ -208,21 +211,25 @@ h6 {
     place-items: center;
     width: 36px;
     height: 36px;
-    border: 2px solid #fff;
+    border: 2px solid #1d1d1b;
+    /* dark outline */
     border-radius: 9999px;
-    color: #fff;
-    text-decoration: none;
+    color: #1d1d1b;
+    /* icon stroke follows this */
+    background: transparent;
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
 .rail-social a:hover {
-    background: #fff;
-    color: #1d1d1b;
+    background: #1d1d1b;
+    /* invert on hover */
+    color: #FBDFB8;
+    /* light icon stroke */
     border-color: #1d1d1b;
 }
 
 .rail-social a:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid #1d1d1b;
     outline-offset: 2px;
 }
 
@@ -235,6 +242,18 @@ h6 {
     stroke-width: 2;
 }
 
+@media (min-width:1100px) {
+    .side-rail {
+        display: flex;
+    }
+}
+
+@media (max-width:1099px) {
+    .side-rail {
+        display: none;
+    }
+}
+
 /* --- Sidebar (base) --- */
 .sidenav {
     position: fixed;
@@ -244,58 +263,64 @@ h6 {
     flex-direction: column;
     gap: 16px;
     padding: 54px;
-    border-right: 1px solid #d8cec3;
-    background: #571847;
-    /* brand background */
-    color: #fff;
-    /* default text in the drawer */
-    border-left: 2px solid #fff;
-    /* white divider next to the side-rail */
+    background: #FBDFB8;
+    /* new light background */
+    border-left: 2px solid #1d1d1b;
+    /* divider from rail */
+    border-right: 1px solid #1d1d1b;
+    /* edge to content */
     z-index: 100;
 }
 
+
+/* text + links inside drawer -> dark */
+.sidenav,
 .sidenav .brand,
 .sidenav .nav-links a,
 .sidenav .availability {
-    color: #fff;
+    color: #1d1d1b;
 }
 
+.sidenav .role {
+    color: #474746;
+}
+
+/* muted but readable on light bg */
+
+/* drawer divider line should be dark now */
 .sidenav .nav-sep {
-    border-top: 1px solid rgba(255, 255, 255, .25);
+    border-top: 1px solid #1d1d1b;
 }
 
+/* drawer link hovers: underline only (no color flip) */
 .sidenav .nav-links a:hover {
-    color: #fff;
-    /* stay white */
+    color: #1d1d1b;
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
 }
 
 .sidenav .nav-links a:focus-visible {
-    outline: 2px solid #fff;
+    outline: 2px solid #1d1d1b;
     outline-offset: 3px;
 }
 
-/* Mobile socials (the ones that live inside the sidenav) */
+/* socials that live inside the sidenav (mobile/tablet) */
 .sidenav .social-inline a {
-    border-color: #fff;
-    color: #fff;
-    /* makes the icon stroke white */
+    border-color: #1d1d1b;
+    color: #1d1d1b;
     background: transparent;
 }
 
 .sidenav .social-inline a:hover {
-    background: #fff;
+    background: #1d1d1b;
     /* invert on hover */
-    color: #1d1d1b;
-    /* dark icon stroke */
-    border-color: #fff;
+    color: #FBDFB8;
+    border-color: #1d1d1b;
 }
 
 .sidenav .social-inline svg {
     stroke: currentColor;
-    /* follows the color above */
 }
 
 .profile {
