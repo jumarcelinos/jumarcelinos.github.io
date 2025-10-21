@@ -194,6 +194,7 @@ h6 {
     letter-spacing: .08em;
     text-transform: uppercase;
     line-height: 1;
+    font-weight: 600;
 }
 
 .side-rail .rail-nav a:hover {
@@ -240,8 +241,8 @@ h6 {
 .side-rail--right .rail-social a {
     display: grid;
     place-items: center;
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border: 2px solid var(--rail-fg);
     border-radius: 9999px;
     color: var(--rail-fg);
@@ -256,8 +257,8 @@ h6 {
 }
 
 .side-rail--right .rail-social svg {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     display: block;
     fill: none;
     stroke: currentColor;
@@ -268,8 +269,8 @@ h6 {
 .rail-top {
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border: 2px solid var(--rail-fg);
     border-radius: 9999px;
     color: var(--rail-fg);
@@ -286,8 +287,8 @@ h6 {
 }
 
 .rail-top svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 /* Show both rails on desktop only */
