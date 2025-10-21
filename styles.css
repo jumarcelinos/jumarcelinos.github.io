@@ -153,6 +153,35 @@ h6 {
     color: var(--muted);
 }
 
+/* =========================
+   Mobile-only hero tweaks
+   ========================= */
+@media (max-width: 1099px) {
+
+    /* Hide the inline hero images on mobile; keep only text */
+    .hero .h1-icon {
+        display: none;
+    }
+
+    /* Optional: tighten word spacing a hair now that icons are gone */
+    .hero .h1-line {
+        gap: .25em;
+        /* was .35em */
+    }
+
+    /* Sidebar profile photo becomes round on mobile */
+    .sidenav .profile img {
+        width: 128px;
+        /* comfy size on phones */
+        height: auto;
+        aspect-ratio: 1 / 1;
+        /* square for a perfect circle */
+        border-radius: 9999px;
+        /* round */
+        object-fit: cover;
+    }
+}
+
 /* Section headings */
 .section-head h2 {
     margin: 0;
