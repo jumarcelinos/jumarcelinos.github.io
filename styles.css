@@ -102,6 +102,16 @@ h6 {
     margin-top: .18em;
 }
 
+/* Hero: explicit top/bottom buffers around the H1 lines */
+.hero .h1-line:first-of-type {
+    margin-top: clamp(8px, 1.8vh, 24px);
+}
+
+.hero .h1-line:last-of-type {
+    margin-bottom: clamp(18px, 2.4vh, 40px);
+    /* space before the paragraph */
+}
+
 /* small inline images that scale with the font */
 .h1-icon {
     height: 0.9em;
@@ -563,7 +573,8 @@ body.nav-open .scrim {
     gap: 8px;
     color: #146c2e;
     font-weight: 600;
-    margin-bottom: clamp(16px, 2.5vh, 36px);
+    margin-bottom: clamp(24px, 3vh, 48px);
+    /* was smaller */
 }
 
 .availability-main .dot {
