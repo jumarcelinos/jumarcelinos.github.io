@@ -87,6 +87,51 @@ h6 {
     text-wrap: balance;
 }
 
+/* Multi-line hero headline with inline images */
+.hero .h1-line {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .35em;
+    /* tight, reads like part of the sentence */
+    margin: 0;
+    /* remove default h1 margin; we’ll control rhythm */
+    line-height: 1.08;
+    /* keep your compact leading */
+}
+
+/* space between the lines, not too airy */
+.hero .h1-line+.h1-line {
+    margin-top: .12em;
+}
+
+/* small inline images that scale with the font */
+.h1-icon {
+    height: 0.9em;
+    /* sized by text for balance */
+    width: auto;
+    vertical-align: baseline;
+    object-fit: cover;
+    border-radius: 8px;
+    /* gentle by default for non-profile icons */
+    border: 1px solid #d0c5b9;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+}
+
+/* first line profile image: round and a touch bigger */
+.h1-icon--profile {
+    height: 1.1em;
+    aspect-ratio: 1 / 1;
+    border-radius: 999px;
+}
+
+/* keep long phrases from squishing the icons on very small screens */
+@media (max-width: 480px) {
+    .hero .h1-line {
+        flex-wrap: wrap;
+        gap: .3em;
+    }
+}
+
 @media (max-width: 640px) {
     .hero h1 {
         max-width: 100%;
