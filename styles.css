@@ -1,45 +1,42 @@
 /* =========================================================
-   BASE / TOKENS
+   TOKENS
    ========================================================= */
 :root {
     --bg: #f2efec;
     /* page background */
     --panel: #ede5dd;
-    /* sidebar/cards */
+    /* generic light panel */
     --text: #1d1d1b;
     /* main text */
     --muted: #474746;
     /* secondary text */
     --brand: #571847;
-    /* primary accent */
+    /* accent */
     --ring: #9aa6ff;
     /* focus outline */
 
     --gap: clamp(14px, 2vw, 22px);
     --radius: 10px;
-    --maxw: 1180px;
 
-    /* Desktop sizes: rail fixed 64px; remaining split 15/85 */
-    --railw: 64px;
-    /* side-rail */
-    --colw: calc((100vw - var(--railw)) * 0.15);
-    /* sidebar = 15% of remaining */
-    --contentw: calc((100vw - var(--railw)) * 0.85);
-    /* main    = 85% of remaining */
+    /* Desktop frame: 10% – 80% – 10% */
+    --railwL: 10vw;
+    /* left rail width */
+    --railwR: 10vw;
+    /* right rail width */
+    --rail-bg: #FBDFB8;
+    /* rails background (sand) */
+    --rail-fg: #1d1d1b;
+    /* rails fg (text/icons) */
 
-    /* Main content external margins (desktop) */
-    --content-mt: clamp(24px, 4vw, 64px);
-    /* top */
-    --content-mr: clamp(18px, 3vw, 48px);
-    /* right */
-    --content-mb: clamp(32px, 6vh, 96px);
-    /* bottom */
+    /* Mobile drawer width */
+    --drawerw: min(88vw, 320px);
 
-    /* Main content inner width (as a fraction of its lane) */
+    /* Content lane */
     --content-inner: 0.80;
-
-    /* Extra left gutter for main content (desktop) */
-    --content-ml-extra: clamp(16px, 3vw, 56px);
+    /* take 80% of its available lane */
+    --content-mt: clamp(24px, 4vw, 64px);
+    --content-mr: clamp(18px, 3vw, 48px);
+    --content-mb: clamp(32px, 6vh, 96px);
 }
 
 /* =========================================================
@@ -66,7 +63,7 @@ body {
 }
 
 /* =========================================================
-   TYPOGRAPHY
+   TYPE
    ========================================================= */
 h1,
 h2,
@@ -114,11 +111,10 @@ h6 {
 #testimonials-title {
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-weight: 600;
-    /* slight bump so it reads like a label */
 }
 
 /* =========================================================
-   LAYOUT: TOPBAR / RAIL / SIDEBAR / CONTENT / SCRIM
+   TOPBAR (mobile)
    ========================================================= */
 .topbar {
     position: sticky;
@@ -139,17 +135,36 @@ h6 {
     font-weight: 600;
 }
 
-/* --- Desktop left rail (base, hidden <1100px) --- */
+.hamburger {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 8px;
+    margin: -4px;
+    display: grid;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    display: block;
+}
+
+/* =========================================================
+   RAILS (desktop)
+   ========================================================= */
+/* Left rail */
 .side-rail {
     position: fixed;
     left: 0;
     top: 0;
     bottom: 0;
-    width: var(--railw);
-    background: #ffffff;
-    /* new light background */
-    border-right: 1px solid #1d1d1b;
-    /* subtle dark edge */
+    width: var(--railwL);
+    background: var(--rail-bg);
+    border-right: 1px solid var(--rail-fg);
     display: none;
     flex-direction: column;
     align-items: center;
@@ -159,7 +174,7 @@ h6 {
     z-index: 60;
 }
 
-/* Rail nav */
+/* Vertical nav on left rail */
 .rail-nav {
     list-style: none;
     padding: 0;
@@ -172,32 +187,48 @@ h6 {
 }
 
 .rail-nav a {
-    color: #1d1d1b;
-    /* dark text on light rail */
+    color: var(--rail-fg);
     text-decoration: none;
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
-    font-size: 16px;
+    font-size: clamp(16px, 1.2vw, 20px);
     letter-spacing: .08em;
     text-transform: uppercase;
     line-height: 1;
 }
 
-.rail-nav a:hover {
-    color: #1d1d1b;
-    /* keep color; add underline */
+.side-rail .rail-nav a:hover {
+    color: var(--rail-fg);
     text-decoration: underline;
     text-underline-offset: 3px;
     text-decoration-thickness: 2px;
 }
 
 .rail-nav a:focus-visible {
-    outline: 2px solid #1d1d1b;
+    outline: 2px solid var(--rail-fg);
     outline-offset: 2px;
 }
 
+/* Right rail */
+.side-rail--right {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: var(--railwR);
+    background: var(--rail-bg);
+    border-left: 1px solid var(--rail-fg);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* socials top, arrow bottom */
+    padding: 24px 0;
+    gap: 20px;
+    z-index: 60;
+}
 
-/* Rail socials */
-.rail-social {
+/* Right rail socials (top) */
+.side-rail--right .rail-social {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -206,34 +237,25 @@ h6 {
     justify-items: center;
 }
 
-.rail-social a {
+.side-rail--right .rail-social a {
     display: grid;
     place-items: center;
     width: 36px;
     height: 36px;
-    border: 2px solid #1d1d1b;
-    /* dark outline */
+    border: 2px solid var(--rail-fg);
     border-radius: 9999px;
-    color: #1d1d1b;
-    /* icon stroke follows this */
+    color: var(--rail-fg);
     background: transparent;
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
-.rail-social a:hover {
-    background: #1d1d1b;
-    /* invert on hover */
-    color: #ffffff;
-    /* light icon stroke */
-    border-color: #1d1d1b;
+.side-rail--right .rail-social a:hover {
+    background: var(--rail-fg);
+    color: var(--rail-bg);
+    border-color: var(--rail-fg);
 }
 
-.rail-social a:focus-visible {
-    outline: 2px solid #1d1d1b;
-    outline-offset: 2px;
-}
-
-.rail-social svg {
+.side-rail--right .rail-social svg {
     width: 18px;
     height: 18px;
     display: block;
@@ -242,96 +264,69 @@ h6 {
     stroke-width: 2;
 }
 
+/* Right rail back-to-top (bottom) */
+.rail-top {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--rail-fg);
+    border-radius: 9999px;
+    color: var(--rail-fg);
+    background: transparent;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+    margin-bottom: 8px;
+}
+
+.rail-top:hover {
+    background: var(--rail-fg);
+    color: var(--rail-bg);
+    border-color: var(--rail-fg);
+}
+
+.rail-top svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Show rails on desktop only */
 @media (min-width:1100px) {
     .side-rail {
         display: flex;
     }
-}
 
-@media (max-width:1099px) {
-    .side-rail {
-        display: none;
+    .side-rail--right {
+        display: flex;
     }
 }
 
-/* --- Sidebar (base) --- */
+/* =========================================================
+   SIDENAV (mobile drawer only)
+   ========================================================= */
 .sidenav {
     position: fixed;
     inset: 0 auto 0 0;
-    width: var(--colw);
+    width: var(--drawerw);
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 54px;
-    background: #f2efec;
-    /* new light background */
-    border-right: 1px solid #1d1d1b;
-    /* edge to content */
+    background: var(--bg);
+    border-right: 1px solid var(--text);
     z-index: 100;
-}
-
-
-/* text + links inside drawer -> dark */
-.sidenav,
-.sidenav .brand,
-.sidenav .nav-links a,
-.sidenav .availability {
-    color: #1d1d1b;
-}
-
-.sidenav .role {
-    color: #474746;
-}
-
-/* muted but readable on light bg */
-
-/* drawer divider line should be dark now */
-.sidenav .nav-sep {
-    border-top: 1px solid #1d1d1b;
-}
-
-/* drawer link hovers: underline only (no color flip) */
-.sidenav .nav-links a:hover {
-    color: #1d1d1b;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 2px;
-}
-
-.sidenav .nav-links a:focus-visible {
-    outline: 2px solid #1d1d1b;
-    outline-offset: 3px;
-}
-
-/* socials that live inside the sidenav (mobile/tablet) */
-.sidenav .social-inline a {
-    border-color: #1d1d1b;
-    color: #1d1d1b;
-    background: transparent;
-}
-
-.sidenav .social-inline a:hover {
-    background: #1d1d1b;
-    /* invert on hover */
-    color: #ffffff;
-    border-color: #1d1d1b;
-}
-
-.sidenav .social-inline svg {
-    stroke: currentColor;
 }
 
 .profile {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
     margin: 0 0 12px;
 }
 
 .profile img {
     width: 150px;
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 0;
     background: #fff;
@@ -356,8 +351,7 @@ h6 {
 
 .nav-sep {
     border: 0;
-    border-top: 1px solid #1d1d1b;
-    /* was #d8cec3 */
+    border-top: 1px solid var(--text);
     margin: 12px 0 14px;
 }
 
@@ -373,6 +367,13 @@ h6 {
     color: var(--text);
     text-decoration: none;
     padding: 6px 0;
+}
+
+.nav-links a:hover {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
 }
 
 .nav-links a:focus-visible {
@@ -397,7 +398,7 @@ h6 {
     box-shadow: 0 0 10px #28a745;
 }
 
-/* Sidebar socials (mobile/tablet only) */
+/* Sidenav socials (mobile) */
 .social {
     list-style: none;
     padding: 0;
@@ -418,13 +419,13 @@ h6 {
     border-radius: 9999px;
     text-decoration: none;
     color: var(--muted);
-    border: 3px solid #1d1d1b;
+    border: 3px solid var(--text);
     background: transparent;
 }
 
 .social-inline a:hover {
     color: var(--brand);
-    border-color: color-mix(in srgb, var(--brand) 40%, #1d1d1b);
+    border-color: color-mix(in srgb, var(--brand) 40%, var(--text));
 }
 
 .social-inline svg {
@@ -436,7 +437,34 @@ h6 {
     stroke-width: 2;
 }
 
-/* Scrim/backdrop */
+/* Hide the drawer on desktop */
+@media (min-width:1100px) {
+    .sidenav {
+        display: none;
+    }
+}
+
+/* Mobile drawer transitions */
+@media (max-width:900px) {
+    .topbar {
+        display: flex;
+    }
+
+    .sidenav {
+        transform: translateX(-100%);
+        transition: transform .24s ease;
+    }
+
+    .sidenav.open {
+        transform: translateX(0);
+    }
+
+    body.nav-open {
+        overflow: hidden;
+    }
+}
+
+/* Scrim for mobile */
 .scrim {
     position: fixed;
     inset: 0;
@@ -452,21 +480,44 @@ body.nav-open .scrim {
     visibility: visible;
 }
 
-/* Content lane (base) */
+/* =========================================================
+   CONTENT LANE
+   ========================================================= */
 .content {
-    margin-left: var(--colw);
     padding: clamp(18px, 3vw, 36px);
     display: grid;
     gap: clamp(24px, 3vw, 40px);
-    max-width: var(--maxw);
 }
 
-/* Brand-colored hovers — ONLY in main content and sidebar list */
-.content a:not(.btn):hover,
-.sidenav .nav-links a:hover,
-.link:hover {
-    color: var(--brand);
-    text-decoration-color: var(--brand);
+/* Desktop: sit between both rails, use 80% of available width */
+@media (min-width:1100px) {
+    .content {
+        margin-top: var(--content-mt);
+        margin-bottom: var(--content-mb);
+        margin-left: var(--railwL);
+        margin-right: var(--railwR);
+        width: calc((100vw - var(--railwL) - var(--railwR)) * var(--content-inner));
+        max-width: none;
+        padding-right: clamp(18px, 3vw, 36px);
+    }
+}
+
+/* Availability badge now in main */
+.availability-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #146c2e;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.availability-main .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #28a745;
+    box-shadow: 0 0 10px #28a745;
 }
 
 /* =========================================================
@@ -486,12 +537,6 @@ body.nav-open .scrim {
     padding-bottom: 10px;
 }
 
-.section-head h2 {
-    margin: 0;
-    line-height: 1;
-    font-size: 16px;
-}
-
 .section-head::after {
     content: "";
     position: absolute;
@@ -500,7 +545,6 @@ body.nav-open .scrim {
     bottom: 0;
     height: 1px;
     background: #1d1d1b;
-    /* was #d8cec3 */
 }
 
 .section-head .text-link {
@@ -513,7 +557,6 @@ body.nav-open .scrim {
     font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-weight: 600;
     line-height: 1;
-    /* align with h2 baseline */
     text-decoration: underline;
     text-underline-offset: 3px;
     display: inline-flex;
@@ -545,6 +588,7 @@ body.nav-open .scrim {
     }
 }
 
+/* CTA row */
 .cta-row {
     display: flex;
     gap: 12px;
@@ -575,12 +619,12 @@ body.nav-open .scrim {
 .btn.ghost {
     background: transparent;
     color: var(--text);
-    border: 2px solid #1d1d1b;
+    border: 2px solid var(--text);
 }
 
 .btn.ghost:hover {
     color: var(--brand);
-    border-color: #1d1d1b;
+    border-color: var(--text);
     filter: brightness(0.98);
 }
 
@@ -601,6 +645,7 @@ body.nav-open .scrim {
     transform: translate(.5px, -1.5px);
 }
 
+/* Extra breathing room before projects */
 #work {
     margin-top: clamp(56px, 10vh, 140px);
 }
@@ -616,11 +661,22 @@ body.nav-open .scrim {
     grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
 }
 
+@media (max-width:1100px) {
+    .grid {
+        --cols: 2;
+    }
+}
+
+@media (max-width:640px) {
+    .grid {
+        --cols: 1;
+    }
+}
+
 .card {
     background: var(--panel);
     border: 1px solid #d8cec3;
     border-radius: 0;
-    /* square corners */
     overflow: visible;
     transition: transform .15s ease, border-color .15s ease;
 }
@@ -721,6 +777,7 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
+/* lock hover tag colors per theme */
 .card.theme-freshfit .card-link:hover .tags li,
 .card.theme-task .card-link:hover .tags li,
 .card.theme-nordic .card-link:hover .tags li {
@@ -734,13 +791,15 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
-/* Dark card body text → white */
+/* Dark card body text → white for contrast */
 .card.theme-eco .card-body,
 .card.theme-ccit .card-body {
     color: #fff;
 }
 
-/* Testimonials */
+/* =========================================================
+   TESTIMONIALS (3-col grid)
+   ========================================================= */
 #testimonials {
     margin-top: clamp(32px, 6vh, 96px);
 }
@@ -750,9 +809,11 @@ body.nav-open .scrim {
     gap: 8px;
 }
 
+/* if you keep header arrows */
+
 .t-btn {
     appearance: none;
-    border: 2px solid #1d1d1b;
+    border: 2px solid var(--text);
     background: transparent;
     width: 32px;
     height: 32px;
@@ -768,7 +829,7 @@ body.nav-open .scrim {
 }
 
 .t-btn:hover {
-    border-color: color-mix(in srgb, var(--brand) 40%, #1d1d1b);
+    border-color: color-mix(in srgb, var(--brand) 40%, var(--text));
     color: var(--brand);
 }
 
@@ -792,6 +853,12 @@ body.nav-open .scrim {
     gap: var(--gap);
 }
 
+@media (max-width:900px) {
+    .t-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .t-card {
     text-align: left;
     border-radius: 0;
@@ -803,7 +870,7 @@ body.nav-open .scrim {
 
 .t-card img {
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 4/3;
     object-fit: cover;
     border-radius: 0;
     border: 1px solid #d8cec3;
@@ -848,114 +915,17 @@ body.nav-open .scrim {
     white-space: nowrap;
 }
 
-/* Footer */
-.footer {
-    color: var(--muted);
-    padding: 12px 0 40px;
-}
-
 /* =========================================================
-   RESPONSIVE
+   LINKS (global in main content)
    ========================================================= */
-/* Desktop (≥1100px): rail 64px; remaining 15/85; content left-aligned with extra gutter; align sidebar top */
-@media (min-width:1100px) {
-    .side-rail {
-        display: flex;
-        width: var(--railw);
-    }
-
-    .sidenav {
-        left: var(--railw);
-        right: auto;
-        inset: 0 auto 0 var(--railw);
-        width: var(--colw);
-        padding-top: var(--content-mt);
-        /* align with content top */
-    }
-
-    .sidenav .nav-links {
-        display: none;
-    }
-
-    .sidenav .nav-sep {
-        display: none;
-    }
-
-    .sidenav .social {
-        display: none;
-    }
-
-    .content {
-        /* sit after rail + sidebar + extra left gutter */
-        margin-left: calc(var(--railw) + var(--colw) + var(--content-ml-extra));
-
-        /* vertical + right breathing room */
-        margin-top: var(--content-mt);
-        margin-right: var(--content-mr);
-        margin-bottom: var(--content-mb);
-
-        /* take only 80% of the 85% lane */
-        width: calc(var(--contentw) * var(--content-inner));
-        max-width: none;
-
-        /* keep internal padding */
-        padding-right: clamp(18px, 3vw, 36px);
-
-        display: grid;
-        gap: clamp(24px, 3vw, 40px);
-    }
-}
-
-/* Tablet / Mobile */
-@media (max-width:1099px) {
-    .side-rail {
-        display: none;
-    }
-}
-
-@media (max-width:900px) {
-    .topbar {
-        display: flex;
-    }
-
-    .sidenav {
-        transform: translateX(-100%);
-        transition: transform .24s ease;
-        width: min(88vw, 320px);
-    }
-
-    .sidenav.open {
-        transform: translateX(0);
-    }
-
-    body.nav-open {
-        overflow: hidden;
-    }
-
-    .content {
-        margin-left: 0;
-        padding-top: 14px;
-    }
-}
-
-@media (max-width:1100px) {
-    .grid {
-        --cols: 2;
-    }
-}
-
-@media (max-width:640px) {
-    .grid {
-        --cols: 1;
-    }
-
-    .hero h1 {
-        max-width: 100%;
-    }
+.content a:not(.btn):hover,
+.link:hover {
+    color: var(--brand);
+    text-decoration-color: var(--brand);
 }
 
 /* =========================================================
-   MOTION / FOCUS
+   MOTION / REDUCED
    ========================================================= */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -963,224 +933,3 @@ body.nav-open .scrim {
         transition: none !important;
     }
 }
-
-/* =========================================================
-   DESKTOP FRAME: 10% (left rail) / 80% (content) / 10% (right rail)
-   ========================================================= */
-
-/* Tokens for symmetric rails on desktop */
-:root {
-    --railwL: 10vw;
-    /* left rail width on desktop */
-    --railwR: 10vw;
-    /* right rail width on desktop */
-    --rail-bg: #FBDFB8;
-    /* light sand background */
-    --rail-fg: #1d1d1b;
-    /* dark text/icons on rail */
-}
-
-/* LEFT rail updates (keep your existing .side-rail styles, then add/override below) */
-@media (min-width:1100px) {
-    .side-rail {
-        display: flex;
-        width: var(--railwL);
-        left: 0;
-        right: auto;
-        background: var(--rail-bg);
-        border-right: 1px solid var(--rail-fg);
-        padding: 56px 0 24px;
-        justify-content: space-between;
-    }
-
-    /* Bigger nav links on the left rail */
-    .rail-nav a {
-        color: var(--rail-fg);
-        font-size: clamp(16px, 1.2vw, 20px);
-        /* bumped up */
-        letter-spacing: .08em;
-        text-transform: uppercase;
-        text-decoration: none;
-        line-height: 1;
-    }
-
-    .side-rail .rail-nav a:hover {
-        color: var(--rail-fg);
-        text-decoration: underline;
-        text-underline-offset: 3px;
-        text-decoration-thickness: 2px;
-    }
-
-    .rail-nav a:focus-visible {
-        outline: 2px solid var(--rail-fg);
-        outline-offset: 2px;
-    }
-}
-
-/* RIGHT rail (new) mirrors left rail but sits on the right */
-.side-rail--right {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: auto;
-    display: none;
-    /* shown on desktop below */
-    width: var(--railwR);
-    background: var(--rail-bg);
-    border-left: 1px solid var(--rail-fg);
-    z-index: 60;
-    padding: 24px 0 24px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    /* socials at top, arrow at bottom */
-    gap: 20px;
-}
-
-@media (min-width:1100px) {
-    .side-rail--right {
-        display: flex;
-    }
-}
-
-/* Socials at the top of the right rail */
-.side-rail--right .rail-social {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 12px;
-    justify-items: center;
-}
-
-.side-rail--right .rail-social a {
-    display: grid;
-    place-items: center;
-    width: 36px;
-    height: 36px;
-    border: 2px solid var(--rail-fg);
-    border-radius: 9999px;
-    color: var(--rail-fg);
-    background: transparent;
-    transition: background .15s ease, color .15s ease, border-color .15s ease;
-}
-
-.side-rail--right .rail-social a:hover {
-    background: var(--rail-fg);
-    /* invert on hover */
-    color: var(--rail-bg);
-    border-color: var(--rail-fg);
-}
-
-.side-rail--right .rail-social svg {
-    width: 18px;
-    height: 18px;
-    display: block;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-}
-
-/* Back-to-top arrow at the bottom of the right rail */
-.rail-top {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--rail-fg);
-    border-radius: 9999px;
-    color: var(--rail-fg);
-    background: transparent;
-    text-decoration: none;
-    transition: background .15s ease, color .15s ease, border-color .15s ease;
-    margin-bottom: 8px;
-}
-
-.rail-top:hover {
-    background: var(--rail-fg);
-    color: var(--rail-bg);
-    border-color: var(--rail-fg);
-}
-
-.rail-top svg {
-    width: 20px;
-    height: 20px;
-}
-
-/* Hide the SIDEBAR on desktop; keep it for mobile */
-@media (min-width:1100px) {
-    .sidenav {
-        display: none;
-    }
-}
-
-/* Main content between two rails on desktop */
-@media (min-width:1100px) {
-    .content {
-        /* space out from both rails */
-        margin-left: var(--railwL);
-        margin-right: var(--railwR);
-
-        /* keep your vertical margins if you had them */
-        margin-top: var(--content-mt);
-        margin-bottom: var(--content-mb);
-
-        /* inner width control you already set (80% of its lane) */
-        width: calc((100vw - var(--railwL) - var(--railwR)) * var(--content-inner));
-        max-width: none;
-
-        /* keep your internal padding/gap */
-        padding-right: clamp(18px, 3vw, 36px);
-        display: grid;
-        gap: clamp(24px, 3vw, 40px);
-    }
-}
-
-/* Mobile/Tablet: keep your existing drawer */
-@media (max-width:1099px) {
-
-    .side-rail,
-    .side-rail--right {
-        display: none;
-    }
-
-    /* .sidenav stays as-is for mobile */
-}
-
-/* =========================================================
-   AVAILABILITY: now lives in main, above the hero
-   ========================================================= */
-.availability-main {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: #146c2e;
-    /* keep your green accent, or switch to var(--text) */
-    font-weight: 600;
-    margin-bottom: 8px;
-    /* space before the H1 block */
-}
-
-.availability-main .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #28a745;
-    box-shadow: 0 0 10px #28a745;
-}
-
-/* (Optional) Hide the availability inside the sidenav everywhere */
-.sidenav .availability {
-    display: none;
-}
-
-/* =========================================================
-   SMALL polish: ensure hero still has air with the new badge
-   ========================================================= */
-.hero {
-    margin-top: 4px;
-}
-
-/* tiny nudge since badge adds a line above */
