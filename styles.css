@@ -3,9 +3,9 @@
    ========================================================= */
 :root {
     --bg: #f2efec;
-    /* page background */
+    /* page + rails background (shared) */
     --panel: #ede5dd;
-    /* generic light panel */
+    /* generic light panel (cards) */
     --text: #1d1d1b;
     /* main text */
     --muted: #474746;
@@ -23,17 +23,17 @@
     /* left rail width */
     --railwR: 10vw;
     /* right rail width */
-    --rail-bg: #FBDFB8;
-    /* rails background (sand) */
-    --rail-fg: #1d1d1b;
-    /* rails fg (text/icons) */
+
+    /* Rails use the same background as the page */
+    --rail-bg: var(--bg);
+    --rail-fg: var(--text);
 
     /* Mobile drawer width */
     --drawerw: min(88vw, 320px);
 
     /* Content lane */
     --content-inner: 0.80;
-    /* take 80% of its available lane */
+    /* take 80% of the middle lane */
     --content-mt: clamp(24px, 4vw, 64px);
     --content-mr: clamp(18px, 3vw, 48px);
     --content-mb: clamp(32px, 6vh, 96px);
@@ -156,7 +156,7 @@ h6 {
 /* =========================================================
    RAILS (desktop)
    ========================================================= */
-/* Left rail */
+/* Left rail (nav) */
 .side-rail {
     position: fixed;
     left: 0;
@@ -208,7 +208,7 @@ h6 {
     outline-offset: 2px;
 }
 
-/* Right rail */
+/* Right rail (socials + back-to-top) */
 .side-rail--right {
     position: fixed;
     right: 0;
@@ -290,7 +290,7 @@ h6 {
     height: 20px;
 }
 
-/* Show rails on desktop only */
+/* Show both rails on desktop only */
 @media (min-width:1100px) {
     .side-rail {
         display: flex;
@@ -481,7 +481,7 @@ body.nav-open .scrim {
 }
 
 /* =========================================================
-   CONTENT LANE
+   CONTENT LANE (centered between rails)
    ========================================================= */
 .content {
     padding: clamp(18px, 3vw, 36px);
@@ -489,14 +489,24 @@ body.nav-open .scrim {
     gap: clamp(24px, 3vw, 40px);
 }
 
-/* Desktop: sit between both rails, use 80% of available width */
+/* Desktop centering:
+   Middle lane = 100vw - rails. We size content to 80% of that lane,
+   then add equal side gutters so it sits centered between rails. */
 @media (min-width:1100px) {
     .content {
+        /* vertical spacing */
         margin-top: var(--content-mt);
         margin-bottom: var(--content-mb);
-        margin-left: var(--railwL);
-        margin-right: var(--railwR);
+
+        /* compute middle lane once, then center the inner width */
+        /* width: 80% of middle lane */
         width: calc((100vw - var(--railwL) - var(--railwR)) * var(--content-inner));
+
+        /* left margin = left rail + half of the leftover space inside middle lane */
+        margin-left: calc(var(--railwL) + ((100vw - var(--railwL) - var(--railwR)) - (100vw - var(--railwL) - var(--railwR)) * var(--content-inner)) / 2);
+        /* right margin mirrors left */
+        margin-right: calc(var(--railwR) + ((100vw - var(--railwL) - var(--railwR)) - (100vw - var(--railwL) - var(--railwR)) * var(--content-inner)) / 2);
+
         max-width: none;
         padding-right: clamp(18px, 3vw, 36px);
     }
@@ -907,7 +917,7 @@ body.nav-open .scrim {
 .t-tags li {
     font-size: .82rem;
     padding: 4px 10px;
-    border: 1px solid #d0c5b9;
+    border: 1px solid #d8cec3;
     border-radius: 999px;
     color: var(--muted);
     background: transparent;
@@ -922,6 +932,50 @@ body.nav-open .scrim {
 .link:hover {
     color: var(--brand);
     text-decoration-color: var(--brand);
+}
+
+/* =========================================================
+   RESPONSIVE (show/hide pieces)
+   ========================================================= */
+@media (min-width:1100px) {
+
+    /* Desktop: show rails, hide mobile drawer */
+    .side-rail,
+    .side-rail--right {
+        display: flex;
+    }
+
+    .sidenav {
+        display: none;
+    }
+}
+
+@media (max-width:1099px) {
+
+    /* Mobile/Tablet: hide rails, keep drawer */
+    .side-rail,
+    .side-rail--right {
+        display: none;
+    }
+}
+
+@media (max-width:900px) {
+    .topbar {
+        display: flex;
+    }
+
+    .sidenav {
+        transform: translateX(-100%);
+        transition: transform .24s ease;
+    }
+
+    .sidenav.open {
+        transform: translateX(0);
+    }
+
+    body.nav-open {
+        overflow: hidden;
+    }
 }
 
 /* =========================================================
