@@ -89,19 +89,17 @@ h6 {
 
 /* Multi-line hero headline with inline images */
 .hero .h1-line {
-    display: inline-flex;
+    display: flex;
+    /* was inline-flex */
     align-items: baseline;
     gap: .35em;
-    /* tight, reads like part of the sentence */
     margin: 0;
-    /* remove default h1 margin; we’ll control rhythm */
     line-height: 1.08;
-    /* keep your compact leading */
 }
 
 /* space between the lines, not too airy */
 .hero .h1-line+.h1-line {
-    margin-top: .12em;
+    margin-top: .18em;
 }
 
 /* small inline images that scale with the font */
@@ -565,7 +563,7 @@ body.nav-open .scrim {
     gap: 8px;
     color: #146c2e;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: clamp(16px, 2.5vh, 36px);
 }
 
 .availability-main .dot {
