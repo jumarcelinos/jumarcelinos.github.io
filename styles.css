@@ -121,7 +121,6 @@ h6 {
     object-fit: cover;
     border-radius: 8px;
     /* gentle by default for non-profile icons */
-    border: 1px solid #d0c5b9;
     box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
 }
 
@@ -179,6 +178,24 @@ h6 {
         border-radius: 9999px;
         /* round */
         object-fit: cover;
+    }
+}
+
+/* =========================
+   HERO: bump two inline icons
+   ========================= */
+@media (min-width: 1100px) {
+
+    /* first line profile image a bit bigger */
+    .h1-icon--profile {
+        height: 1.25em;
+        /* was ~1.1em */
+    }
+
+    /* the icon before “branding” (first icon on the 3rd line) */
+    .hero .h1-line:nth-of-type(3) .h1-icon:first-child {
+        height: 1.15em;
+        /* was ~0.9em */
     }
 }
 
@@ -325,17 +342,19 @@ h6 {
     place-items: center;
     width: 44px;
     height: 44px;
-    border: 2px solid var(--rail-fg);
+    border: 2px solid #1d1d1b;
     border-radius: 9999px;
-    color: var(--rail-fg);
-    background: transparent;
+    color: #fff;
+    background: #1d1d1b;
+    /* black bg by default */
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
 .side-rail--right .rail-social a:hover {
-    background: var(--rail-fg);
-    color: var(--rail-bg);
-    border-color: var(--rail-fg);
+    background: transparent;
+    /* invert on hover */
+    color: #1d1d1b;
+    border-color: #1d1d1b;
 }
 
 .side-rail--right .rail-social svg {
@@ -353,19 +372,21 @@ h6 {
     place-items: center;
     width: 48px;
     height: 48px;
-    border: 2px solid var(--rail-fg);
+    border: 2px solid #571847;
     border-radius: 9999px;
-    color: var(--rail-fg);
-    background: transparent;
+    color: #fff;
+    background: #571847;
     text-decoration: none;
     transition: background .15s ease, color .15s ease, border-color .15s ease;
     margin-bottom: 8px;
 }
 
 .rail-top:hover {
-    background: var(--rail-fg);
-    color: var(--rail-bg);
-    border-color: var(--rail-fg);
+    background: transparent;
+    /* invert on hover */
+    color: #1d1d1b;
+    border-color: #1d1d1b;
+    /* black outline */
 }
 
 .rail-top svg {
