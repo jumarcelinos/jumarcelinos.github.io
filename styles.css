@@ -146,7 +146,7 @@ h6 {
     top: 0;
     bottom: 0;
     width: var(--railw);
-    background: #FBDFB8;
+    background: #ffffff;
     /* new light background */
     border-right: 1px solid #1d1d1b;
     /* subtle dark edge */
@@ -223,7 +223,7 @@ h6 {
 .rail-social a:hover {
     background: #1d1d1b;
     /* invert on hover */
-    color: #FBDFB8;
+    color: #ffffff;
     /* light icon stroke */
     border-color: #1d1d1b;
 }
@@ -263,10 +263,8 @@ h6 {
     flex-direction: column;
     gap: 16px;
     padding: 54px;
-    background: #FBDFB8;
+    background: #ffffff;
     /* new light background */
-    border-left: 2px solid #1d1d1b;
-    /* divider from rail */
     border-right: 1px solid #1d1d1b;
     /* edge to content */
     z-index: 100;
@@ -315,7 +313,7 @@ h6 {
 .sidenav .social-inline a:hover {
     background: #1d1d1b;
     /* invert on hover */
-    color: #FBDFB8;
+    color: #ffffff;
     border-color: #1d1d1b;
 }
 
