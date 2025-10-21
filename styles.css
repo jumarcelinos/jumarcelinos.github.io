@@ -146,7 +146,7 @@ h6 {
     top: 0;
     bottom: 0;
     width: var(--railw);
-    background: #f2efec;
+    background: #ffffff;
     /* new light background */
     border-right: 1px solid #1d1d1b;
     /* subtle dark edge */
@@ -223,7 +223,7 @@ h6 {
 .rail-social a:hover {
     background: #1d1d1b;
     /* invert on hover */
-    color: #f2efec;
+    color: #ffffff;
     /* light icon stroke */
     border-color: #1d1d1b;
 }
