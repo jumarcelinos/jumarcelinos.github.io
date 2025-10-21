@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
+<body id="top">
     <!-- Mobile header -->
     <header class="topbar" aria-label="Mobile navigation">
         <button class="hamburger" aria-expanded="false" aria-controls="nav" aria-label="Open navigation">
@@ -80,7 +80,59 @@
         </ul>
     </aside>
 
-    <!-- Left side nav -->
+    <!-- Right side rail (desktop only) -->
+    <aside class="side-rail side-rail--right" aria-label="Secondary rail">
+        <ul class="rail-social" aria-label="Social links (desktop)">
+            <li>
+                <a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener"
+                    aria-label="LinkedIn">
+                    <!-- LinkedIn icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2.5" />
+                            <path d="M7.5 10.5V17M7.5 7.5h.01M12 17v-4.3c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7V17" />
+                        </g>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/jms.design.dk" target="_blank" rel="noopener" aria-label="Instagram">
+                    <!-- Instagram icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="5" />
+                            <circle cx="12" cy="12" r="3.5" />
+                            <circle cx="17.5" cy="6.5" r="1" />
+                        </g>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:hello@jms-design.com" aria-label="Email">
+                    <!-- Mail icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="3" y="5" width="18" height="14" rx="2" />
+                            <path d="M4 7l8 6 8-6" />
+                        </g>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+
+        <a class="rail-top" href="#top" aria-label="Back to top">
+            <!-- Up arrow -->
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 19V5M5.5 11.5L12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+    </aside>
+
+    <!-- Left side nav (mobile only)-->
     <nav id="nav" class="sidenav" aria-label="Primary">
         <div class="profile">
             <!-- FIX: forward slash in path -->
@@ -97,10 +149,6 @@
             Today, as U/UX Designer, I focus on designing intuitive, scalable digital interfaces that bridge the gap
             between brand identity and product functionality.
         </p>
-
-        <div class="availability" role="status">
-            <span class="dot" aria-hidden="true"></span> Available for projects
-        </div>
 
         <hr class="nav-sep" />
 
@@ -158,6 +206,9 @@
     <main class="content">
         <!-- Hero -->
         <section class="hero" aria-labelledby="intro">
+            <div class="availability" role="status">
+                <span class="dot" aria-hidden="true"></span> Available for projects
+            </div>
             <h1 id="intro">Hi, I’m Juliana! I help teams balance branding & functional design</h1>
             <p>I design clean interfaces and brand assets that make work easier.</p>
 

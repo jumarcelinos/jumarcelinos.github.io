@@ -963,3 +963,224 @@ body.nav-open .scrim {
         transition: none !important;
     }
 }
+
+/* =========================================================
+   DESKTOP FRAME: 10% (left rail) / 80% (content) / 10% (right rail)
+   ========================================================= */
+
+/* Tokens for symmetric rails on desktop */
+:root {
+    --railwL: 10vw;
+    /* left rail width on desktop */
+    --railwR: 10vw;
+    /* right rail width on desktop */
+    --rail-bg: #FBDFB8;
+    /* light sand background */
+    --rail-fg: #1d1d1b;
+    /* dark text/icons on rail */
+}
+
+/* LEFT rail updates (keep your existing .side-rail styles, then add/override below) */
+@media (min-width:1100px) {
+    .side-rail {
+        display: flex;
+        width: var(--railwL);
+        left: 0;
+        right: auto;
+        background: var(--rail-bg);
+        border-right: 1px solid var(--rail-fg);
+        padding: 56px 0 24px;
+        justify-content: space-between;
+    }
+
+    /* Bigger nav links on the left rail */
+    .rail-nav a {
+        color: var(--rail-fg);
+        font-size: clamp(16px, 1.2vw, 20px);
+        /* bumped up */
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        line-height: 1;
+    }
+
+    .side-rail .rail-nav a:hover {
+        color: var(--rail-fg);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 2px;
+    }
+
+    .rail-nav a:focus-visible {
+        outline: 2px solid var(--rail-fg);
+        outline-offset: 2px;
+    }
+}
+
+/* RIGHT rail (new) mirrors left rail but sits on the right */
+.side-rail--right {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    display: none;
+    /* shown on desktop below */
+    width: var(--railwR);
+    background: var(--rail-bg);
+    border-left: 1px solid var(--rail-fg);
+    z-index: 60;
+    padding: 24px 0 24px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* socials at top, arrow at bottom */
+    gap: 20px;
+}
+
+@media (min-width:1100px) {
+    .side-rail--right {
+        display: flex;
+    }
+}
+
+/* Socials at the top of the right rail */
+.side-rail--right .rail-social {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    justify-items: center;
+}
+
+.side-rail--right .rail-social a {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--rail-fg);
+    border-radius: 9999px;
+    color: var(--rail-fg);
+    background: transparent;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+}
+
+.side-rail--right .rail-social a:hover {
+    background: var(--rail-fg);
+    /* invert on hover */
+    color: var(--rail-bg);
+    border-color: var(--rail-fg);
+}
+
+.side-rail--right .rail-social svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+/* Back-to-top arrow at the bottom of the right rail */
+.rail-top {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--rail-fg);
+    border-radius: 9999px;
+    color: var(--rail-fg);
+    background: transparent;
+    text-decoration: none;
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
+    margin-bottom: 8px;
+}
+
+.rail-top:hover {
+    background: var(--rail-fg);
+    color: var(--rail-bg);
+    border-color: var(--rail-fg);
+}
+
+.rail-top svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Hide the SIDEBAR on desktop; keep it for mobile */
+@media (min-width:1100px) {
+    .sidenav {
+        display: none;
+    }
+}
+
+/* Main content between two rails on desktop */
+@media (min-width:1100px) {
+    .content {
+        /* space out from both rails */
+        margin-left: var(--railwL);
+        margin-right: var(--railwR);
+
+        /* keep your vertical margins if you had them */
+        margin-top: var(--content-mt);
+        margin-bottom: var(--content-mb);
+
+        /* inner width control you already set (80% of its lane) */
+        width: calc((100vw - var(--railwL) - var(--railwR)) * var(--content-inner));
+        max-width: none;
+
+        /* keep your internal padding/gap */
+        padding-right: clamp(18px, 3vw, 36px);
+        display: grid;
+        gap: clamp(24px, 3vw, 40px);
+    }
+}
+
+/* Mobile/Tablet: keep your existing drawer */
+@media (max-width:1099px) {
+
+    .side-rail,
+    .side-rail--right {
+        display: none;
+    }
+
+    /* .sidenav stays as-is for mobile */
+}
+
+/* =========================================================
+   AVAILABILITY: now lives in main, above the hero
+   ========================================================= */
+.availability-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #146c2e;
+    /* keep your green accent, or switch to var(--text) */
+    font-weight: 600;
+    margin-bottom: 8px;
+    /* space before the H1 block */
+}
+
+.availability-main .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #28a745;
+    box-shadow: 0 0 10px #28a745;
+}
+
+/* (Optional) Hide the availability inside the sidenav everywhere */
+.sidenav .availability {
+    display: none;
+}
+
+/* =========================================================
+   SMALL polish: ensure hero still has air with the new badge
+   ========================================================= */
+.hero {
+    margin-top: 4px;
+}
+
+/* tiny nudge since badge adds a line above */
