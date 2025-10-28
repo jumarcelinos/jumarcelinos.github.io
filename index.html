@@ -327,32 +327,28 @@
         <section id="testimonials" class="section" aria-labelledby="testimonials-title">
             <div class="section-head">
                 <h2 id="testimonials-title">What Clients Say</h2>
-
-                <!-- Arrows moved into the header, above the underline -->
-                <div class="t-controls" aria-hidden="true">
-                    <button class="t-btn t-prev" aria-label="Previous">
-                        <!-- same icon SVG, rotated for "previous" -->
-                        <svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
+                <div class="t-controls" role="group" aria-label="Testimonial navigation">
+                    <button class="t-btn t-prev" aria-label="Previous testimonials">
+                        <!-- your existing arrow svg, rotated in CSS -->
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M8.12 12l7.07-7.07-1.41-1.41L5.3 12l8.48 8.48 1.41-1.41z" />
                         </svg>
                     </button>
-                    <button class="t-btn t-next" aria-label="Next">
-                        <!-- same icon SVG as buttons -->
-                        <svg viewBox="0 -960 960 960" aria-hidden="true" focusable="false">
-                            <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
+                    <button class="t-btn t-next" aria-label="Next testimonials">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M15.88 12L8.81 4.93l1.41-1.41L18.7 12l-8.48 8.48-1.41-1.41z" />
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- 3-column testimonials (no background) -->
-            <ul class="t-grid">
-                <li class="t-card">
-                    <figure>
-                        <img src="images/testimonial-ana.jpg" alt="Chloe' Skye, Copy Writer">
-                    </figure>
+            <!-- 9 items, any order you like -->
+            <ul class="t-grid" id="t-grid" role="list">
+                <!-- 1 -->
+                <li class="t-card" data-i="0">
+                    <figure><img src="images/testimonials/ana.jpg" alt="Chloe' Skye, Copy Writer"></figure>
                     <p class="t-name">Chloe' Skye</p>
-                    <p class="t-role">Copy Writer</p>
+                    <p class="t-role">Copy Writer, Chlohemian</p>
                     <p class="t-text">Juliana is incredibly professional and organized, as well as a good listener who
                         brings tons of creative ideas to the table. She always took my feedback seriously and worked out
                         a visual concept that felt really "me." Highly recommended for graphic design projects!</p>
@@ -361,33 +357,107 @@
                         <li>Logo Design</li>
                     </ul>
                 </li>
-
-                <li class="t-card">
-                    <figure>
-                        <img src="images/testimonial-mark.jpg" alt="Anne Rahbek, Founder">
-                    </figure>
+                <!-- 2 -->
+                <li class="t-card" data-i="1">
+                    <figure><img src="images/testimonials/mark.jpg" alt="Anne Rahbek, Founder"></figure>
                     <p class="t-name">Anne Rahbek</p>
-                    <p class="t-role">Founder</p>
+                    <p class="t-role">Founder, GoZeek</p>
                     <p class="t-text">I can definitely recommend working with Juliana! Juliana has developed our
-                        webdesign and we are so pleased with the result. The process from getting Juliana to understand
-                        our needs, over the first draft to the finished delivery has been smooth all the way.</p>
+                        webdesign and we are so pleased with the result. The process of getting Juliana to understand
+                        our needs, from the first draft to the finished delivery, have been smooth all the way.</p>
                     <ul class="t-tags">
                         <li>Webdesign</li>
-                        <li>Visual Identity</li>
+                        <li>Graphic Design</li>
                     </ul>
                 </li>
-
-                <li class="t-card">
-                    <figure>
-                        <img src="images/testimonial-sofia.jpg" alt="Thomas Midtgaard, VP of Marketing">
-                    </figure>
+                <!-- 3 -->
+                <li class="t-card" data-i="2">
+                    <figure><img src="images/testimonials/sofia.jpg" alt="Thomas Midtgaard, VP of Marketing"></figure>
                     <p class="t-name">Thomas Midtgaard</p>
-                    <p class="t-role">VP of Marketing</p>
+                    <p class="t-role">VP of Marketing, Blue Ocean Robotics</p>
                     <p class="t-text">Juliana’s knowledge of graphic design and communication was a huge advantage to
                         our department. I was immensely pleased with her level of talent and willingness to work on any
                         project.</p>
                     <ul class="t-tags">
                         <li>Marketing Design</li>
+                        <li>Branding</li>
+                    </ul>
+                </li>
+                <!-- 4 -->
+                <li class="t-card" data-i="3">
+                    <figure><img src="images/testimonials/jonas.jpg" alt="Camilla Hvidd, Frivilligkoordinator"></figure>
+                    <p class="t-name">Camilla Hvidd</p>
+                    <p class="t-role">Frivilligkoordinator, Stoppestedet</p>
+                    <p class="t-text">Juliana is incredibly easy to work with. She quickly captured the essence of what
+                        we needed help with, and we are so happy with the connection throughout it. Our logos are
+                        timeless and modern, and our flyers have a beautiful design that tells the right story.</p>
+                    <ul class="t-tags">
+                        <li>Logo Design</li>
+                        <li>Visual Identity</li>
+                    </ul>
+                </li>
+                <!-- 5 -->
+                <li class="t-card" data-i="4">
+                    <figure><img src="images/testimonials/maria.jpg" alt="Carlos Monteiro, Founder"></figure>
+                    <p class="t-name">Carlos Monteiro</p>
+                    <p class="t-role">Founder, Biassa</p>
+                    <p class="t-text">I would start by saying that Juliana is a very talented graphic designer and a
+                        tremendous team player. Therefore, she delivered an incredible webdesign, with superb visuals.
+                        Not surprisingly, she later led all the graphic communication within our firm.</p>
+                    <ul class="t-tags">
+                        <li>Webdesign</li>
+                        <li>Graphic Design</li>
+                    </ul>
+                </li>
+                <!-- 6 -->
+                <li class="t-card" data-i="5">
+                    <figure><img src="images/testimonials/erik.jpg" alt="Audrey Cremoux, Founder"></figure>
+                    <p class="t-name">Audrey Cremoux</p>
+                    <p class="t-role">Founder, L'envol Coaching</p>
+                    <p class="t-text">Juliana did an amazing job with my webdesign and branding. She took the time to
+                        understand who I am, my personality, what I have to offer, and my values. She's very
+                        professional and reactive too. Working with Juliana was such a pleasure!</p>
+                    <ul class="t-tags">
+                        <li>Webdesign</li>
+                        <li>Branding</li>
+                    </ul>
+                </li>
+                <!-- 7 -->
+                <li class="t-card" data-i="6">
+                    <figure><img src="images/testimonials/nina.jpg" alt="David Saito, Commercial Director"></figure>
+                    <p class="t-name">David Saito</p>
+                    <p class="t-role">Commercial Director, Ernest & Young</p>
+                    <p class="t-text">Juliana showed commitment, versatility, and positive teaming to support our teams
+                        and deliver to the agreed scope of work. Juliana has a nice, clean, and modern eye for
+                        professional graphic design work.</p>
+                    <ul class="t-tags">
+                        <li>Graphic Design</li>
+                        <li>Presentation Design</li>
+                    </ul>
+                </li>
+                <!-- 8 -->
+                <li class="t-card" data-i="7">
+                    <figure><img src="images/testimonials/peter.jpg" alt="Flávia Paulsen, Founder"></figure>
+                    <p class="t-name">Flávia Paulsen</p>
+                    <p class="t-role">Founder, Pandorax's Box</p>
+                    <p class="t-text">Juliana works with mastery, professionalism, intelligence, and a great deal of
+                        skill. She has a unique creativity, capable of elegantly and effectively representing concepts,
+                        ideas, and even the spirit of a company.</p>
+                    <ul class="t-tags">
+                        <li>Webdesign</li>
+                        <li>Visual Identity</li>
+                    </ul>
+                </li>
+                <!-- 9 -->
+                <li class="t-card" data-i="8">
+                    <figure><img src="images/testimonials/lea.jpg" alt="Nina Vindell, Marketing"></figure>
+                    <p class="t-name">Nina Vindell</p>
+                    <p class="t-role">Marketing, Senmatic</p>
+                    <p class="t-text">Juliana quickly translated our business needs into visual concepts. Handling was
+                        quick and high quality - communication was clear, collaboration was comfortable and with fast
+                        adjustments based on feedback.</p>
+                    <ul class="t-tags">
+                        <li>Graphic Design</li>
                         <li>Branding</li>
                     </ul>
                 </li>
@@ -432,6 +502,75 @@
 
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+
+    <script>
+        (function () {
+            const GRID = document.getElementById('t-grid');
+            if (!GRID) return;
+
+            const CARDS = Array.from(GRID.querySelectorAll('.t-card'));
+            const TOTAL = CARDS.length;         // 9
+            const PAGE = 3;                     // 3 per view
+            let start = 0;                      // index of first visible card
+            let timer = null;
+            const prevBtn = document.querySelector('.t-prev');
+            const nextBtn = document.querySelector('.t-next');
+            const AUTOPLAY_MS = 6000;           // auto-advance every 6s
+
+            function indices(from) {
+                // returns [from, from+1, from+2] wrapped in TOTAL
+                return Array.from({ length: PAGE }, (_, k) => (from + k) % TOTAL);
+            }
+
+            function render() {
+                CARDS.forEach(c => c.classList.remove('is-visible'));
+                indices(start).forEach(i => CARDS[i].classList.add('is-visible'));
+            }
+
+            function next(n = 1) {
+                // move forward by 3 cards (one "page")
+                start = (start + PAGE * n) % TOTAL;
+                render();
+            }
+
+            function prev(n = 1) {
+                // move backward by 3 cards
+                start = (start - PAGE * n) % TOTAL;
+                if (start < 0) start += TOTAL;
+                render();
+            }
+
+            function play() {
+                stop();
+                timer = setInterval(() => next(), AUTOPLAY_MS);
+            }
+
+            function stop() {
+                if (timer) clearInterval(timer);
+                timer = null;
+            }
+
+            // Init
+            render();
+            play();
+
+            // Controls
+            nextBtn?.addEventListener('click', () => { next(); play(); });
+            prevBtn?.addEventListener('click', () => { prev(); play(); });
+
+            // Pause on hover/focus inside the section for better UX
+            const SECTION = document.getElementById('testimonials');
+            SECTION?.addEventListener('mouseenter', stop);
+            SECTION?.addEventListener('mouseleave', play);
+            SECTION?.addEventListener('focusin', stop);
+            SECTION?.addEventListener('focusout', play);
+
+            // Respect reduced motion
+            const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+            if (mq.matches) stop();
+            mq.addEventListener?.('change', e => (e.matches ? stop() : play()));
+        })();
     </script>
 
 

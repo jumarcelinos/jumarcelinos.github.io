@@ -977,6 +977,21 @@ body.nav-open .scrim {
 .t-card {
     text-align: left;
     border-radius: 0;
+    display: none;
+}
+
+/* Show only 3 cards per page via a utility class */
+.t-card.is-visible {
+    display: block;
+}
+
+/* Keep your 3-column grid on desktop; it will naturally show 3 visible cards */
+@media (max-width: 900px) {
+    .t-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* 1-up on mobile */
 }
 
 .t-card figure {
