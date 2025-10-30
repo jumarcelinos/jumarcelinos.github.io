@@ -457,7 +457,7 @@ small {
 .sidenav .brand {
     color: var(--text);
     text-decoration: none;
-    text-transform: uppercase;
+    text-transform: capitalize;
     font-family: var(--ff-mono-body);
     font-weight: 700;
     font-size: 1.3rem;
