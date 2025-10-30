@@ -301,10 +301,12 @@ small {
     color: var(--rail-fg);
     text-decoration: none;
     font-size: clamp(16px, 1.2vw, 20px);
-    letter-spacing: .08em;
     text-transform: capitalize;
     line-height: 1;
     font-weight: 600;
+    font-family: var(--ff-sans-ui);
+    letter-spacing: 0;
+    /* cleaner with capitalization */
 }
 
 .side-rail .rail-nav a:hover {
@@ -541,23 +543,27 @@ small {
     height: 40px;
     border-radius: 9999px;
     text-decoration: none;
-    color: var(--muted);
-    border: 3px solid var(--text);
-    background: transparent;
+    background: var(--brand);
+    /* solid brand */
+    border: 2px solid var(--brand);
+    color: #fff;
+    /* icon color */
+    transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
 .social-inline a:hover {
+    background: transparent;
     color: var(--brand);
-    border-color: color-mix(in srgb, var(--brand) 40%, var(--text));
+    border-color: var(--brand);
 }
 
 .social-inline svg {
     width: 20px;
     height: 20px;
     display: block;
-    fill: none;
-    stroke: var(--text);
+    stroke: currentColor;
     stroke-width: 2;
+    fill: none;
 }
 
 /* Hide the drawer on desktop */
@@ -577,30 +583,27 @@ small {
     appearance: none;
     background: transparent;
     border: 0;
+    /* remove outline */
     width: 36px;
     height: 36px;
-    border-radius: 9999px;
     display: grid;
     place-items: center;
     cursor: pointer;
     color: var(--text);
-    border: 2px solid var(--text);
     line-height: 0;
-    font-size: 18px;
-    /* if using text "×" */
+    padding: 0;
 }
 
 .sidenav .close-btn:hover {
-    background: var(--text);
-    color: #fff;
+    color: var(--brand);
 }
 
 .sidenav .close-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 22px;
     stroke: currentColor;
-    fill: none;
     stroke-width: 2;
+    fill: none;
     display: block;
 }
 
@@ -718,14 +721,15 @@ body.nav-open .scrim {
     font-size: var(--fs-small);
     line-height: 1.35;
     font-weight: 600;
-
     padding: 4px 10px;
-    /* pill padding */
     border: 1px solid #d0c5b9;
-    /* like tag border */
     border-radius: 9999px;
-    /* rounded outline */
     background: transparent;
+    width: -moz-fit-content;
+    width: fit-content;
+    /* prevents extra right space */
+    align-self: start;
+    /* avoid stretching */
 }
 
 .profile-meta .availability-inline .dot {
@@ -837,9 +841,22 @@ body.nav-open .scrim {
     place-items: center;
     background: var(--brand);
     color: #fff;
-    /* icon color */
+    /* controls SVG */
     border: 2px solid var(--brand);
     transition: filter .15s ease, background .15s ease, color .15s ease;
+}
+
+.section-head .text-link--download:hover .icon-pill {
+    filter: brightness(1.05);
+}
+
+.section-head .text-link--download .icon-pill svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    /* white */
+    stroke-width: 2;
+    fill: none;
 }
 
 .section-head .text-link--download:hover .icon-pill {
@@ -1073,14 +1090,14 @@ body.nav-open .scrim {
 
 .t-btn {
     appearance: none;
-    border: 2px solid var(--text);
     background: var(--brand);
+    border: 2px solid var(--brand);
     width: 32px;
     height: 32px;
     border-radius: 999px;
-    border-color: var(--brand);
     cursor: pointer;
     color: #fff;
+    /* icon color */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1098,11 +1115,15 @@ body.nav-open .scrim {
     width: 18px;
     height: 18px;
     display: block;
-    transform: none;
 }
 
+.t-btn svg path {
+    fill: currentColor;
+}
+
+/* right arrow */
 .t-prev svg {
-    transform: rotate(180deg);
+    transform: none;
 }
 
 /* left arrow */
@@ -1110,11 +1131,18 @@ body.nav-open .scrim {
     transform: none;
 }
 
-/* right arrow */
+.t-progress__bar {
+    position: relative;
+    height: 4px;
+    background: #e5ddd3;
+    /* light track */
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-top: 12px;
+}
 
 .t-progress__bar {
     --t-progress: 0%;
-    /* set this via JS or inline style */
     width: var(--t-progress);
     height: 100%;
     background: var(--brand);
