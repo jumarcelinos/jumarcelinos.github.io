@@ -83,9 +83,9 @@ h6 {
     font-size: clamp(36px, 5.6vw, 72px);
     line-height: 1.08;
     text-wrap: balance;
-    margin: 0 0 clamp(8px, 1.6vh, 14px);
     /* space below H1 */
     max-width: 42ch;
+    margin-bottom: clamp(12px, 2.2vh, 22px);
 }
 
 .hero p {
@@ -526,7 +526,7 @@ body.nav-open .scrim {
     gap: clamp(14px, 2.2vw, 24px);
     margin-top: clamp(8px, 1vh, 16px);
     /* space from page chrome */
-    margin-bottom: clamp(14px, 2vh, 28px);
+    margin-bottom: clamp(28px, 3.2vh, 48px);
     /* space before H1 */
 }
 
@@ -541,6 +541,13 @@ body.nav-open .scrim {
     background: #fff;
     border: 1px solid #d0c5b9;
     box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+}
+
+.profile-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    /* tight spacing between name and title */
 }
 
 .profile-meta .name {
@@ -559,24 +566,29 @@ body.nav-open .scrim {
     font-size: clamp(13px, 1.4vw, 14px);
 }
 
-/* Availability badge in main */
-.availability-main {
+.profile-meta .availability-inline {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #146c2e;
+    margin-top: 10px;
+    /* extra space away from name/title block */
+    color: var(--text);
+    /* black text */
+    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-weight: 600;
-    margin-bottom: clamp(24px, 3vh, 48px);
-    /* space before hero row */
+    /* match title weight */
+    font-size: clamp(13px, 1.4vw, 14px);
+    /* match title size */
 }
 
-.availability-main .dot {
+.profile-meta .availability-inline .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background: #28a745;
     box-shadow: 0 0 10px #28a745;
 }
+
 
 /* =========================================================
    SECTIONS / COMPONENTS
