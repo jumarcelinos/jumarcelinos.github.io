@@ -53,7 +53,7 @@
 
     --fs-body: 16px;
     --fs-lead: 18px;
-    /* for intro/hero paragraphs */
+    /* hero/intro paragraphs */
     --fs-small: 14px;
     /* captions, meta */
     --fs-micro: 12px;
@@ -87,9 +87,9 @@ body {
     margin: 0;
     color: var(--text);
     background: var(--bg);
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: 16px;
-    line-height: 1.5;
+    font-family: var(--ff-mono-body);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -97,13 +97,6 @@ body {
 /* =========================================================
    TYPE
    ========================================================= */
-/* Body defaults */
-body {
-    font-family: var(--ff-mono-body);
-    font-size: var(--fs-body);
-    line-height: var(--lh-body);
-}
-
 /* Headings – families + weights */
 h1,
 h2,
@@ -172,7 +165,7 @@ small {
     letter-spacing: 0.02em;
 }
 
-/* Eyebrow / overline labels (optional utility) */
+/* Eyebrow / overline labels (utility) */
 .overline {
     font-family: var(--ff-sans-ui);
     font-size: var(--fs-micro);
@@ -181,31 +174,31 @@ small {
     line-height: 1.2;
 }
 
-/* Buttons / controls text (optional utility) */
-.button-text {
+/* Buttons / controls text (utility) */
+.button-text,
+.btn,
+.t-btn,
+.nav-links a,
+.section-head .text-link,
+.rail-nav a {
     font-family: var(--ff-sans-ui);
-    font-weight: 700;
-    font-size: var(--fs-small);
-    letter-spacing: 0.01em;
 }
 
+/* Hero */
 .hero h1 {
-    font-weight: 700;
-    text-wrap: balance;
-    /* space below H1 */
-    max-width: 42ch;
-    margin-bottom: clamp(12px, 2.2vh, 22px);
     font-family: var(--ff-serif-display);
-    /* switch from GT Alpina to Domine */
-    font-size: var(--fs-h1);
-    /* preserves your current size */
+    font-weight: 700;
     letter-spacing: var(--ls-tight);
     line-height: var(--lh-heading-tight);
+    font-size: var(--fs-h1);
+    text-wrap: balance;
+    max-width: 42ch;
+    margin-bottom: clamp(12px, 2.2vh, 22px);
 }
 
 .hero p {
     margin: 0 0 16px;
-    font-size: 18px;
+    font-size: var(--fs-lead);
     line-height: 1.55;
     color: var(--muted);
 }
@@ -214,7 +207,10 @@ small {
 .section-head h2 {
     margin: 0;
     line-height: 1;
-    font-size: 16px;
+    font-size: var(--fs-h6);
+    /* was 16px */
+    font-family: var(--ff-sans-ui);
+    font-weight: 600;
 }
 
 #work-title,
@@ -303,13 +299,11 @@ small {
 .rail-nav a {
     color: var(--rail-fg);
     text-decoration: none;
-    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-size: clamp(16px, 1.2vw, 20px);
     letter-spacing: .08em;
     text-transform: uppercase;
     line-height: 1;
     font-weight: 600;
-    /* bolder links */
 }
 
 .side-rail .rail-nav a:hover {
@@ -337,7 +331,6 @@ small {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* socials top, arrow bottom */
     padding: 24px 0;
     gap: 20px;
     z-index: 60;
@@ -362,13 +355,11 @@ small {
     border-radius: 9999px;
     color: #fff;
     background: #1d1d1b;
-    /* black bg by default */
     transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 
 .side-rail--right .rail-social a:hover {
     background: transparent;
-    /* invert on hover */
     color: #1d1d1b;
     border-color: #1d1d1b;
 }
@@ -399,10 +390,8 @@ small {
 
 .rail-top:hover {
     background: transparent;
-    /* invert on hover */
     color: #1d1d1b;
     border-color: #1d1d1b;
-    /* black outline */
 }
 
 .rail-top svg {
@@ -452,12 +441,12 @@ small {
     box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
 }
 
-/* Mobile: make the drawer profile photo round */
+/* Mobile: round the drawer profile photo */
 @media (max-width:1099px) {
     .sidenav .profile img {
         width: 128px;
         height: auto;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 1/1;
         border-radius: 9999px;
         object-fit: cover;
     }
@@ -467,7 +456,7 @@ small {
     color: var(--text);
     text-decoration: none;
     text-transform: uppercase;
-    font-family: "Courier Prime", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-family: var(--ff-mono-body);
     font-weight: 700;
     font-size: 1.3rem;
     letter-spacing: .01em;
@@ -623,14 +612,9 @@ body.nav-open .scrim {
     .content {
         margin-top: var(--content-mt);
         margin-bottom: var(--content-mb);
-
-        /* width: 80% of middle lane */
         width: calc((100vw - var(--railwL) - var(--railwR)) * var(--content-inner));
-
-        /* equal gutters inside middle lane + include rails */
         margin-left: calc(var(--railwL) + ((100vw - var(--railwL) - var(--railwR)) - (100vw - var(--railwL) - var(--railwR)) * var(--content-inner)) / 2);
         margin-right: calc(var(--railwR) + ((100vw - var(--railwL) - var(--railwR)) - (100vw - var(--railwL) - var(--railwR)) * var(--content-inner)) / 2);
-
         max-width: none;
         padding-right: clamp(18px, 3vw, 36px);
     }
@@ -644,18 +628,14 @@ body.nav-open .scrim {
     align-items: center;
     gap: clamp(14px, 2.2vw, 24px);
     margin-top: clamp(8px, 1vh, 16px);
-    /* space from page chrome */
     margin-bottom: clamp(28px, 3.2vh, 48px);
-    /* space before H1 */
 }
 
 .profile-card .avatar {
     width: clamp(104px, 12vw, 160px);
     height: auto;
     aspect-ratio: 1 / 1;
-    /* perfect square */
     border-radius: 50%;
-    /* round */
     object-fit: cover;
     background: #fff;
     border: 1px solid #d0c5b9;
@@ -666,7 +646,6 @@ body.nav-open .scrim {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    /* tight spacing between name and title */
 }
 
 .profile-meta .name {
@@ -691,14 +670,11 @@ body.nav-open .scrim {
     align-items: center;
     gap: 8px;
     margin-top: 10px;
-    /* extra space away from name/title block */
     color: var(--text);
-    /* black text */
     font-family: var(--ff-sans-ui);
     font-size: var(--fs-small);
     line-height: 1.35;
     font-weight: 600;
-    /* match title size */
 }
 
 .profile-meta .availability-inline .dot {
@@ -708,7 +684,6 @@ body.nav-open .scrim {
     background: #28a745;
     box-shadow: 0 0 10px #28a745;
 }
-
 
 /* =========================================================
    SECTIONS / COMPONENTS
@@ -744,7 +719,6 @@ body.nav-open .scrim {
     padding: 0;
     color: var(--text);
     font: inherit;
-    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
     font-weight: 600;
     line-height: 1;
     text-decoration: underline;
@@ -998,7 +972,6 @@ body.nav-open .scrim {
     height: 32px;
     border-radius: 999px;
     cursor: pointer;
-    font: inherit;
     color: var(--text);
     display: flex;
     align-items: center;
@@ -1048,8 +1021,6 @@ body.nav-open .scrim {
     display: block;
 }
 
-/* show 3 via JS/pagination */
-
 .t-card figure {
     margin: 0 0 10px;
 }
@@ -1066,7 +1037,6 @@ body.nav-open .scrim {
 .t-name {
     font-family: var(--ff-serif-display);
     font-size: var(--fs-h5);
-    /* slightly stronger than body */
     line-height: var(--lh-heading);
     font-weight: 700;
 }
