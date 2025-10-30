@@ -628,7 +628,7 @@ body.nav-open .scrim {
     align-items: center;
     gap: clamp(14px, 2.2vw, 24px);
     margin-top: clamp(8px, 1vh, 16px);
-    margin-bottom: clamp(28px, 3.2vh, 48px);
+    margin-bottom: clamp(36px, 4.5vh, 64px);
 }
 
 .profile-card .avatar {
@@ -650,13 +650,14 @@ body.nav-open .scrim {
 
 .profile-meta .name {
     color: var(--text);
-    font-family: var(--ff-serif-display);
+    font-family: var(--ff-sans-ui);
     font-size: var(--fs-h4);
     line-height: var(--lh-heading);
     font-weight: 700;
 }
 
-.profile-meta .title {
+.profile-meta .title,
+.profile-meta .location {
     margin-top: 2px;
     color: var(--muted);
     font-family: var(--ff-sans-ui);
