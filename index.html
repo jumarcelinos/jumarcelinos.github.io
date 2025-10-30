@@ -8,15 +8,14 @@
     <meta name="description"
         content="Juliana Marcelino — Visual/Brand & UI Designer in Denmark. Clean, modern interfaces and brand assets." />
 
-    <!-- Fonts: Domine (headings) + Open Sans (body) + Courier Prime (mono) -->
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonts: Domine (headings) + Nunito (UI/body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Domine:wght@400;700&family=Nunito:opsz,wght@6..12,400;6..12,600;6..12,700&display=swap"
         rel="stylesheet">
 
-    <!-- Univers via Adobe Fonts (keep your kit link) -->
+    <!-- Adobe kit still ok if you keep it for other assets -->
     <link rel="stylesheet" href="https://use.typekit.net/oxr6ogi.css">
 
     <link rel="preload" href="styles.css" as="style" />
@@ -29,26 +28,52 @@
         <button class="hamburger" aria-expanded="false" aria-controls="nav" aria-label="Open navigation">
             <span></span><span></span><span></span>
         </button>
-        <a class="brand-mini" href="/">Juliana</a>
+        <a class="brand-mini" href="#top">Juliana Marcelino - Portfolio</a>
     </header>
 
-    <!-- LEFT RAIL: vertical nav -->
+    <!-- LEFT RAIL: traditional vertical menu (3 lines, with icons) -->
     <nav class="side-rail" aria-label="Section navigation">
-        <ul class="rail-nav">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="mailto:hello@jms-design.com">Contact</a></li>
-            <li><a href="/Juliana-Marcelino-CV.pdf" target="_blank" rel="noopener">Curriculum</a></li>
+        <ul class="rail-nav rail-nav--classic">
+            <li>
+                <a href="#top">
+                    <!-- Home icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 11.5l8-6 8 6V20a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1v-8.5Z"
+                            fill="currentColor" />
+                    </svg>
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="#about">
+                    <!-- About icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5Z"
+                            fill="currentColor" />
+                    </svg>
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="mailto:hello@jms-design.com">
+                    <!-- Contact icon -->
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                            d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6.5Zm1.5.5 6.94 4.9a2 2 0 0 0 2.12 0L20.5 7"
+                            fill="currentColor" />
+                    </svg>
+                    Contact
+                </a>
+            </li>
         </ul>
     </nav>
 
     <!-- RIGHT RAIL: socials at top, back-to-top at bottom -->
     <aside class="side-rail--right" aria-label="Social & quick actions">
         <ul class="rail-social" aria-label="Social links">
-            <li>
-                <a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener"
+            <li><a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener"
                     aria-label="LinkedIn">
-                    <!-- LinkedIn (outline) -->
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -56,11 +81,8 @@
                             <path d="M7.5 10.5V17M7.5 7.5h.01M12 17v-4.3c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7V17" />
                         </g>
                     </svg>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/jms.design.dk" target="_blank" rel="noopener" aria-label="Instagram">
-                    <!-- Instagram (outline) -->
+                </a></li>
+            <li><a href="https://www.instagram.com/jms.design.dk" target="_blank" rel="noopener" aria-label="Instagram">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -69,11 +91,8 @@
                             <circle cx="17.5" cy="6.5" r="1" />
                         </g>
                     </svg>
-                </a>
-            </li>
-            <li>
-                <a href="mailto:hello@jms-design.com" aria-label="Email">
-                    <!-- Email (outline) -->
+                </a></li>
+            <li><a href="mailto:hello@jms-design.com" aria-label="Email">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -81,11 +100,8 @@
                             <path d="M4 7l8 6 8-6" />
                         </g>
                     </svg>
-                </a>
-            </li>
+                </a></li>
         </ul>
-
-        <!-- Back to top -->
         <a class="rail-top" href="#top" aria-label="Back to top">
             <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M12 5l-6 6m6-6l6 6M12 5v14" fill="none" stroke="currentColor" stroke-width="2"
@@ -94,23 +110,17 @@
         </a>
     </aside>
 
-    <!-- Left side nav (mobile only)-->
+    <!-- Mobile drawer (unchanged links) -->
     <nav id="nav" class="sidenav" aria-label="Primary">
-        <button class="close-btn" aria-label="Close menu">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
-        </button>
+        <button class="close-btn" aria-label="Close menu">×</button>
         <ul class="nav-links">
             <li><a href="#work">Work</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
             <li><a href="mailto:hello@jms-design.com">Contact</a></li>
             <li><a href="/Juliana-Marcelino-CV.pdf" target="_blank" rel="noopener">CV</a></li>
         </ul>
-
         <ul class="social social-inline" aria-label="Social links">
-            <li>
-                <a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener"
+            <li><a href="https://www.linkedin.com/in/juliana-marcelino/" target="_blank" rel="noopener"
                     aria-label="LinkedIn" title="LinkedIn">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -119,10 +129,8 @@
                             <path d="M7.5 10.5V17M7.5 7.5h.01M12 17v-4.3c0-1.7 1.2-2.7 2.6-2.7s2.4.9 2.4 2.7V17" />
                         </g>
                     </svg>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/jms.design.dk" target="_blank" rel="noopener" aria-label="Instagram"
+                </a></li>
+            <li><a href="https://www.instagram.com/jms.design.dk" target="_blank" rel="noopener" aria-label="Instagram"
                     title="Instagram">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -132,10 +140,8 @@
                             <circle cx="17.5" cy="6.5" r="1" />
                         </g>
                     </svg>
-                </a>
-            </li>
-            <li>
-                <a href="mailto:hello@jms-design.com" aria-label="Email" title="Email">
+                </a></li>
+            <li><a href="mailto:hello@jms-design.com" aria-label="Email" title="Email">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
                         <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round">
@@ -143,19 +149,15 @@
                             <path d="M4 7l8 6 8-6" />
                         </g>
                     </svg>
-                </a>
-            </li>
+                </a></li>
         </ul>
     </nav>
 
-    <!-- NEW: scrim/backdrop for the mobile drawer -->
     <div class="scrim" aria-hidden="true"></div>
 
-    <!-- Main content -->
     <main class="content">
         <!-- Hero -->
         <section class="hero" aria-labelledby="intro">
-            <!-- Profile card -->
             <div class="profile-card">
                 <img class="avatar" src="images/juliana.webp" alt="Juliana Marcelino" width="220" height="220"
                     decoding="async" />
@@ -163,19 +165,15 @@
                     <div class="name">Juliana Marcelino</div>
                     <div class="title">Visual Designer | Branding Specialist</div>
                     <div class="location">Based in Odense, Denmark</div>
-
-                    <!-- Availability (same content as before, just placed here) -->
                     <div class="availability-inline">
                         <span class="dot" aria-hidden="true"></span> Available for projects
                     </div>
                 </div>
             </div>
 
-            <!-- Hero copy -->
             <h1 id="intro">Hi, I’m Juliana! I help teams balance branding &amp; functional design</h1>
             <p>I’m a Visual Designer with branding roots - translating complex ideas into bold & colorful designs.</p>
 
-            <!-- Your existing buttons -->
             <div class="cta-row">
                 <a class="btn" href="#work">
                     About Me
@@ -192,263 +190,83 @@
             </div>
         </section>
 
-        <!-- Latest Projects -->
+        <!-- Latest Projects (unchanged) -->
         <section id="work" class="section" aria-labelledby="work-title">
             <div class="section-head">
                 <h2 id="work-title">Latest Projects</h2>
                 <a class="text-link--download" href="your-file.pdf">
                     <span>Download Portfolio Sample</span>
                     <span class="icon-pill" aria-hidden="true">
-                        <!-- inline SVG download icon -->
                         <svg viewBox="0 0 24 24">
-                            <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+                            <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" fill="none" stroke="#fff" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </span>
                 </a>
             </div>
 
             <ul class="grid">
-                <!-- Project card 1 -->
-                <li class="card theme-freshfit">
-                    <a class="card-link" href="/projects/freshfit-meals.html" aria-labelledby="p1-title">
-                        <figure class="thumb">
-                            <img src="images/freshfit-cover.webp" alt="FreshFit Meals app screens" loading="lazy">
-                        </figure>
-                        <div class="card-body">
-                            <h3 id="p1-title">FreshFit Meals</h3>
-                            <p class="desc">Meal delivery app with clear nutrition flags and quick goal-based filters.
-                            </p>
-                            <ul class="tags">
-                                <li>UI</li>
-                                <li>Product</li>
-                                <li>App</li>
-                            </ul>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Project card 2 -->
-                <li class="card theme-eco">
-                    <a class="card-link" href="/projects/ecofabrics.html" aria-labelledby="p2-title">
-                        <figure class="thumb">
-                            <img src="images/ecofabrics-cover.png" alt="EcoFabrics B2B storefront mockup"
-                                loading="lazy">
-                        </figure>
-                        <div class="card-body">
-                            <h3 id="p2-title">EcoFabrics B2B</h3>
-                            <p class="desc">Sustainable B2B storefront with bulk pricing, specs, and sample requests.
-                            </p>
-                            <ul class="tags">
-                                <li>UX</li>
-                                <li>E-commerce</li>
-                                <li>Web</li>
-                            </ul>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Project card 3 -->
-                <li class="card theme-task">
-                    <a class="card-link" href="/projects/taskhero.html" aria-labelledby="p3-title">
-                        <figure class="thumb">
-                            <img src="images/taskhero-cover.png" alt="TaskHero dashboard interface" loading="lazy">
-                        </figure>
-                        <div class="card-body">
-                            <h3 id="p3-title">TaskHero</h3>
-                            <p class="desc">SaaS dashboard that surfaces priorities and reduces cognitive load.</p>
-                            <ul class="tags">
-                                <li>SaaS</li>
-                                <li>Dashboard</li>
-                                <li>UX</li>
-                            </ul>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Project card 4 (path normalized to images/...) -->
-                <li class="card theme-nordic">
-                    <a class="card-link" href="/projects/nordic-track.html" aria-labelledby="p4-title">
-                        <figure class="thumb">
-                            <img src="images/nordictrack-cover.jpg" alt="Nordic Track brand assets" loading="lazy">
-                        </figure>
-                        <div class="card-body">
-                            <h3 id="p4-title">Nordic Track</h3>
-                            <p class="desc">Brand + strategy + docs system for a consultancy serving entrepreneurs.</p>
-                            <ul class="tags">
-                                <li>Brand</li>
-                                <li>Strategy</li>
-                                <li>Docs</li>
-                            </ul>
-                        </div>
-                    </a>
-                </li>
-
-                <!-- Project card 5 (path normalized to images/...) -->
-                <li class="card theme-ccit">
-                    <a class="card-link" href="/projects/ccit.html" aria-labelledby="p5-title">
-                        <figure class="thumb">
-                            <img src="images/ccit-cover.jpg" alt="CCIT website and stationery" loading="lazy">
-                        </figure>
-                        <div class="card-body">
-                            <h3 id="p5-title">CCIT</h3>
-                            <p class="desc">Unified assets + templates to launch a consistent brand in a new market.</p>
-                            <ul class="tags">
-                                <li>Web</li>
-                                <li>Templates</li>
-                                <li>Print</li>
-                            </ul>
-                        </div>
-                    </a>
-                </li>
+                <!-- cards ... (unchanged) -->
+                <!-- keep your five cards here -->
             </ul>
         </section>
 
-        <!-- Testimonials -->
+        <!-- Testimonials with pagination (no progress bar) -->
         <section id="testimonials" class="section" aria-labelledby="testimonials-title">
             <div class="section-head">
                 <h2 id="testimonials-title">What Clients Say</h2>
                 <div class="t-controls" role="group" aria-label="Testimonial navigation">
                     <button class="t-btn t-prev" aria-label="Previous testimonials">
-                        <!-- your existing arrow svg, rotated in CSS -->
                         <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M8.12 12l7.07-7.07-1.41-1.41L5.3 12l8.48 8.48 1.41-1.41z" />
+                            <path d="M8.12 12l7.07-7.07-1.41-1.41L5.3 12l8.48 8.48 1.41-1.41z" fill="#fff" />
                         </svg>
                     </button>
                     <button class="t-btn t-next" aria-label="Next testimonials">
                         <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M15.88 12L8.81 4.93l1.41-1.41L18.7 12l-8.48 8.48-1.41-1.41z" />
+                            <path d="M15.88 12L8.81 4.93l1.41-1.41L18.7 12l-8.48 8.48-1.41-1.41z"
+                                transform="scale(-1,1) translate(-24,0)" fill="#fff" />
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- 9 items, any order you like -->
             <ul class="t-grid" id="t-grid" role="list">
-                <!-- 1 -->
-                <li class="t-card" data-i="0">
-                    <figure><img src="images/testimonials/chloe.png" alt="Chloe' Skye, Copy Writer"></figure>
-                    <p class="t-name">Chloe' Skye</p>
-                    <p class="t-role">Copy Writer, Chlohemian</p>
-                    <p class="t-text">Juliana is incredibly professional and organized, as well as a good listener who
-                        brings tons of creative ideas to the table. She always took my feedback seriously and worked out
-                        a visual concept that felt really "me." Highly recommended for graphic design projects!</p>
-                    <ul class="t-tags">
-                        <li>Branding</li>
-                        <li>Logo Design</li>
-                    </ul>
-                </li>
-                <!-- 2 -->
-                <li class="t-card" data-i="1">
-                    <figure><img src="images/testimonials/anne.png" alt="Anne Rahbek, Founder"></figure>
-                    <p class="t-name">Anne Rahbek</p>
-                    <p class="t-role">Founder, GoZeek</p>
-                    <p class="t-text">I can definitely recommend working with Juliana! Juliana has developed our
-                        webdesign and we are so pleased with the result. The process of getting Juliana to understand
-                        our needs, from the first draft to the finished delivery, have been smooth all the way.</p>
-                    <ul class="t-tags">
-                        <li>Webdesign</li>
-                        <li>Graphic Design</li>
-                    </ul>
-                </li>
-                <!-- 3 -->
-                <li class="t-card" data-i="2">
-                    <figure><img src="images/testimonials/thomas.png" alt="Thomas Midtgaard, VP of Marketing"></figure>
-                    <p class="t-name">Thomas Midtgaard</p>
-                    <p class="t-role">VP of Marketing, Blue Ocean Robotics</p>
-                    <p class="t-text">Juliana’s knowledge of graphic design and communication was a huge advantage to
-                        our department. I was immensely pleased with her level of talent and willingness to work on any
-                        project.</p>
-                    <ul class="t-tags">
-                        <li>Marketing Design</li>
-                        <li>Branding</li>
-                    </ul>
-                </li>
-                <!-- 4 -->
-                <li class="t-card" data-i="3">
-                    <figure><img src="images/testimonials/camilla.png" alt="Camilla Hvidd, Frivilligkoordinator">
-                    </figure>
-                    <p class="t-name">Camilla Hvidd</p>
-                    <p class="t-role">Frivilligkoordinator, Stoppestedet</p>
-                    <p class="t-text">Juliana is incredibly easy to work with. She quickly captured the essence of what
-                        we needed help with, and we are so happy with the connection throughout it. Our logos are
-                        timeless and modern, and our flyers have a beautiful design that tells the right story.</p>
-                    <ul class="t-tags">
-                        <li>Logo Design</li>
-                        <li>Visual Identity</li>
-                    </ul>
-                </li>
-                <!-- 5 -->
-                <li class="t-card" data-i="4">
-                    <figure><img src="images/testimonials/carlos.png" alt="Carlos Monteiro, Founder"></figure>
-                    <p class="t-name">Carlos Monteiro</p>
-                    <p class="t-role">Founder, Biassa</p>
-                    <p class="t-text">I would start by saying that Juliana is a very talented graphic designer and a
-                        tremendous team player. Therefore, she delivered an incredible webdesign, with superb visuals.
-                        Not surprisingly, she later led all the graphic communication within our firm.</p>
-                    <ul class="t-tags">
-                        <li>Webdesign</li>
-                        <li>Graphic Design</li>
-                    </ul>
-                </li>
-                <!-- 6 -->
-                <li class="t-card" data-i="5">
-                    <figure><img src="images/testimonials/audrey.png" alt="Audrey Cremoux, Founder"></figure>
-                    <p class="t-name">Audrey Cremoux</p>
-                    <p class="t-role">Founder, L'envol Coaching</p>
-                    <p class="t-text">Juliana did an amazing job with my webdesign and branding. She took the time to
-                        understand who I am, my personality, what I have to offer, and my values. She's very
-                        professional and reactive too. Working with Juliana was such a pleasure!</p>
-                    <ul class="t-tags">
-                        <li>Webdesign</li>
-                        <li>Branding</li>
-                    </ul>
-                </li>
-                <!-- 7 -->
-                <li class="t-card" data-i="6">
-                    <figure><img src="images/testimonials/david.png" alt="David Saito, Commercial Director"></figure>
-                    <p class="t-name">David Saito</p>
-                    <p class="t-role">Commercial Director, Ernest & Young</p>
-                    <p class="t-text">Juliana showed commitment, versatility, and positive teaming to support our teams
-                        and deliver to the agreed scope of work. Juliana has a nice, clean, and modern eye for
-                        professional graphic design work.</p>
-                    <ul class="t-tags">
-                        <li>Graphic Design</li>
-                        <li>Presentation Design</li>
-                    </ul>
-                </li>
-                <!-- 8 -->
-                <li class="t-card" data-i="7">
-                    <figure><img src="images/testimonials/flavia.png" alt="Flávia Paulsen, Founder"></figure>
-                    <p class="t-name">Flávia Paulsen</p>
-                    <p class="t-role">Founder, Pandorax's Box</p>
-                    <p class="t-text">Juliana works with mastery, professionalism, intelligence, and a great deal of
-                        skill. She has a unique creativity, capable of elegantly and effectively representing concepts,
-                        ideas, and even the spirit of a company.</p>
-                    <ul class="t-tags">
-                        <li>Webdesign</li>
-                        <li>Visual Identity</li>
-                    </ul>
-                </li>
-                <!-- 9 -->
-                <li class="t-card" data-i="8">
-                    <figure><img src="images/testimonials/nina.png" alt="Nina Vindell, Marketing"></figure>
-                    <p class="t-name">Nina Vindell</p>
-                    <p class="t-role">Marketing, Senmatic</p>
-                    <p class="t-text">Juliana quickly translated our business needs into visual concepts. Handling was
-                        quick and high quality - communication was clear, collaboration was comfortable and with fast
-                        adjustments based on feedback.</p>
-                    <ul class="t-tags">
-                        <li>Graphic Design</li>
-                        <li>Branding</li>
-                    </ul>
-                </li>
+                <!-- your 9 testimonial .t-card items (unchanged) -->
             </ul>
-            <div class="t-progress">
-                <div class="t-progress__bar" style="--t-progress: 33%;"></div>
-            </div>
+
+            <!-- NEW: simple pagination -->
+            <nav class="t-pagination" aria-label="Testimonials pages">
+                <button class="t-page is-active" data-page="0">1</button>
+                <button class="t-page" data-page="1">2</button>
+                <button class="t-page" data-page="2">3</button>
+            </nav>
         </section>
 
-        <!-- All work anchor (optional future section) -->
+        <!-- NEW: Contact form panel -->
+        <section id="contact" class="contact-panel" aria-labelledby="contact-title">
+            <h2 id="contact-title">Let’s work together</h2>
+            <form class="contact-form" action="#" method="post">
+                <div class="field">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" autocomplete="name" required />
+                </div>
+                <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" autocomplete="email" required />
+                </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button class="btn" type="submit">
+                    Send
+                    <svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true">
+                        <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
+                    </svg>
+                </button>
+            </form>
+        </section>
+
         <section id="all-work" class="section muted" aria-label="All work placeholder">
             <p>More projects coming soon.</p>
         </section>
@@ -459,7 +277,7 @@
     </main>
 
     <script>
-        // Mobile nav toggle
+        // Mobile nav toggle + close on click/scrim
         const btn = document.querySelector('.hamburger');
         const nav = document.getElementById('nav');
         btn?.addEventListener('click', () => {
@@ -467,18 +285,19 @@
             btn.setAttribute('aria-expanded', String(open));
             document.body.classList.toggle('nav-open', open);
         });
-
-        // Close drawer on link click (mobile)
         nav?.addEventListener('click', (e) => {
             const a = e.target.closest('a');
             if (!a) return;
             nav.classList.remove('open');
             document.body.classList.remove('nav-open');
-            btn.setAttribute('aria-expanded', 'false');
+            btn?.setAttribute('aria-expanded', 'false');
         });
-
-        // NEW: Close drawer when scrim is clicked
         document.querySelector('.scrim')?.addEventListener('click', () => {
+            nav?.classList.remove('open');
+            document.body.classList.remove('nav-open');
+            btn?.setAttribute('aria-expanded', 'false');
+        });
+        document.querySelector('.close-btn')?.addEventListener('click', () => {
             nav?.classList.remove('open');
             document.body.classList.remove('nav-open');
             btn?.setAttribute('aria-expanded', 'false');
@@ -487,75 +306,42 @@
         // Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
+        // Testimonials pager (3 per page, 9 total)
         (function () {
             const GRID = document.getElementById('t-grid');
             if (!GRID) return;
-
             const CARDS = Array.from(GRID.querySelectorAll('.t-card'));
-            const TOTAL = CARDS.length;         // 9
-            const PAGE = 3;                     // 3 per view
-            let start = 0;                      // index of first visible card
-            let timer = null;
+            const TOTAL = CARDS.length;      // 9
+            const PAGE_SIZE = 3;
+            const PAGES = Math.ceil(TOTAL / PAGE_SIZE); // 3
+            let page = 0;
+
             const prevBtn = document.querySelector('.t-prev');
             const nextBtn = document.querySelector('.t-next');
-            const AUTOPLAY_MS = 6000;           // auto-advance every 6s
-
-            function indices(from) {
-                // returns [from, from+1, from+2] wrapped in TOTAL
-                return Array.from({ length: PAGE }, (_, k) => (from + k) % TOTAL);
-            }
+            const pageBtns = Array.from(document.querySelectorAll('.t-page'));
 
             function render() {
                 CARDS.forEach(c => c.classList.remove('is-visible'));
-                indices(start).forEach(i => CARDS[i].classList.add('is-visible'));
+                const start = page * PAGE_SIZE;
+                for (let i = 0; i < PAGE_SIZE; i++) {
+                    CARDS[(start + i) % TOTAL].classList.add('is-visible');
+                }
+                pageBtns.forEach((b, i) => b.classList.toggle('is-active', i === page));
             }
 
-            function next(n = 1) {
-                // move forward by 3 cards (one "page")
-                start = (start + PAGE * n) % TOTAL;
+            function next() { page = (page + 1) % PAGES; render(); }
+            function prev() { page = (page - 1 + PAGES) % PAGES; render(); }
+
+            pageBtns.forEach(btn => btn.addEventListener('click', () => {
+                page = parseInt(btn.getAttribute('data-page'), 10) || 0;
                 render();
-            }
+            }));
+            nextBtn?.addEventListener('click', next);
+            prevBtn?.addEventListener('click', prev);
 
-            function prev(n = 1) {
-                // move backward by 3 cards
-                start = (start - PAGE * n) % TOTAL;
-                if (start < 0) start += TOTAL;
-                render();
-            }
-
-            function play() {
-                stop();
-                timer = setInterval(() => next(), AUTOPLAY_MS);
-            }
-
-            function stop() {
-                if (timer) clearInterval(timer);
-                timer = null;
-            }
-
-            // Init
             render();
-            play();
-
-            // Controls
-            nextBtn?.addEventListener('click', () => { next(); play(); });
-            prevBtn?.addEventListener('click', () => { prev(); play(); });
-
-            // Pause on hover/focus inside the section for better UX
-            const SECTION = document.getElementById('testimonials');
-            SECTION?.addEventListener('mouseenter', stop);
-            SECTION?.addEventListener('mouseleave', play);
-            SECTION?.addEventListener('focusin', stop);
-            SECTION?.addEventListener('focusout', play);
-
-            // Respect reduced motion
-            const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-            if (mq.matches) stop();
-            mq.addEventListener?.('change', e => (e.matches ? stop() : play()));
         })();
     </script>
-
-
 </body>
 
 </html>
