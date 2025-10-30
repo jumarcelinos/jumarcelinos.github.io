@@ -87,16 +87,6 @@ h6 {
     text-wrap: balance;
 }
 
-/* Multi-line hero headline with inline images */
-.hero .h1-line {
-    display: flex;
-    /* was inline-flex */
-    align-items: baseline;
-    gap: .35em;
-    margin: 0;
-    line-height: 1.08;
-}
-
 /* space between the lines, not too airy */
 .hero .h1-line+.h1-line {
     margin-top: .18em;
@@ -112,44 +102,50 @@ h6 {
     /* space before the paragraph */
 }
 
-/* small inline images that scale with the font */
-.h1-icon {
-    height: 0.9em;
-    /* sized by text for balance */
-    width: auto;
-    vertical-align: baseline;
+.hero-row {
+    display: flex;
+    align-items: center;
+    /* photo centers with the text cap-height */
+    gap: clamp(16px, 2.5vw, 28px);
+    margin-top: clamp(8px, 1vh, 16px);
+    /* space below the availability badge */
+    margin-bottom: clamp(10px, 2vh, 20px);
+    /* space above the paragraph */
+}
+
+.hero-photo {
+    width: clamp(110px, 12vw, 176px);
+    /* bigger image to balance the headline */
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
     object-fit: cover;
-    border-radius: 8px;
-    /* gentle by default for non-profile icons */
+    background: #fff;
+    border: 1px solid #d0c5b9;
     box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
 }
 
-/* first line profile image: round and a touch bigger */
-.h1-icon--profile {
-    height: 1.1em;
-    aspect-ratio: 1 / 1;
-    border-radius: 999px;
+.hero p {
+    margin: 0 0 16px;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--muted);
 }
 
-/* keep long phrases from squishing the icons on very small screens */
-@media (max-width: 480px) {
-    .hero .h1-line {
-        flex-wrap: wrap;
-        gap: .3em;
+@media (max-width: 700px) {
+    .hero-row {
+        flex-direction: column;
+        align-items: flex-start;
+        /* keeps left alignment on mobile */
+        gap: 12px;
     }
-}
 
-@media (max-width: 640px) {
+    .hero-photo {
+        width: clamp(90px, 22vw, 132px);
+    }
+
     .hero h1 {
         max-width: 100%;
     }
-}
-
-.hero p {
-    font-size: 18px;
-    line-height: 1.55;
-    margin: 0 0 16px;
-    color: var(--muted);
 }
 
 /* =========================
