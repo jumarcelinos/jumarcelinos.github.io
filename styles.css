@@ -302,7 +302,7 @@ small {
     text-decoration: none;
     font-size: clamp(16px, 1.2vw, 20px);
     letter-spacing: .08em;
-    text-transform: uppercase;
+    text-transform: capitalize;
     line-height: 1;
     font-weight: 600;
 }
