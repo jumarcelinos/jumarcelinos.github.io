@@ -96,24 +96,10 @@
 
     <!-- Left side nav (mobile only)-->
     <nav id="nav" class="sidenav" aria-label="Primary">
-        <div class="profile">
-            <!-- FIX: forward slash in path -->
-            <img src="images/juliana.jpg" alt="Juliana Marcelino" width="150" height="150" decoding="async"
-                fetchpriority="high" />
-        </div>
-
-        <a class="brand" href="/">Juliana Marcelino</a>
-        <p class="role">Visual Designer, Branding, Graphic Design — Denmark</p>
-        <p>My journey began in corporate communication in Brazil and evolved into branding and graphic design after
-            moving to Denmark. Over the years, I’ve partnered with startups, nonprofits, and purpose-led
-            businesses—helping them bring their brand identities to life.
-
-            Today, as U/UX Designer, I focus on designing intuitive, scalable digital interfaces that bridge the gap
-            between brand identity and product functionality.
-        </p>
-
-        <hr class="nav-sep" />
-
+        <button class="close-btn" aria-label="Close menu">
+            <!-- either text × or an SVG -->
+            ×
+        </button>
         <ul class="nav-links">
             <li><a href="#work">Work</a></li>
             <li><a href="#testimonials">Testimonials</a></li>
@@ -186,18 +172,18 @@
 
             <!-- Hero copy -->
             <h1 id="intro">Hi, I’m Juliana! I help teams balance branding &amp; functional design</h1>
-            <p>I design clean interfaces and brand assets that make work easier.</p>
+            <p>I’m a Visual Designer with branding roots - translating complex ideas into bold & colorful designs.</p>
 
             <!-- Your existing buttons -->
             <div class="cta-row">
                 <a class="btn" href="#work">
-                    Explore Work
+                    About Me
                     <svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true">
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
                     </svg>
                 </a>
                 <a class="btn ghost" href="#about">
-                    About Me
+                    Contact
                     <svg class="btn-icon" viewBox="0 -960 960 960" aria-hidden="true">
                         <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" fill="currentColor" />
                     </svg>
@@ -209,18 +195,14 @@
         <section id="work" class="section" aria-labelledby="work-title">
             <div class="section-head">
                 <h2 id="work-title">Latest Projects</h2>
-                <a class="text-link download-link" href="/Juliana-Marcelino-Portfolio-Sample.pdf" download>
-                    Download Portfolio Sample
-                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <!-- down arrow -->
-                            <path d="M12 3v11" />
-                            <path d="m8 10 4 4 4-4" />
-                            <!-- tray -->
-                            <path d="M4 20h16" />
-                        </g>
-                    </svg>
+                <a class="text-link--download" href="your-file.pdf">
+                    <span>Download Portfolio Sample</span>
+                    <span class="icon-pill" aria-hidden="true">
+                        <!-- inline SVG download icon -->
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+                        </svg>
+                    </span>
                 </a>
             </div>
 
@@ -460,6 +442,9 @@
                     </ul>
                 </li>
             </ul>
+            <div class="t-progress">
+                <div class="t-progress__bar" style="--t-progress: 33%;"></div>
+            </div>
         </section>
 
         <!-- All work anchor (optional future section) -->
