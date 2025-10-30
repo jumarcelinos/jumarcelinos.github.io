@@ -82,46 +82,10 @@ h6 {
     letter-spacing: -0.015em;
     font-size: clamp(36px, 5.6vw, 72px);
     line-height: 1.08;
-    margin: clamp(24px, 6vh, 80px) 0 12px;
-    max-width: 90%;
     text-wrap: balance;
-}
-
-/* space between the lines, not too airy */
-.hero .h1-line+.h1-line {
-    margin-top: .18em;
-}
-
-/* Hero: explicit top/bottom buffers around the H1 lines */
-.hero .h1-line:first-of-type {
-    margin-top: clamp(8px, 1.8vh, 24px);
-}
-
-.hero .h1-line:last-of-type {
-    margin-bottom: clamp(18px, 2.4vh, 40px);
-    /* space before the paragraph */
-}
-
-.hero-row {
-    display: flex;
-    align-items: center;
-    /* photo centers with the text cap-height */
-    gap: clamp(16px, 2.5vw, 28px);
-    margin-top: clamp(8px, 1vh, 16px);
-    /* space below the availability badge */
-    margin-bottom: clamp(10px, 2vh, 20px);
-    /* space above the paragraph */
-}
-
-.hero-photo {
-    width: clamp(110px, 12vw, 176px);
-    /* bigger image to balance the headline */
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #fff;
-    border: 1px solid #d0c5b9;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+    margin: 0 0 clamp(8px, 1.6vh, 14px);
+    /* space below H1 */
+    max-width: 42ch;
 }
 
 .hero p {
@@ -129,70 +93,6 @@ h6 {
     font-size: 18px;
     line-height: 1.55;
     color: var(--muted);
-}
-
-@media (max-width: 700px) {
-    .hero-row {
-        flex-direction: column;
-        align-items: flex-start;
-        /* keeps left alignment on mobile */
-        gap: 12px;
-    }
-
-    .hero-photo {
-        width: clamp(90px, 22vw, 132px);
-    }
-
-    .hero h1 {
-        max-width: 100%;
-    }
-}
-
-/* =========================
-   Mobile-only hero tweaks
-   ========================= */
-@media (max-width: 1099px) {
-
-    /* Hide the inline hero images on mobile; keep only text */
-    .hero .h1-icon {
-        display: none;
-    }
-
-    /* Optional: tighten word spacing a hair now that icons are gone */
-    .hero .h1-line {
-        gap: .25em;
-        /* was .35em */
-    }
-
-    /* Sidebar profile photo becomes round on mobile */
-    .sidenav .profile img {
-        width: 128px;
-        /* comfy size on phones */
-        height: auto;
-        aspect-ratio: 1 / 1;
-        /* square for a perfect circle */
-        border-radius: 9999px;
-        /* round */
-        object-fit: cover;
-    }
-}
-
-/* =========================
-   HERO: bump two inline icons
-   ========================= */
-@media (min-width: 1100px) {
-
-    /* first line profile image a bit bigger */
-    .h1-icon--profile {
-        height: 1.25em;
-        /* was ~1.1em */
-    }
-
-    /* the icon before “branding” (first icon on the 3rd line) */
-    .hero .h1-line:nth-of-type(3) .h1-icon:first-child {
-        height: 1.15em;
-        /* was ~0.9em */
-    }
 }
 
 /* Section headings */
@@ -290,6 +190,7 @@ h6 {
     text-transform: uppercase;
     line-height: 1;
     font-weight: 600;
+    /* bolder links */
 }
 
 .side-rail .rail-nav a:hover {
@@ -392,10 +293,8 @@ h6 {
 
 /* Show both rails on desktop only */
 @media (min-width:1100px) {
-    .side-rail {
-        display: flex;
-    }
 
+    .side-rail,
     .side-rail--right {
         display: flex;
     }
@@ -432,6 +331,17 @@ h6 {
     background: #fff;
     border: 1px solid #d0c5b9;
     box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+}
+
+/* Mobile: make the drawer profile photo round */
+@media (max-width:1099px) {
+    .sidenav .profile img {
+        width: 128px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        border-radius: 9999px;
+        object-fit: cover;
+    }
 }
 
 .sidenav .brand {
@@ -589,22 +499,17 @@ body.nav-open .scrim {
     gap: clamp(24px, 3vw, 40px);
 }
 
-/* Desktop centering:
-   Middle lane = 100vw - rails. We size content to 80% of that lane,
-   then add equal side gutters so it sits centered between rails. */
+/* Desktop centering */
 @media (min-width:1100px) {
     .content {
-        /* vertical spacing */
         margin-top: var(--content-mt);
         margin-bottom: var(--content-mb);
 
-        /* compute middle lane once, then center the inner width */
         /* width: 80% of middle lane */
         width: calc((100vw - var(--railwL) - var(--railwR)) * var(--content-inner));
 
-        /* left margin = left rail + half of the leftover space inside middle lane */
+        /* equal gutters inside middle lane + include rails */
         margin-left: calc(var(--railwL) + ((100vw - var(--railwL) - var(--railwR)) - (100vw - var(--railwL) - var(--railwR)) * var(--content-inner)) / 2);
-        /* right margin mirrors left */
         margin-right: calc(var(--railwR) + ((100vw - var(--railwL) - var(--railwR)) - (100vw - var(--railwL) - var(--railwR)) * var(--content-inner)) / 2);
 
         max-width: none;
@@ -612,7 +517,49 @@ body.nav-open .scrim {
     }
 }
 
-/* Availability badge now in main */
+/* =========================================================
+   HERO SECTION (profile card + copy)
+   ========================================================= */
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2.2vw, 24px);
+    margin-top: clamp(8px, 1vh, 16px);
+    /* space from page chrome */
+    margin-bottom: clamp(14px, 2vh, 28px);
+    /* space before H1 */
+}
+
+.profile-card .avatar {
+    width: clamp(104px, 12vw, 160px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    /* perfect square */
+    border-radius: 50%;
+    /* round */
+    object-fit: cover;
+    background: #fff;
+    border: 1px solid #d0c5b9;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .04);
+}
+
+.profile-meta .name {
+    font-family: "Domine", Georgia, Cambria, "Times New Roman", Times, serif;
+    font-weight: 700;
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.2;
+    color: var(--text);
+}
+
+.profile-meta .title {
+    margin-top: 2px;
+    color: var(--muted);
+    font-family: "Univers", "Helvetica Neue", Arial, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", sans-serif;
+    font-weight: 600;
+    font-size: clamp(13px, 1.4vw, 14px);
+}
+
+/* Availability badge in main */
 .availability-main {
     display: inline-flex;
     align-items: center;
@@ -620,7 +567,7 @@ body.nav-open .scrim {
     color: #146c2e;
     font-weight: 600;
     margin-bottom: clamp(24px, 3vh, 48px);
-    /* was smaller */
+    /* space before hero row */
 }
 
 .availability-main .dot {
@@ -685,18 +632,6 @@ body.nav-open .scrim {
     height: 1em;
     display: inline-block;
     transform: translateY(1px);
-}
-
-@media (max-width:640px) {
-    .section-head {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .section-head .text-link {
-        gap: 6px;
-    }
 }
 
 /* CTA row */
@@ -875,6 +810,7 @@ body.nav-open .scrim {
     white-space: nowrap;
 }
 
+/* lock hover tag colors per theme */
 .card.theme-freshfit .tags li,
 .card.theme-task .tags li,
 .card.theme-nordic .tags li {
@@ -888,7 +824,6 @@ body.nav-open .scrim {
     border-color: #fff;
 }
 
-/* lock hover tag colors per theme */
 .card.theme-freshfit .card-link:hover .tags li,
 .card.theme-task .card-link:hover .tags li,
 .card.theme-nordic .card-link:hover .tags li {
@@ -919,8 +854,6 @@ body.nav-open .scrim {
     display: flex;
     gap: 8px;
 }
-
-/* if you keep header arrows */
 
 .t-btn {
     appearance: none;
@@ -976,19 +909,11 @@ body.nav-open .scrim {
     display: none;
 }
 
-/* Show only 3 cards per page via a utility class */
 .t-card.is-visible {
     display: block;
 }
 
-/* Keep your 3-column grid on desktop; it will naturally show 3 visible cards */
-@media (max-width: 900px) {
-    .t-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* 1-up on mobile */
-}
+/* show 3 via JS/pagination */
 
 .t-card figure {
     margin: 0 0 10px;
