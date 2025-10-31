@@ -378,8 +378,6 @@ small {
 /* 1) DESKTOP MENU — center links in the left rail + regular weight */
 @media (min-width:1100px) {
     .side-rail {
-        justify-content: center;
-        /* vertical center in the rail */
         align-items: center;
         /* horizontal center of the nav block */
         padding-left: 0;
