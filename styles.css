@@ -1227,6 +1227,8 @@ body.nav-open .scrim {
     border-radius: 0;
     display: grid;
     gap: 16px;
+    justify-items: center;
+    /* center the FORM (and title) horizontally */
 }
 
 .contact-panel h2 {
@@ -1236,7 +1238,9 @@ body.nav-open .scrim {
 .contact-form {
     display: grid;
     gap: 14px;
-    max-width: 680px
+    max-width: 680px width: 100%;
+    justify-items: stretch;
+    /* fields take full form width */
 }
 
 .field {
@@ -1254,7 +1258,7 @@ textarea {
     font: inherit;
     padding: 10px 12px;
     border: 1px solid #1d1d1b;
-    border-radius: 6px;
+    border-radius: 0;
     background: #fff;
     color: var(--text)
 }
@@ -1263,6 +1267,15 @@ input:focus,
 textarea:focus {
     outline: 2px solid var(--ring);
     outline-offset: 2px
+}
+
+.contact-form .btn {
+    width: auto;
+    /* don't stretch */
+    justify-self: start;
+    /* left edge */
+    margin-top: 6px;
+    /* tiny breathing room */
 }
 
 /* =========================================================
