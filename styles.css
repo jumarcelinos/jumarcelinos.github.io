@@ -375,6 +375,44 @@ small {
     }
 }
 
+/* 1) DESKTOP MENU — center links in the left rail + regular weight */
+@media (min-width:1100px) {
+    .side-rail {
+        justify-content: center;
+        /* center the menu vertically */
+        border-right: 1px solid var(--rail-fg) !important;
+        box-shadow: none;
+    }
+
+    .rail-nav {
+        writing-mode: horizontal-tb;
+        /* classic list (no vertical-rl) */
+        transform: none;
+        display: grid;
+        gap: 12px;
+        text-align: left;
+    }
+
+    .rail-nav a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--ff-sans-ui);
+        font-weight: 400;
+        /* regular */
+        text-transform: none;
+        /* already capitalized text in HTML */
+        letter-spacing: 0;
+    }
+
+    .rail-nav a svg {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+    }
+}
+
+
 /* =========================================================
    SIDENAV (mobile drawer)
    ========================================================= */
@@ -387,7 +425,8 @@ small {
     gap: 16px;
     padding: 54px;
     background: var(--bg);
-    border-right: 1px solid var(--text);
+    border-right: none !important;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, .08);
     z-index: 100
 }
 
@@ -468,6 +507,24 @@ small {
     outline-offset: 3px
 }
 
+/* 2) MOBILE MENU — same font/weight + icons + social hover style and shadow */
+@media (max-width:1099px) {
+    .nav-links a {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--ff-sans-ui);
+        font-weight: 400;
+        /* regular, to match desktop */
+    }
+
+    .nav-links a svg {
+        width: 18px;
+        height: 18px;
+        flex: 0 0 auto;
+    }
+}
+
 .availability {
     display: flex;
     align-items: center;
@@ -504,14 +561,16 @@ small {
     height: 40px;
     border-radius: 9999px;
     text-decoration: none;
-    color: var(--muted);
-    border: 3px solid var(--text);
-    background: transparent
+    color: #fff;
+    border: 2px solid var(--brand);
+    background: var(--brand);
 }
 
 .social-inline a:hover {
-    color: var(--brand);
-    border-color: color-mix(in srgb, var(--brand) 40%, var(--text))
+    background: transparent;
+    color: var(--text);
+    /* #1d1d1b */
+    border-color: var(--text);
 }
 
 .social-inline svg {
@@ -519,7 +578,7 @@ small {
     height: 20px;
     display: block;
     fill: none;
-    stroke: var(--text);
+    stroke: currentColor;
     stroke-width: 2
 }
 
@@ -531,6 +590,8 @@ small {
         padding-top: 56px
     }
 }
+
+
 
 .sidenav .close-btn {
     position: absolute;
@@ -673,9 +734,11 @@ body.nav-open .scrim {
     color: var(--text);
     font-family: var(--ff-sans-ui);
     font-size: var(--fs-small);
-    line-height: 1.35;
     font-weight: 600;
-    padding: 4px 10px;
+    line-height: 1;
+    /* removes extra vertical space inside pill */
+    padding: 6px 10px;
+    /* compact, even padding */
     border: 1px solid #d0c5b9;
     border-radius: 9999px;
     background: transparent;
@@ -685,8 +748,10 @@ body.nav-open .scrim {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #28a745;
-    box-shadow: 0 0 10px #28a745;
+    margin-left: 0;
+    /* ensure no artificial left offset */
+    box-shadow: 0 0 6px rgba(40, 167, 69, .45);
+    /* subtler glow to avoid “fake margin” */
     animation: pulseDot 1.6s ease-in-out infinite;
 }
 
@@ -1204,11 +1269,22 @@ textarea:focus {
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+
 @media (min-width:1100px) {
 
     .side-rail,
     .side-rail--right {
         display: flex
+    }
+
+    .side-rail {
+        border-right: 1px solid var(--rail-fg) !important;
+        box-shadow: none;
+    }
+
+    .side-rail--right {
+        border-left: 1px solid var(--rail-fg) !important;
+        box-shadow: none;
     }
 
     .sidenav {
