@@ -378,38 +378,37 @@ small {
 /* 1) DESKTOP MENU — center links in the left rail + regular weight */
 @media (min-width:1100px) {
     .side-rail {
-        /* top of the rail, but centered horizontally */
-        justify-content: flex-start;
-        /* top */
-        align-items: center;
-        /* center across the rail width */
-        padding-top: 56px;
-        /* keep your existing top breathing room */
+        /* center the nav block vertically, push it to the rail’s right edge */
+        justify-content: center;
+        align-items: flex-end;
+        padding-right: 18px;
+        /* little breathing room from the rail border */
+        padding-left: 14px;
+        /* keep your original inset */
     }
 
     .rail-nav--classic {
-        /* 3-line stack anchored near the top */
+        /* stack links, and align each item to the right */
         display: grid;
         gap: 12px;
-        margin: 0;
-        padding: 0;
+        justify-items: end;
+        /* <- key */
+        text-align: right;
         width: 100%;
-        /* keep links visually centered in the narrow rail */
-        place-items: center;
+    }
+
+    .rail-nav--classic li {
+        width: 100%;
     }
 
     .rail-nav--classic a {
-        display: inline-flex;
-        align-items: center;
-        /* icon + label vertically centered */
-        gap: 8px;
         font-family: var(--ff-sans-ui);
         font-weight: 400;
         /* regular */
         text-transform: none;
-        /* keep your capitalized text from HTML */
         letter-spacing: 0;
-        line-height: 1;
+        /* ensure the whole row hugs the right edge neatly */
+        padding-inline-end: 2px;
     }
 
     .rail-nav--classic a svg {
