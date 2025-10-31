@@ -378,23 +378,23 @@ small {
 /* 1) DESKTOP MENU — center links in the left rail + regular weight */
 @media (min-width:1100px) {
     .side-rail {
-        /* center the nav block vertically, push it to the rail’s right edge */
         justify-content: center;
-        align-items: flex-start;
-        padding-right: 18px;
-        /* little breathing room from the rail border */
-        padding-left: 14px;
-        /* keep your original inset */
+        /* vertical center in the rail */
+        align-items: center;
+        /* horizontal center of the nav block */
+        padding-left: 0;
+        /* let the centering do the work */
+        padding-right: 0;
     }
 
     .rail-nav--classic {
-        /* stack links, and align each item to the right */
         display: grid;
         gap: 12px;
         justify-items: start;
-        /* <- key */
-        text-align: right;
-        width: 100%;
+        /* items align left inside the centered block */
+        text-align: left;
+        width: max-content;
+        /* shrink to fit content so centering is true */
     }
 
     .rail-nav--classic li {
@@ -407,8 +407,8 @@ small {
         /* regular */
         text-transform: none;
         letter-spacing: 0;
-        /* ensure the whole row hugs the right edge neatly */
-        padding-inline-end: 2px;
+        padding: 0 2px;
+        /* tiny breathing room */
     }
 
     .rail-nav--classic a svg {
