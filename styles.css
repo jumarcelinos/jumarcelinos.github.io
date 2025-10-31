@@ -378,34 +378,41 @@ small {
 /* 1) DESKTOP MENU — center links in the left rail + regular weight */
 @media (min-width:1100px) {
     .side-rail {
-        justify-content: center;
-        /* center the menu vertically */
-        border-right: 1px solid var(--rail-fg) !important;
-        box-shadow: none;
+        /* top of the rail, but centered horizontally */
+        justify-content: flex-start;
+        /* top */
+        align-items: center;
+        /* center across the rail width */
+        padding-top: 56px;
+        /* keep your existing top breathing room */
     }
 
-    .rail-nav {
-        writing-mode: horizontal-tb;
-        /* classic list (no vertical-rl) */
-        transform: none;
+    .rail-nav--classic {
+        /* 3-line stack anchored near the top */
         display: grid;
         gap: 12px;
-        text-align: left;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        /* keep links visually centered in the narrow rail */
+        place-items: center;
     }
 
-    .rail-nav a {
+    .rail-nav--classic a {
         display: inline-flex;
         align-items: center;
+        /* icon + label vertically centered */
         gap: 8px;
         font-family: var(--ff-sans-ui);
         font-weight: 400;
         /* regular */
         text-transform: none;
-        /* already capitalized text in HTML */
+        /* keep your capitalized text from HTML */
         letter-spacing: 0;
+        line-height: 1;
     }
 
-    .rail-nav a svg {
+    .rail-nav--classic a svg {
         width: 18px;
         height: 18px;
         flex: 0 0 auto;
@@ -730,28 +737,34 @@ body.nav-open .scrim {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+
+    /* spacing + visuals */
     margin-top: 12px;
+    padding: 6px 10px;
+    border: 1px solid #d0c5b9;
+    border-radius: 9999px;
+    background: transparent;
+
+    /* type */
     color: var(--text);
     font-family: var(--ff-sans-ui);
     font-size: var(--fs-small);
     font-weight: 600;
     line-height: 1;
-    /* removes extra vertical space inside pill */
-    padding: 6px 10px;
-    /* compact, even padding */
-    border: 1px solid #d0c5b9;
-    border-radius: 9999px;
-    background: transparent;
+
+    /* key: don’t stretch to the column width */
+    align-self: flex-start;
+    width: auto;
+    max-width: max-content;
 }
 
 .profile-meta .availability-inline .dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    margin-left: 0;
-    /* ensure no artificial left offset */
-    box-shadow: 0 0 6px rgba(40, 167, 69, .45);
-    /* subtler glow to avoid “fake margin” */
+    background: #28a745;
+    /* no glow so the border looks tight */
+    box-shadow: none;
     animation: pulseDot 1.6s ease-in-out infinite;
 }
 
@@ -761,13 +774,11 @@ body.nav-open .scrim {
     100% {
         transform: scale(1);
         opacity: 1;
-        box-shadow: 0 0 10px rgba(40, 167, 69, .75)
     }
 
     50% {
-        transform: scale(.9);
-        opacity: .5;
-        box-shadow: 0 0 6px rgba(40, 167, 69, .4)
+        transform: scale(0.9);
+        opacity: .6;
     }
 }
 
