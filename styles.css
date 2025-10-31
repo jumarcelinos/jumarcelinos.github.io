@@ -380,7 +380,7 @@ small {
     .side-rail {
         /* center the nav block vertically, push it to the rail’s right edge */
         justify-content: center;
-        align-items: flex-end;
+        align-items: flex-start;
         padding-right: 18px;
         /* little breathing room from the rail border */
         padding-left: 14px;
@@ -391,7 +391,7 @@ small {
         /* stack links, and align each item to the right */
         display: grid;
         gap: 12px;
-        justify-items: end;
+        justify-items: start;
         /* <- key */
         text-align: right;
         width: 100%;
